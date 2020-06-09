@@ -1,0 +1,95 @@
+/* 导航栏容器 */
+.nav-wrap {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  flex: none; /* 0 0 auto */
+}
+/* 状态栏 */
+.nav-status {
+}
+/* 标题栏 */
+.nav-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+/* 标题容器 */
+.nav-title {
+  width: 100vw;
+  padding: 0 100px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nav-title.white {
+  color: white;
+}
+.nav-title.black {
+  color: black;
+}
+
+/* 自定义胶囊 系统胶囊默认宽高为 87 * 32 */
+.nav-capsule {
+  position: absolute;
+  left: 10px;
+  z-index: 999;
+  /* width: 87px; */
+  height: 32px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  display: flex;
+}
+.nav-capsule .back-pre {
+  width: 28rpx;
+  height: 28rpx;
+}
+.nav-capsule .back-home {
+  width: 32rpx;
+  height: 30rpx;
+}
+.capsule-btn {
+  width: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 胶囊分隔符 */
+.capsule-divider {
+  align-self: center;
+  width: 1px;
+  height: 16px;
+}
+/* 胶囊主题 --- 白 */
+.nav-capsule.white {
+  border-color: rgba(0, 0, 0, 0.03);
+  background-color: rgba(0, 0, 0, 0.14);
+}
+.nav-capsule.white .capsule-divider {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+/* 胶囊主题 --- 黑 */
+.nav-capsule.black {
+  /* border-color: rgba(255, 255, 255, 0.4); */
+  border-color: #eee;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.nav-capsule.black .capsule-divider {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+/* 只展示返回键时 */
+.nav-bar.showPre .nav-capsule {
+  width: 40px;
+  height: 100%;
+  left: 0;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+}
+.nav-bar.showPre .nav-title {
+  padding-left: 40px;
+  text-align: left; /* 只展示返回键时, 文本居左 */
+}

@@ -1,0 +1,23 @@
+<!-- 小程序自定义导航栏 -->
+<view class="nav-wrap" style="background-color: {{navigationBarBackgroundColor}}">
+  <!-- 状态栏 -->
+  <view class="nav-status" style="height: {{statusBarHeight}}px; background-color: {{statusBgColor}}"></view>
+  <!-- 标题栏 -->
+  <view class="nav-bar {{showPre ? 'showPre' : ''}}" style="height: {{titleBarHeight}}px">
+    <!-- 标题文本区 -->
+    <text class="nav-title {{navigationBarTextStyle}}">{{navigationBarTitleText}}</text>
+    <!-- 自定义胶囊 -->
+    <view class="nav-capsule {{navigationBarTextStyle}}" wx:if="{{!hideCapsule}}">
+      <!-- 返回上一页 -->
+      <view class="capsule-btn" wx:if="{{!share}}" catch:tap="_navback">
+        <image class="back-pre" mode="aspectFill" src="{{gobackImg}}" />
+      </view>
+      <!-- 分割符 -->
+      <view class="capsule-divider" wx:if="{{!share && !showPre}}"></view>
+      <!-- 返回首页 -->
+      <view class="capsule-btn" wx:if="{{!showPre}}" catch:tap="_backhome">
+        <image class="back-home" mode="aspectFill" src="{{gohomeImg}}" />
+      </view>
+    </view>
+  </view>
+</view>

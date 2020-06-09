@@ -1,0 +1,64 @@
+//  out: ${workspaceRoot}\\
+@import '_base.less';
+@import '_colorUI.less';
+@import '../../miniprogram_npm/@vant/weapp/common/index.wxss';
+
+image,
+label {
+  vertical-align: middle;
+}
+
+page {
+  --button-warning-background-color: rgba(253, 188, 83, 1);
+  --button-warning-border-color: rgba(253, 188, 83, 1);
+  height: 100vh;
+  display: flex; 
+  flex-direction: column;
+  .container { 
+    flex: 1;
+    width: 100vw;
+    font-family: PingFang SC;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    transform: translate(0, 0);
+  }
+}
+.container {
+
+  // 页面主体
+  .main {
+    flex: 1;
+  }
+
+  // vant框架 样式格式化 start
+  // 图标
+  .van-icon {
+    vertical-align: middle;
+  }
+
+  // cell单元格 去除下划线左间距
+  .van-cell::after {
+    left: 0;
+  }
+
+  // tab选项 active下滑线
+  .van-tabs__line {
+    background-color: rgba(221, 189, 141, 1);
+  }
+
+  // panel 右侧 status容器 样式
+  .panel-index--van-panel__header-value {
+    font-size: 24rpx;
+    font-family: SF UI Text;
+    font-weight: 400;
+    color: rgba(126, 140, 155, 1);
+  }
+}
+
+// 去除页面滚动条
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

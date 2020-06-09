@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "garbageTypes": "/components/garbageTypes/garbageTypes",
+    "basicSponsors": "/components/basicSponsors/basicSponsors",
+    "basicTitle": "/components/basicTitle/basicTitle",
+    "van-radio": "/miniprogram_npm/@vant/weapp/radio/index",
+    "van-radio-group": "/miniprogram_npm/@vant/weapp/radio-group/index",
+    "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
+    "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
+    "van-sticky": "/miniprogram_npm/@vant/weapp/sticky/index",
+    "van-search": "/miniprogram_npm/@vant/weapp/search/index"
+  }
+}

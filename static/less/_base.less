@@ -1,0 +1,63 @@
+//  out: false
+// 变量
+@imgUrl: 'http://47.95.237.2:8083/images/';
+@themeColor: rgba(221, 189, 141, 1); // 主题色
+@titleColor: rgba(51, 51, 51, 1); // 标题 -- 一级标题
+@tipsColor: rgba(90, 97, 105, 1); // 描述 -- 二级标题
+@timeColor: rgba(156, 166, 176, 1); // 时间 -- 三级标题
+@dividerColor: rgba(242, 246, 249, 1); // 分割线颜色
+@activeColor: rgba(255, 102, 102, 1); // 激活颜色
+
+// 工具
+.setBoxProp() {
+  @functions: ~`(function() {
+      this.setWidth=w=> w / 750 * 100 + 'vw'
+      this.setHeight=h=> h / 1334 * 100 + 'vh'
+      this.setFontSize=f=> f / 34 + 'rem' // 默认750的屏幕字体大小为27px
+    }
+  )()`;
+}
+// .setBoxProp();
+
+// 文本单行溢出省略
+.text-over() {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 文本多行溢出省略
+.line-over(@clamp: 2) {
+  overflow: hidden;
+  overflow-wrap: break-word; // 单词不截断换行
+  text-overflow: ellipsis; // 溢出文本省略号显示
+  text-overflow: -o-ellipsis-lastline;
+  display: -webkit-box;
+  -webkit-line-clamp: @clamp; // 限制块级元素文本行数
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical; // 重置文本排列方式
+  /* autoprefixer: on */
+}
+
+// image实现背景图片 cover效果
+.img-cover() {
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+// 置灰
+.gray() { 
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "apphome": "../appHome/index/index",
+    "van-tabbar": "/miniprogram_npm/@vant/weapp/tabbar/index",
+    "van-sticky": "/miniprogram_npm/@vant/weapp/sticky/index",
+    "van-tabbar-item": "/miniprogram_npm/@vant/weapp/tabbar-item/index"
+  }
+}

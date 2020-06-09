@@ -1,0 +1,9 @@
+<!--components/basicDiscuss/basicDiscuss.wxml-->
+<view class="discuss">
+  <van-cell custom-class="discuss_user" title-class="discussUser_title" label-class="discussUser_label" value-class="discussUser_status" title="名称" label="描述" value="1天前" border="{{false}}">
+    <image slot="icon" class="discussUser_pic" mode="aspectFit" />
+  </van-cell>
+  <view class="discuss_info">
+    经过各自人生不同阶段的历练后，他们累积了丰沛的身体能量与故事
+  </view>
+</view>

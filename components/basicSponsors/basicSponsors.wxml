@@ -1,0 +1,5 @@
+<!-- components/basicSponsors/basicSponsors.wxml -->
+<view class="sponsors_wrap"> 
+  <view>南京早八点软件科技有限公司发布</view>
+  <view>本查询系统仅供参考，具体分类要求以归属地专业管理部门为准</view>
+</view>

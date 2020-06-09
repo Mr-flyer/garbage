@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/appHome/index/index",
+    "pages/gaebageSearch/gaebageDetail/gaebageDetail"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#eee",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "mg-navbar": "/components/navigationBar/index",
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index",
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
+    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "less.compile": { // ${workspaceRoot} 代表项目根路径
+    // "main": [
+    //   "${workspaceRoot}\\static\\less\\app.less",
+    // ], // 编译时 只编译此数组(即主文件)中less文件（注：若修改`主文件`中导入的其他文件会让`主文件`联动编译）
+    "compress": true, // true => 开启压缩编译模式
+    "outExt": ".wxss", // 设置导出 文件名后缀
+  },
+  "editor.tabSize": 2,
+  "files.associations": {
+    // "*.wxml": "html",  // wxml文件通过 html语法校验
+    "*.wxs": "javascript",
+    "*.cjson": "jsonc",
+    "*.wxss": "css"
+  }
+}

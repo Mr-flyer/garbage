@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "garbageTypes": "/components/garbageTypes/garbageTypes",
+    "basicTitle": "/components/basicTitle/basicTitle",
+    "basicDiscuss": "/components/basicDiscuss/basicDiscuss",
+    "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
+    "van-search": "/miniprogram_npm/@vant/weapp/search/index"
+  }
+}
