@@ -9,7 +9,7 @@ Component({
     navbarData: Object,
 
     // 导航栏背景色
-    navigationBarBackgroundColor: {
+    navigationBarBackground: {
       type: String,
       value: "transparent"
     },

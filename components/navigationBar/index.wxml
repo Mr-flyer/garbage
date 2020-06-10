@@ -1,5 +1,5 @@
 <!-- 小程序自定义导航栏 -->
-<view class="nav-wrap" style="background-color: {{navigationBarBackgroundColor}}">
+<view class="nav-wrap" style="background: {{navigationBarBackground}}">
   <!-- 状态栏 -->
   <view class="nav-status" style="height: {{statusBarHeight}}px; background-color: {{statusBgColor}}"></view>
   <!-- 标题栏 -->

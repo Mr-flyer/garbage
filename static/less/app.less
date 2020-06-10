@@ -9,6 +9,8 @@ label {
 }
 
 page {
+  --tag-padding: .2em 22rpx;
+  --tag-success-color: rgba(150, 223, 158, 1);
   --button-warning-background-color: rgba(253, 188, 83, 1);
   --button-warning-border-color: rgba(253, 188, 83, 1);
   height: 100vh;
@@ -53,6 +55,26 @@ page {
     font-family: SF UI Text;
     font-weight: 400;
     color: rgba(126, 140, 155, 1);
+  }
+  // 按钮高亮
+  .btn_highlight {
+    background-image: radial-gradient(farthest-side at 0% 0%, #fff472 0%, transparent 100%);
+  }
+  // 提示区块
+  .tips_wrap {
+    padding-top: 20rpx;
+    color: rgba(156, 166, 176, 1);
+    font-size: 24rpx;
+    display: flex;
+  }
+  // 提示标签
+  .tips_tag {
+    flex: none;
+    margin-right: 10rpx;
+    font-size: 24rpx;
+    line-height: 1;
+    padding: .2em 20rpx;
+    box-sizing: border-box;
   }
 }
 

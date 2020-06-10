@@ -1,0 +1,5 @@
+<!--components/staticIcon/staticIcon.wxml-->
+<view class="staticIcon_wrap">
+  <image class="staticIcon_pic" src="{{statusObj[currtStatus].imgUrl}}" mode="widthFix" />
+  <view class="{{currtStatus && 'staticIcon_txt'}}">{{tips || statusObj[currtStatus].txt}}</view>
+</view>

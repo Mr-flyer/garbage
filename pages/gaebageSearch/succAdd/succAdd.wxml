@@ -1,0 +1,9 @@
+<!--pages/gaebageSearch/succAdd/succAdd.wxml-->
+<mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+<view class="container">
+  <view class="empty_inner">
+    <staticIcon />
+    <van-button custom-class="seeKeyword_btn btn_highlight" type="warning" round hairline>查看我的词库</van-button>
+  </view>
+  <basicSponsors class="footer" />
+</view>

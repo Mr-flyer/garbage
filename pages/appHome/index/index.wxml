@@ -15,14 +15,12 @@
       <van-button slot="action" custom-class="search_btn" type="warning" icon="down" round />
     </van-search>
   </view>
-  <view class="main">
+  <view class="main inner">
     <!-- 热门搜索 -->
     <view class="searchHot_wrap">
       <view class="searchHot_title">热门搜索</view>
       <view class="searchHot_list">
-        <van-tag custom-class="searchHot_tag" size="medium" round>面膜1</van-tag>
-        <van-tag custom-class="searchHot_tag" size="medium" round>面膜2</van-tag>
-        <van-tag custom-class="searchHot_tag" size="medium" round>面膜3</van-tag>
+        <van-tag wx:for="{{3}}" wx:key="index" custom-class="searchHot_tag" size="medium" round>面膜</van-tag>
       </view>
     </view>
     <!-- 基本分类 -->

@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/appHome/index/index",
-    "pages/gaebageSearch/gaebageDetail/gaebageDetail"
+    "pages/gaebageSearch/gaebageDetail/gaebageDetail",
+    "pages/gaebageSearch/succAdd/succAdd"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -18,7 +19,6 @@
     "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
     "van-toast": "/miniprogram_npm/@vant/weapp/toast/index"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json",
   "permission": {
     "scope.userLocation": {

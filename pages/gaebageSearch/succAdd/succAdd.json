@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "staticIcon": "/components/staticIcon/staticIcon",
+    "basicSponsors": "/components/basicSponsors/basicSponsors"
+  }
+}
