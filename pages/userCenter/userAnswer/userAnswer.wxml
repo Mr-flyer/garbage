@@ -1,0 +1,37 @@
+<!-- pages/userCenter/userAnswer/userAnswer.wxml -->
+<mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+<view class="container">
+  <view class="header">
+    <image class="userAnswer_tree" src="/static/images/common/pic_tree@2x.png" mode="aspectFit" />
+    <view class="avatar">
+      <image mode="aspectFill" />
+    </view>
+    <van-grid custom-class="userAnswer_header bg_ripple boxshow_green" style="width:100%" border="{{false}}" column-num="2">
+      <van-grid-item icon-class="userAnswerHd_big" text-class="userAnswerHd_txt" text="综合分数">
+        <view slot="icon" class="{{num01 && 'bigNum'}}">{{num01}}</view>
+      </van-grid-item>
+      <van-grid-item icon-class="userAnswerHd_big" text-class="userAnswerHd_txt" custom-class="userAnswer_grid" text="历史排名">
+        <view slot="icon" class="{{num02 && 'bigNum'}}">未上榜</view>
+      </van-grid-item>
+    </van-grid>
+  </view>
+  <van-collapse class="main collapse_wrap" wx:if="{{isEmpty}}" value="{{ activeNames }}" bind:change="onChange">
+    <van-collapse-item custom-class="collapse_group" wx:for="{{3}}" name="{{index+1}}">
+      <!-- 标题区块 -->
+      <van-cell slot="title" custom-class="collapse_hd" title-class="collapse_hd_title" label-class="collapse_hd_label" title="有害垃圾" label="被您成功分类的有害垃圾都在这里啦" border="{{false}}">
+        <image slot="icon" class="collapse_icon" src="/static/images/common/garbage_red@2x.png" mode="aspectFill"/>
+      </van-cell>
+      <!-- 内容区块 -->
+      <van-grid custom-class="garbageType_group" clickable border="{{false}}">
+        <van-grid-item wx:for="{{5}}" wx:key="this" text="充电电池">
+          <image class="garbageType_pic" slot="icon" mode="aspectFit" />
+        </van-grid-item>
+      </van-grid>
+    </van-collapse-item>
+  </van-collapse>
+  <view class="main empty_wrap" wx:else>
+    <staticIcon currtStatus="1" />
+    <van-button custom-class="gotoAnswer_btn" type="warning" round>去答题</van-button>
+  </view>
+  <basicSponsors /> 
+</view>

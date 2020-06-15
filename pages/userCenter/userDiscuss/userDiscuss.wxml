@@ -1,0 +1,26 @@
+<!--pages/userCenter/userDiscuss/userDiscuss.wxml-->
+<mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+<pullDownRefresh class="container" refreshing="{{refreshing}}" refreshed="{{refreshed}}" bind:refresh="onPullDownRefresh">
+<scroll-view class="main" scroll-y enable-flex bind:scrolltolower="onReachBottom">
+
+  <van-cell-group wx:if="{{!isEmpty}}" class="discuss_group">
+    <van-cell wx:for="{{dataLists}}" wx:key="this" custom-class="discuss_item" title-class="discuss_iam van-ellipsis" title="这是什么神仙分类啊！这是什么神仙分类啊！这是什么神仙分类啊！这是什么神仙分类啊！" clickable use-label-slot>
+      <van-cell slot="label" custom-class="garbageType_warp" title-class="garbageType_name van-ellipsis" label-class="garbageType_label" title="花生壳花生壳花生壳花生壳花生壳花生壳花生壳花生壳花生壳花生壳花生壳" center use-label-slot>
+        <view slot="label" class="van-ellipsis">
+          <image src="/static/images/common/garbage_gray@2x.png" class="garbageType_icon" mode="aspectFill" />
+          花生壳花生壳花生壳花生壳花生壳花生壳花生壳花生壳花生壳花生壳花生壳花生壳花生壳/厨余垃圾/易腐垃圾
+        </view>
+        <view class="garbageType_picwrap">
+          <image class="garbageType_pic" mode="aspectFill" />
+        </view>
+      </van-cell>
+    </van-cell> 
+    <!-- 加载更多控件 -->
+    <load-more id="loadMoreView" bind:loadMoreListener='loadMoreListener' bind:clickLoadMore='clickLoadMore'></load-more>
+  </van-cell-group>
+  <view wx:else class="main empty_warp">
+    <staticIcon currtStatus="3" />
+  </view>
+  <basicSponsors />
+</scroll-view>
+</pullDownRefresh>

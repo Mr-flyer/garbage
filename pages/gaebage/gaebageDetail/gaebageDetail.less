@@ -1,41 +1,44 @@
-page {
+.header {
+  background-color: rgba(67, 193, 120, 1);
+  padding: calc(var(--paddingTop)*2rpx) 40rpx 40rpx;
+  background-image: radial-gradient(farthest-side at 0% 0%, #c0fcc6 0%, transparent 80%);
+  box-shadow: -6px 2px 7px 0px rgba(213, 238, 216, 1);
+  border-radius: 0px 0px 60rpx 60rpx;
+  position: relative;
+
   .van-cell__value {
     flex: none;
   }
-}
 
-.header {
-  background-color: rgba(67, 193, 120, 1);
-  padding: 128rpx 40rpx 40rpx;
-  // padding-bottom: 40rpx;
-  background-image: radial-gradient(farthest-side at 0% 0%, #c0fcc6 0%, transparent 80%);
-  box-shadow: -6px 2px 7px 0px rgba(213, 238, 216, 1);
-  border-radius:0px 0px 60rpx 60rpx;
-  position: relative;
   // 搜索框 --- start
   .search_wrap {
-    padding: 0; margin: 20rpx auto 0;
+    padding: 0;
+    margin: 20rpx auto 0;
     width: 670rpx;
     border-radius: 34rpx;
-    background-color: rgba(255, 255, 255, .4)!important;
+    background-color: rgba(255, 255, 255, .4) !important;
     display: flex;
     align-items: center;
     // box-shadow:-6px 0px 7px 0px rgba(131,210,140,1);
   }
+
   .search_field {
     background-color: transparent;
   }
+
   .van-search__content {
     border-radius: 40rpx;
     background-color: transparent;
     // box-shadow:-6px 0px 7px 0px rgba(131,210,140,1);
   }
+
   .search_ipt {
     // height: 40rpx;
     // min-height: auto;
     padding-left: 20rpx;
     font-size: 26rpx;
   }
+
   .search_btn {
     width: 54rpx;
     height: 54rpx;
@@ -48,47 +51,55 @@ page {
     align-items: center;
     transform: rotate(-90deg);
   }
+
   .van-search__action {
-    background-color: transparent!important;
+    background-color: transparent !important;
   }
+
   // 搜索框 --- end
   .keyword_wrap {
     margin-top: 16rpx;
     padding-left: 0;
     padding-right: 0;
     background-color: transparent;
+
     &::after {
-      border-color:rgba(44, 184, 103, 1);
+      border-color: rgba(44, 184, 103, 1);
     }
   }
+
   .keyword_title {
     color: #fff;
     font-size: 34rpx;
   }
+
   .collect_btn {
     width: auto;
     padding: 0 30rpx;
-    border-radius:10rpx 0px 10rpx 0px;
-    background-image: radial-gradient(farthest-side at 0% 0%, #fff472 0%, transparent 100%);
+    border-radius: 10rpx 0px 10rpx 0px;
   }
 
   .garbagetype_card {
     padding: 36rpx 0 0;
     background-color: transparent;
   }
+
   .garbagetype_icon {
     width: 103rpx;
     height: 126rpx;
   }
+
   .garbagetype_title {
     font-size: 50rpx;
     color: #fff;
   }
+
   .garbagetype_label {
     font-size: 30rpx;
     color: rgba(204, 255, 225, 1);
     padding-top: 14rpx;
   }
+
   .garbagetype_pic {
     width: 210rpx;
     height: 150rpx;
@@ -100,41 +111,49 @@ page {
     background-color: transparent;
     padding: 36rpx 0 0;
   }
+
   .emptySearch_title {
     font-size: 50rpx;
     line-height: 1;
     font-weight: bold;
     color: #fff;
   }
+
   .emptySearch_label {
     max-width: 425rpx;
     padding-top: 10rpx;
     font-size: 28rpx;
     color: rgba(204, 255, 225, 1);
   }
-  .emptySearch_pic { 
+
+  .emptySearch_pic {
     width: 187rpx;
     height: 223rpx;
   }
 
   .addKeyword_btn {
     position: absolute;
-    bottom: 0;left: 50%;
+    bottom: 0;
+    left: 50%;
+    width: 410rpx;
     transform: translate(-50%, 50%);
-    background-image: radial-gradient(farthest-side at 0% 0%, #fff472 0%, transparent 100%);
   }
 }
 
 .cont {
+  flex: 1;
   background-color: #fff;
   padding-bottom: 40rpx;
 }
+
 .aside {
   padding: 0 40rpx;
+
   .barrage_wrap {
     padding: 30rpx 0;
     border-bottom: 2rpx solid rgba(248, 248, 248, 1);
   }
+
   .barrage_item {
     padding: 0 10rpx;
     margin-bottom: 10rpx;
@@ -146,12 +165,14 @@ page {
     align-items: center;
     color: rgba(116, 137, 141, 1);
     font-size: 24rpx;
+
     .barrage_pic {
       width: 36rpx;
       height: 36rpx;
       border-radius: 50%;
       margin-right: 8rpx;
       background-color: aquamarine;
+
       image {
         width: 100%;
         height: 100%;
@@ -163,29 +184,60 @@ page {
 
 .basic_type {
   padding: 86rpx 40rpx 0;
-  .tips_wrap {
-    padding-top: 20rpx;
-    column-rule: rgba(156, 166, 176, 1);
-    font-size: 24rpx;
-  }
-  .tips_tag {
-    margin-right: 10rpx;
-  }
 }
+
 .guide_wrap {
   padding-top: 36rpx;
 }
+
 .guide_inner {
   font-size: 26rpx;
   color: rgba(20, 76, 87, 1);
+
   view {
     padding-top: 18rpx;
-  } 
+  }
 }
+
 .discuss_warp {
   background-color: #fff;
   margin-top: 20rpx;
   padding: 40rpx;
 }
 
+.keywordPop_wrap {
+  --cell-horizontal-padding: 0;
+  .van-popup {
+    display: flex;
+    flex-direction: column;
+  }
 
+  .van-action-sheet__header {
+    // background-color: red;
+    flex: none;
+  }
+
+  .keywordPop_inner {
+    flex: 1;
+    overflow: hidden;
+    padding: 0 40rpx 20rpx;
+    // padding-bottom: env(safe-area-inset-bottom);
+    display: flex;
+    flex-direction: column;
+  }
+  .keywordPop_cont {
+    flex: 1;
+    overflow-y: auto;
+  }
+  .popTitle {
+    padding-top: 40rpx;
+    font-size: 30rpx;
+    line-height: 1;
+    color: rgba(20, 76, 87, 1);
+  }
+
+  .addKeyword_submit {}
+  .addKeyword_submit {
+    flex: none;
+  }
+}

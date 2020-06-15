@@ -1,8 +1,13 @@
 {
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "搜索详情",
   "usingComponents": {
+    "basicSponsors": "/components/basicSponsors/basicSponsors",
     "garbageTypes": "/components/garbageTypes/garbageTypes",
     "basicTitle": "/components/basicTitle/basicTitle",
     "basicDiscuss": "/components/basicDiscuss/basicDiscuss",
+    "van-action-sheet": "/miniprogram_npm/@vant/weapp/action-sheet/index",
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index",
     "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
     "van-search": "/miniprogram_npm/@vant/weapp/search/index"
   }

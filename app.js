@@ -1,7 +1,12 @@
-//app.js
+// app.js
+import globalModel from './models/global';
+import { setStorage, getStorage, saveTokens } from './utils/storageSyncTool';
 App({
   // 小程序初始化完成
   onLaunch: function (options) {
+    !getStorage('isUpdata') && globalModel._getToken().then(({data}) => {
+      saveTokens(data.token); setStorage('isUpdata', data)
+    })
     // 通过分享进入小程序时
     this.globalData.share = [1007, 1008].includes(options.scene)
     wx.getSystemInfo({
@@ -11,7 +16,7 @@ App({
         let { titleBarHeight } = this._setCapsuleClearance(statusBarHeight, system)
         Object.assign(this.globalData, {
           statusBarHeight, version, model, titleBarHeight,
-          canUse: this.compareVersion(version, '6.6.0') >= 0, // 能否使用自定义头部
+          canUse: this._compareVersion(version, '6.6.0') >= 0, // 能否使用自定义头部
           isIphonex: this._isIphonex(model)  
         })
       }
@@ -35,8 +40,39 @@ App({
       }
     })
   },
+  // 上传用户信息
+  _getUserInfo({ userInfo }) {
+    if (userInfo) {
+      console.log(userInfo);
+      const data = { // **** 上传参数根据实际情况而定 ****
+        nickname: userInfo.nickName,  // 微信昵称
+        sex: userInfo.gender,         // 性别 0 1 2
+        language: userInfo.language,    // 语言
+        city: userInfo.city,        // 城市
+        province: userInfo.province,    // 省份
+        country: userInfo.country,     // 国家
+        headimgurl: userInfo.avatarUrl, // 微信头像
+      };
+      
+      // 本地存储 用户信息 备份
+      wx.setStorageSync("userinfo", data);
+      // 上传用户信息
+      return globalModel.userUpdate(data)
+      .then(res => {
+        console.log(res);
+        // this.globalData.needUpdate = false
+        // setStorage('isUpdata.need_update', false)
+      })
+    } // 同意授权上传用户信息
+    else {
+      wx.showToast({
+        title: "您尚未授权，部分功能可能无法使用",
+        icon: "none",
+      });
+    } // 拒绝授权
+  },
   // 微信版本号比较
-  compareVersion(v1, v2) {
+  _compareVersion(v1, v2) {
     v1 = v1.split('.')
     v2 = v2.split('.')
     const len = Math.max(v1.length, v2.length)

@@ -1,9 +1,10 @@
 <!-- index.wxml -->
-<mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+<mg-navbar class="navbar" wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
 <view class="main">
-  <apphome wx:if="{{active === 0}}"/>
+  <appHome class="apptab" wx:if="{{active === 0}}" />
+  <appUser class="apptab" wx:if="{{active === 2}}" />
 </view>
-<van-tabbar active="{{ active }}" bind:change="onChangeTabbar">
+<van-tabbar custom-class="cu-bar tabbar bg-white shadow foot footerbar_wrap" active="{{ active }}" bind:change="onChangeTabbar">
   <van-tabbar-item icon="iconfont icon-tab_search">搜索</van-tabbar-item>
   <van-tabbar-item icon="iconfont icon-tab_answer" info="奖">答题</van-tabbar-item>
   <van-tabbar-item icon="iconfont icon-tab_user">我的</van-tabbar-item>

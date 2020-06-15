@@ -1,6 +1,9 @@
 {
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "你是什么垃圾",
   "usingComponents": {
-    "apphome": "../appHome/index/index",
+    "appHome": "/pages/appHome/index/index",
+    "appUser": "/pages/appUser/index/index",
     "van-tabbar": "/miniprogram_npm/@vant/weapp/tabbar/index",
     "van-sticky": "/miniprogram_npm/@vant/weapp/sticky/index",
     "van-tabbar-item": "/miniprogram_npm/@vant/weapp/tabbar-item/index"

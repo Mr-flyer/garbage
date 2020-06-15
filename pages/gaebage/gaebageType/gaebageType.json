@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "垃圾分类",
+  "usingComponents": {
+    "basicSponsors": "/components/basicSponsors/basicSponsors",
+    "basicTitle": "/components/basicTitle/basicTitle",
+    "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
+    "van-grid": "/miniprogram_npm/@vant/weapp/grid/index",
+    "van-grid-item": "/miniprogram_npm/@vant/weapp/grid-item/index"
+  }
+}

@@ -6,21 +6,29 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
+		"enhance": false,
 		"postcss": true,
+		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": false,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
+		"uglifyFileName": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": false,
 		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.0",
@@ -56,17 +64,63 @@
 		"miniprogram": {
 			"current": -1,
 			"list": [
+        
 				{
 					"id": 0,
-					"name": "1.2 搜索详情",
-					"pathName": "pages/gaebageSearch/gaebageDetail/gaebageDetail",
+					"name": "---搜索---tabbar页",
+					"pathName": "pages/appHome/index/index",
+					"query": "",
+					"scene": null
+        },
+				{
+					"id": -1,
+					"name": "1.1 搜索详情",
+					"pathName": "pages/gaebage/gaebageDetail/gaebageDetail",
+					"query": "",
+					"scene": null
+				},
+
+				{
+					"id": 1,
+					"name": "---我的---tabbar页",
+					"pathName": "pages/appUser/index/index",
+					"query": "",
+					"scene": null
+        },
+        
+				{
+					"id": -1,
+					"name": "2.1 我的答题",
+					"pathName": "pages/userCenter/userAnswer/userAnswer",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "1.1 搜索",
-					"pathName": "pages/appHome/index/index",
+					"name": "2.2 我的评论",
+					"pathName": "pages/userCenter/userDiscuss/userDiscuss",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "2.3 我的收藏",
+					"pathName": "pages/userCenter/userCollect/userCollect",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "2.4 我的词库",
+					"pathName": "pages/userCenter/userLexicon/userLexicon",
+					"query": "",
+					"scene": null
+        },
+        
+				{
+					"id": 2,
+					"name": "---垃圾分类---",
+					"pathName": "pages/gaebage/gaebageType/gaebageType",
 					"query": "",
 					"scene": null
 				},

@@ -1,0 +1,11 @@
+{
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的评论",
+  "usingComponents": {
+    "pullDownRefresh": "/components/pullDownRefresh/pullDownRefresh",
+    "load-more": "/components/loadMore/index",
+    "staticIcon": "/components/staticIcon/staticIcon",
+    "basicSponsors": "/components/basicSponsors/basicSponsors",
+    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index"
+  }
+}

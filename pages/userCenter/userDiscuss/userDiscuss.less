@@ -1,0 +1,81 @@
+page {
+  .van-cell__value {
+    flex: none;
+  }
+  .container {
+    overflow-y: auto;
+  }
+  .main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .empty_warp {
+    padding-top: 200/1206*100vh;
+  }
+}
+.discuss_group {
+  flex: 1;
+  padding: 0 40rpx;
+  .discuss_item {
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+    padding: 40rpx 20rpx;
+  }
+}
+
+.discuss_item {
+  .discuss_iam {
+    color: rgba(20, 76, 87, 1);
+    font-size: 28rpx;
+    font-weight: bold;
+    line-height: 1;
+    &::before {
+      content: '我：';
+      color: rgba(67, 193, 120, 1);
+    }
+  }
+  .garbageType_warp {
+    margin-top: 20rpx;
+    padding: 24rpx 20rpx;
+    border-radius: 10rpx;
+    background-color: rgba(243, 246, 249, 1);
+    font-size: 26rpx;
+  }
+  .garbageType_name {
+    color: rgba(116, 137, 141, 1);
+    font-weight: 400;
+    line-height: 1;
+    padding-right: 20rpx;
+  }
+  .garbageType_label {
+    margin-top: 12rpx;
+    color: rgba(116, 137, 141, 1);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  .garbageType_icon {
+    width: 26rpx;
+    height: 30rpx;
+  }
+  .garbageType_picwrap {
+    padding-left: 20rpx;
+    position: relative;
+    &::before {
+      content: '';
+      width: 2rpx;
+      height: 60rpx;
+      background-color: rgba(225, 231, 237, 1);
+      position: absolute;
+      top: 0;left: 0;
+      top: 50%;left: 0;
+      transform: translate(0, -50%);
+    }
+  }
+  .garbageType_pic {
+    width: 80rpx;
+    height: 80rpx;
+    background-color: aquamarine;
+  }
+}

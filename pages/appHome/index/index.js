@@ -1,6 +1,10 @@
 // pages/appHome/index/index.js
-Page({
+Component({
+  options: {
+    addGlobalClass: true,
+  },
   data: {
+    navBarHeight: getApp().globalData.statusBarHeight + getApp().globalData.titleBarHeight,
     radio: 1
   },
   handChangeRadio({detail}) {

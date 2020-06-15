@@ -1,0 +1,105 @@
+page {
+  --tag-padding: .1em .6em;
+  --tag-danger-color: rgba(240, 79, 79, 1);
+  .red {
+    color: rgba(238, 41, 41, 1)!important;
+  }
+  .van-cell__title {
+    overflow: hidden;
+  }
+  .van-cell__value {
+    flex: none;
+    padding-left: 20rpx;
+  }
+  .van-sticky-wrap {
+    top: 0!important; // 粘性布局位置矫正(由于父容器设有 transform使fixed降级)
+  }
+  // .container {
+  //   // transform: none;
+  // }
+  .main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  // tabs flex布局 --- start
+  .flex_vertical {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .van-tabs__content {
+    flex: 1;
+  }
+  .tabItem_wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  // tabs flex布局 --- end
+}
+
+.container {
+  overflow-y: auto;
+  .lexicon_group {
+    flex: 1;
+    padding: 20rpx 40rpx 0;
+  }
+  .lexicon_card {
+    border-radius: 10rpx;
+    padding-top: 40rpx;
+    padding-bottom: 40rpx;
+    box-shadow:0px 18rpx 21rpx 0px rgba(168,226,174,.21);
+    margin-bottom: 20rpx;
+  }
+  .empty_wrap {
+    padding-top: 210/1026*100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .addLexicon_btn {
+    margin-top: 110/1206*100vh;
+    width: 450rpx;
+  }
+}
+.lexicon_card {
+  .lexicon_title {
+    color: rgba(20, 76, 87, 1);
+    font-size: 32rpx;
+    line-height: 1;
+    font-weight: bold;
+  }
+  .garbage_info {
+    margin-top: 20rpx;
+    color: rgba(156, 166, 176, 1);
+    font-size: 24rpx;
+  }
+  .garbage_type {
+    font-size: 28rpx;
+    line-height: 1;
+    font-weight: bold;
+  }
+  .garbageType1 text {
+    color: rgba(180, 180, 180, 1);
+  }
+  .garbageType2 text {
+    color: rgba(253, 188, 83, 1);
+  }
+  .garbageType3 text {
+    color: rgba(255, 140, 134, 1);
+  }
+  .garbageType4 text {
+    color: rgba(133, 199, 255, 1);
+  }
+  .garbage_pic {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 10rpx;
+    background-color: antiquewhite;
+  }
+  .garbage_desc {
+    padding-top: 14rpx;
+    line-height: 1.3;
+  }
+}
