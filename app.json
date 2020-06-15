@@ -2,7 +2,14 @@
   "pages": [
     "pages/index/index",
     "pages/appHome/index/index",
-    "pages/gaebageSearch/gaebageDetail/gaebageDetail"
+    "pages/gaebageSearch/gaebageDetail/gaebageDetail",
+    "pages/answer/index/index",
+    "pages/answer/answer/index",
+    "pages/answer/result/index",
+    "pages/answer/poster/index",
+    "pages/answer/ranking/index",
+    "pages/answer/redEnvelopes/index",
+    "pages/answer/knowledge/index"
   ],
   "window": {
     "navigationStyle": "custom",

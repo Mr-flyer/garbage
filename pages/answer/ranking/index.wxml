@@ -1,0 +1,46 @@
+<view class="ranking">
+    <view class="ranking-main" id="ranking">
+        <mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+        <view class="ranking-con">
+            <view class="ranking-fonts">
+                <view class="ranking-title">排行榜</view>
+                <view class="ranking-explain">距离Lv.4还需5经验</view>
+            </view>
+            <image class="ranking-list-img" src="../../../static/images/answer/ranking_list_bg.png" />
+        </view>
+        <view class="ranking-text-list">
+            <view class="text-item" data-id="0" bind:tap="rankingItem">
+                <view class="item-font {{active == 0 ? 'activeClass':''}}">好友排行</view>
+                <view class="triangle" wx:if="{{active == 0}}"></view>
+            </view>
+            <view class="text-item" data-id="1" bind:tap="rankingItem">
+                <view class="item-font {{active == 1 ? 'activeClass':''}}">全部排行</view>
+                <view class="triangle" wx:if="{{active == 1}}"></view>
+            </view>
+        </view>
+    </view>
+    <scroll-view scroll-y class="ranking-list" style="height: calc(100% - {{topHeight}}px)">
+        <view class="ranking-list-item" wx:for="{{8}}" wx:key="this">
+            <view class="item-left">
+                <view class="ranking-num">
+                    <image class="ranking-icon" wx:if="{{index===0}}" src="../../../static/images/answer/cup_1.png" />
+                    <image class="ranking-icon" wx:elif="{{index===1}}" src="../../../static/images/answer/cup_2.png" />
+                    <image class="ranking-icon" wx:elif="{{index===2}}" src="../../../static/images/answer/cup_3.png" />
+                    <view wx:else>{{index+1}}</view>
+                </view>
+                <view class="ranking-user-info">
+                    <image class="portrait" src="../../../static/images/answer/portrait.png"/>
+                    <view class="ranking-user">
+                        <view class="ranking-nickname">零下度$</view>
+                        <view class="ranking-level">等级5·仁者无敌</view>
+                    </view>
+                </view>
+            </view>
+            <view class="item-right">
+                <image wx:if="{{index<=4}}" class="ranking-star" src="../../../static/images/answer/star_1.png" mode="widthFix"/>
+                <image wx:else class="ranking-star" src="../../../static/images/answer/star_2.png" mode="widthFix"/>
+                <text class="star-num">x886</text>
+            </view>
+        </view>
+    </scroll-view>
+</view>

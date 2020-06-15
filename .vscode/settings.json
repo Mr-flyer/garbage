@@ -6,7 +6,6 @@
     "compress": true, // true => 开启压缩编译模式
     "outExt": ".wxss", // 设置导出 文件名后缀
   },
-  "editor.tabSize": 2,
   "files.associations": {
     // "*.wxml": "html",  // wxml文件通过 html语法校验
     "*.wxs": "javascript",

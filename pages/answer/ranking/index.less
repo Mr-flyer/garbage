@@ -1,0 +1,148 @@
+@import '../../../static/less/_base.less';
+.ranking {
+    width: 100%;
+    height: 100%;
+    .ranking-main {
+        width: 100%;
+        background: @themeColor;
+        // background-image: radial-gradient(farthest-side at 0% 0%, #59cb86 0%, transparent 80%);
+        .ranking-con {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            color: #fff;
+            justify-content: space-between;
+            align-items: center;
+            .ranking-fonts {
+                padding-left: 32rpx;
+                box-sizing: border-box;
+                flex: 1;
+                .ranking-title {
+                    font-size: 56rpx;
+                    letter-spacing: 6rpx;
+                    font-weight: bold;
+                    line-height: 56rpx;
+                }
+                .ranking-explain {
+                    font-size: 30rpx;
+                    line-height: 40rpx;
+                    margin-top: 15rpx;
+                }
+            }
+            .ranking-list-img {
+                width: 364rpx;
+                height: 268rpx;
+            }
+        }
+        .ranking-text-list {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            height: 92rpx;
+            background: #3F9D67;
+            align-items: center;
+            color: #fff;
+            font-size: 36rpx;
+            font-weight: 500;
+            .text-item {
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                position: relative;
+                height: 100%;
+                align-items: center;
+                .triangle {
+                    width: 0;
+                    height: 0;
+                    border-top: 12rpx solid transparent;
+                    border-right: 12rpx solid transparent;
+                    border-bottom: 12rpx solid #fff;
+                    border-left: 12rpx solid transparent;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+                .activeClass {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .ranking-list {
+        width: 100%;
+        background: #fff;
+        .ranking-list-item {
+            width: 100%;
+            padding: 30rpx 32rpx;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(223,223,223,.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .item-left {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .ranking-num {
+                    width: 68rpx;
+                    color: @themeColor;
+                    font-size: 40rpx;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .ranking-icon {
+                        width: 68rpx;
+                        height: 38rpx;
+                    }
+                }
+                .ranking-user-info {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin: 0 32rpx;
+                    .portrait {
+                        width: 106rpx;
+                        height: 106rpx;
+                        border: 1px solid @themeColor;
+                        box-sizing: border-box;
+                        border-radius: 50%;
+                        margin-right: 20rpx;
+                    }
+                    .ranking-user {
+                        flex: 1;
+                        .ranking-nickname {
+                            font-size: 30rpx;
+                            font-weight: bold;
+                            line-height: 40rpx;
+                        }
+                        .ranking-level {
+                            font-size: 24rpx;
+                            color: #666;
+                            line-height: 30rpx;
+                            margin-top: 8rpx;
+                        }
+                    }
+                }
+                
+            }
+            .item-right {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: center;
+                justify-content: center;
+                .ranking-star {
+                    width: 38rpx;
+                }
+                .star-num {
+                    font-size: 30rpx;
+                    margin-left: 10rpx;
+                    font-weight: bold;
+                    line-height: 30rpx;
+                }
+            }
+        }
+    }
+}

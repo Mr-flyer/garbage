@@ -1,0 +1,60 @@
+<view class="answer-main">
+    <image class="answer-bg" src="../../../static/images/answer/answer_bg.png" />
+    <mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+    <view class="answer-content" style="top: {{statusBarHeight + titleBarHeight}}px;">
+        <image class="answer-bg-bottom" src="../../../static/images/answer/answer_bg_bottom.png" mode="widthFix"/>
+        <view class="answer-portrait">
+            <image class="portrait" src="../../../static/images/answer/portrait.png" />
+            <view class="user-info">
+                <view class="user-name">123</view>
+                <view class="user-icons">
+                    <image class="heart-icon" src="../../../static/images/answer/heart_icon.png" />
+                    <text>3/3</text>
+                    <image class="add-icon" src="../../../static/images/answer/add_icon.png" />
+                </view>
+            </view>
+        </view>
+        <image class="answer-icon" src="../../../static/images/answer/answer_icon.png" mode="widthFix"/>
+        <view class="answer-btn-des">
+            <view class="answer-btn" bind:tap="startChallengeBtn">开始挑战</view>
+            <view class="answer-des"><text class="des-num">154354354件垃圾</text><text>已被成功分类</text></view>
+        </view>
+        <view class="fun-icons">
+            <view class="fun-item" bind:tap="knowledgeBtn">
+                <image class="fun-icon" src="../../../static/images/answer/z_icon.png" />
+                <text class="fun-text">知识</text>
+            </view>
+            <view class="fun-item" bind:tap="rankingBtn">
+                <image class="fun-icon" src="../../../static/images/answer/p_icon.png" />
+                <text class="fun-text">排行</text>
+            </view>
+            <view class="fun-item" bind:tap="rulesBtn">
+                <image class="fun-icon" src="../../../static/images/answer/g_icon.png" />
+                <text class="fun-text">规则</text>
+            </view>
+            <view class="fun-item" bind:tap="redEnvelopesBtn">
+                <image class="fun-icon" src="../../../static/images/answer/h_icon.png" />
+                <text class="fun-text">红包</text>
+            </view>
+        </view>
+    </view>
+    <van-overlay show="{{ showRule }}" bind:click="onClickHide">
+        <view class="rule-view" style="padding-top: {{statusBarHeight + titleBarHeight}}px;">
+            <view class="rule-main">
+                <van-icon class="rule-close" name="cross" bind:tap="onClickHide" />
+                <view class="rule-content" catchtap="handleTap">
+                    <view class="rule-title">游戏规则</view>
+                    <scroll-view scroll-y class="rule-fonts">
+                        <answer-title name="参赛资格"/>
+                        <view class="rule-p">本活动仅限微信小程序实名认证用户参加。</view>
+                        <answer-title name="活动时间"/>
+                        <view class="rule-p">本赛季活动时间为3月23至3月31日。</view>
+                        <answer-title name="活动规则"/>
+                        <view class="rule-p">1.参与规则：符合参赛资格的用户，可在限定 时间内，打开【小答题】参与本赛季答题挑战； 每位用户每天参与50场排位赛挑战。</view>
+                        <view class="rule-p">2.比赛规则：本赛季答题采用1V1对战模式，每 场比赛至少包含3题，用户根据自己的判断在 限定时间内选择正确的答案，枚举结束后按照答题总分判断胜负。</view>
+                    </scroll-view>
+                </view>
+            </view>
+        </view>
+    </van-overlay>
+</view>

@@ -1,7 +1,7 @@
 <!-- index.wxml -->
 <mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
 <view class="main">
-  <apphome />
+  <apphome wx:if="{{active === 0}}"/>
 </view>
 <van-tabbar active="{{ active }}" bind:change="onChangeTabbar">
   <van-tabbar-item icon="iconfont icon-tab_search">搜索</van-tabbar-item>
