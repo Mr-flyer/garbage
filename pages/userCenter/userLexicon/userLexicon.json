@@ -1,0 +1,14 @@
+{
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的词库",
+  "usingComponents": {
+    "pullDownRefresh": "/components/pullDownRefresh/pullDownRefresh",
+    "load-more": "/components/loadMore/index",
+    "staticIcon": "/components/staticIcon/staticIcon",
+    "basicSponsors": "/components/basicSponsors/basicSponsors",
+    "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
+    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-tab": "/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "/miniprogram_npm/@vant/weapp/tabs/index"
+  }
+}

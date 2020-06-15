@@ -1,0 +1,12 @@
+{
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的",
+  "component": true,
+  "usingComponents": {
+    "basicSponsors": "/components/basicSponsors/basicSponsors",
+    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-grid": "/miniprogram_npm/@vant/weapp/grid/index",
+    "van-grid-item": "/miniprogram_npm/@vant/weapp/grid-item/index",
+    "van-icon": "/miniprogram_npm/@vant/weapp/icon/index"
+  }
+}

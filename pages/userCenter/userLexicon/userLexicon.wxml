@@ -1,0 +1,38 @@
+<!-- pages/userCenter/userLexicon/userLexicon.wxml -->
+<mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+<pullDownRefresh class="container" refreshing="{{refreshing}}" refreshed="{{refreshed}}" bind:refresh="onPullDownRefresh">
+  <scroll-view wx:if="{{isEmpty}}" class="main" scroll-y enable-flex bind:scrolltolower="onReachBottom">
+    <!-- <view class="container"> -->
+    <van-tabs class="flex_vertical" custom-class="flex_vertical" active="{{ curTabIndex }}" sticky offset-top="{{navBarHeight}}" bind:change="onChange">
+      <van-tab custom-class="tabItem_wrap" wx:for="{{tabsArr}}" wx:key="index" title="{{item.name}}">
+        <van-cell-group class="lexicon_group">
+          <van-cell wx:for="{{item.dataLists}}" wx:for-index="idx" wx:for-item="val" wx:key="index" custom-class="lexicon_card" use-label-slot>
+            <view slot="title" class="lexicon_title van-ellipsis {{index === 2 && 'red'}}">
+              过期巧克力
+              <van-tag wx:if="{{index}}" type="{{index === 1 ? 'success' : 'danger'}}" plain round>{{index === 1 ? '审核中' : '未通过'}}</van-tag>
+            </view>
+            <view slot="label" class="garbage_info">
+              <view class="garbage_type van-ellipsis garbageType{{idx}}">
+                类别：
+                <text>湿垃圾/厨余垃圾/易腐垃圾易腐垃圾易腐垃圾</text>
+              </view>
+              <view class="garbage_desc van-multi-ellipsis--l2">
+                湿垃圾，即易腐垃圾，是指食材废料、剩菜剩饭、过期食品、瓜皮果核、花卉绿湿垃圾，即易腐垃圾，是指食材废料、剩菜剩饭、过期食品、瓜皮果核、花卉绿
+              </view>
+            </view>
+            <image class="garbage_pic" mode="aspectFill" />
+          </van-cell>
+          <!-- 加载更多控件 -->
+          <load-more class="loadMoreView" bind:loadMoreListener='loadMoreListener' bind:clickLoadMore='clickLoadMore'></load-more>
+        </van-cell-group>
+        <!-- 页脚 -->
+        <basicSponsors />
+      </van-tab>
+    </van-tabs>
+    <!-- </view> -->
+  </scroll-view>
+  <view wx:else class="empty_wrap">
+    <staticIcon currtStatus="4" />
+    <van-button custom-class="addLexicon_btn" type="warning" hairline round>添加词库</van-button>
+  </view>
+</pullDownRefresh>

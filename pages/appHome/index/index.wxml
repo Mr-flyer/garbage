@@ -1,6 +1,6 @@
 <!-- pages/appHome/index/index.wxml -->
 <view class="container">
-  <view class="header">
+  <view class="header" style="--paddingTop:{{navBarHeight}}">
     <view class="hd_inner">
       <view class="hd_info">
         <view class="hd_title">

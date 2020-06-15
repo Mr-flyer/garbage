@@ -1,12 +1,12 @@
 <!-- pages/gaebageSearch/gaebageDetail/gaebageDetail.wxml -->
 <view class="container">
   <view class="cont">
-    <view class="header">
+    <view class="header" style="--paddingTop:{{navBarHeight}}">
       <van-search custom-class="search_wrap" field-class="search_field" input-class="search_ipt" value="{{ value }}" shape="round" placeholder="请输入正确名称（包含材质）" placeholder-style="color: rgba(67, 193, 120, 1); font-size: 26rpx" use-action-slot use-left-icon-slot>
         <van-button slot="action" custom-class="search_btn" icon="down" round />
       </van-search>
       <van-cell custom-class="keyword_wrap" title-class="keyword_title" title="花生壳">
-        <van-button slot="right-icon" custom-class="collect_btn btn_highlight" icon="star" type="warning" size="mini" hairline>
+        <van-button slot="right-icon" custom-class="collect_btn" icon="star" type="warning" size="mini" hairline>
           收藏
         </van-button>
       </van-cell>
@@ -18,7 +18,7 @@
         <van-cell custom-class="emptySearch_wrap" title-class="emptySearch_title" label-class="emptySearch_label" title="未搜索到分类" label="物品过于独特，可输入正确信息增加词库" border="{{false}}">
           <image class="emptySearch_pic" src="/static/images/common/empty_search@2x.png" mode="aspectFill" />
         </van-cell>
-        <van-button custom-class="addKeyword_btn btn_highlight" icon="plus" type="warning" round hairline bind:click="openKeywordPop">
+        <van-button custom-class="addKeyword_btn" icon="plus" type="warning" round hairline bind:click="openKeywordPop">
           添加词库
         </van-button>
       </block>

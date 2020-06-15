@@ -2,8 +2,14 @@
   "pages": [
     "pages/index/index",
     "pages/appHome/index/index",
-    "pages/gaebageSearch/gaebageDetail/gaebageDetail",
-    "pages/gaebageSearch/succAdd/succAdd"
+    "pages/gaebage/gaebageDetail/gaebageDetail",
+    "pages/gaebage/succAdd/succAdd",
+    "pages/appUser/index/index",
+    "pages/gaebage/gaebageType/gaebageType",
+    "pages/userCenter/userAnswer/userAnswer",
+    "pages/userCenter/userDiscuss/userDiscuss",
+    "pages/userCenter/userCollect/userCollect",
+    "pages/userCenter/userLexicon/userLexicon"
   ],
   "window": {
     "navigationStyle": "custom",

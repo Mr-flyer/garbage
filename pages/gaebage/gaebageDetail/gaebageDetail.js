@@ -1,6 +1,7 @@
 // pages/gaebageSearch/gaebageDetail/gaebageDetail.js
 Page({
   data: {
+    navBarHeight: getApp().globalData.statusBarHeight + getApp().globalData.titleBarHeight,
     isEmpty: true,
     showAddKeywordPop: false,
     autosize: { minHeight: 144 },

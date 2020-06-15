@@ -2,10 +2,10 @@
 
 page {
   --tabbar-item-text-color: #DEDEDE;
-  --tabbar-item-active-color: #43C178;
+  --tabbar-item-active-color: #43C178; 
   .van-tabbar-item__text {  
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     align-items: center;
     font-size: 20rpx;
   }
@@ -16,13 +16,22 @@ page {
     align-items: center;
     justify-self: center;
   }
+  .navbar {
+    position: absolute;
+    z-index: 9;
+  }
+  .footerbar_wrap {
+    position: static!important;
+  }
+  .main {
+    flex: 1;
+    overflow-y: auto;
+    // background-color: aquamarine;
+  }
 }
 
-.main {
-  flex: 1;
-  overflow-y: auto;
-  background-color: aquamarine;
-}
-.dv {
-  height: 200px;
+.apptab {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }

@@ -1,0 +1,35 @@
+<!-- pages/userCenter/userCollect/userCollect.wxml -->
+<mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+<pullDownRefresh class="container" refreshing="{{refreshing}}" refreshed="{{refreshed}}" bind:refresh="onPullDownRefresh">
+  <scroll-view class="main" scroll-y enable-flex bind:scrolltolower="onReachBottom">
+    <view class="collect_wrap" wx:if="{{!isEmpty}}">
+      <view class="collect_list">
+        <view class="collect_item" wx:for="{{dataLists}}" wx:key="this">
+          <view class="collect_pic">
+            <image mode="aspectFill" />
+          </view>
+          <view class="collect_info">
+            <view class="collect_name">
+              <text class="van-ellipsis">充电电池充电电池充电电池充电电池充电电池充电电池充电电池充电电池充电电池</text>
+              <van-icon name="star" color="rgba(253, 188, 83, 1)" />
+            </view>
+            <view class="collect_type">
+              <image class="collect_type_pic" src="/static/images/common/garbage_blue@2x.png" mode="aspectFill" />
+              <text class="van-ellipsis">有害垃圾有害垃圾有害垃圾有害垃圾有害垃圾有害垃圾有害垃圾有害垃圾有害垃圾有害垃圾有害垃圾有害垃圾</text>
+            </view>
+            <view class="collect_author">
+              <image class="author_pic" mode="aspectFill" />
+              <text class="van-ellipsis">会拍照的小武会拍照的小武会拍照的小武会拍照的小武会拍照的小武会拍照的小武会拍照的小武会拍照的小武会拍照的小武</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 加载更多控件 -->
+      <load-more id="loadMoreView" bind:loadMoreListener='loadMoreListener' bind:clickLoadMore='clickLoadMore'></load-more>
+    </view>
+    <view class="main empty_wrap" wx:else>
+      <staticIcon currtStatus="2" />
+    </view>
+    <basicSponsors />
+  </scroll-view>
+</pullDownRefresh>

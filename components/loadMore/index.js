@@ -1,8 +1,6 @@
 // components/load-more/index.js
 Component({
-  /**
-   * 组件的属性列表
-   */
+  
   properties: {
     hasMore: {
       type: Boolean,
@@ -31,19 +29,14 @@ Component({
     }
   },
 
-  /**
-   * 组件的初始数据
-   */
   data: {
-    showThis: false,
-    text: '',
-    showIcon: false,
-    isLoading: false
+    showThis: false, // 是否展示当前组件
+    text: '', // 组件文本
+    showIcon: false, // 是否展示加载图片
+    isLoading: false, // 当前是否处于加载中...
   },
 
-  /**
-   * 组件的方法列表
-   */
+
   methods: {
     /**
      * 加载更多的入口方法

@@ -1,0 +1,38 @@
+<!--pages/gaebage/gaebageType/gaebageType.wxml-->
+<mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+<view class="container">
+  <view class="main">
+    <view class="header">
+      <van-cell custom-class="gaebagetype_header bg_ripple boxshow_green" title-class="gaebagetype_title" label-class="gaebagetype_label van-multi-ellipsis--l3" value-class="gaebagetype_value" title="有害垃圾" label="指废电池、废灯管、废药品、废油漆及其容器等对人体健康或者自然环境造成直接或者潜在危害的生活废弃。" center>
+        <image class="garbageType_pic" src="/static/images/common/garbage_red@2x.png" mode="aspectFit" />
+      </van-cell>
+      <van-grid custom-class="garbageType_group" clickable>
+        <van-grid-item wx:for="{{5}}" wx:key="this" text="充电电池">
+          <image class="garbageType_pic" slot="icon" mode="aspectFit" />
+        </van-grid-item>
+      </van-grid>
+    </view>
+    <view class="article">
+      <basicTitle title="投放指导" />
+      <view class="section">
+        废弃的光灯管灯泡投放时请打包固定，以防止灯管灯泡破损以致有害的汞蒸气挥发到环境中。
+        在日常生活中，使用的电池种类很多，目前生产的次性电池已实现低汞和无汞化，宜作为其他垃圾投放。除一次性电池外的二次电池（俗称充电电池，包括镍镉、镍氢、锂电池与铅酸蕾电池）、纽扣电池，这些电池中均含有重金属，属于有害垃圾，要投放到有害垃圾桶中，个人不得随意丢弃。3、过期药品由于过了最佳使用期限，药品化学物质会失效或者变性、因此过期药品与包装物属于有害垃圾                      
+      </view>
+  
+      <view class="tips_wrap">
+        <van-tag plain round type="success">Tips</van-tag>
+        <view >
+          1.废电池应保持完好，投放到专用收集容器，防止日晒雨淋。
+          2.废灯管应保持完整、清洁、千燥，防止破碎，投放时要小心轻放。
+          3.弃置药品、药具应尽量保持原药品包装，就近投放到药监部门指定的社区服务中心的过期药品回收箱里。             
+        </view>
+      </view>
+    </view>
+    <basicSponsors />
+  </view>
+  <view class="footer">
+    <van-button type="warning" round block>保存图片到手机</van-button>
+  </view>
+
+  <van-dialog show="{{needUpdate}}" id="van-dialog" title="提示" message="请授权沪法云获取您的用户信息用于答题、团战、排行榜，取消将导致部分功能无法正常使用！" showCancelButton confirm-button-open-type="getUserInfo" bind:getuserinfo="handGetUserInfo" />
+</view>

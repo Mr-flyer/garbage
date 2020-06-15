@@ -1,4 +1,6 @@
 {
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "搜索详情",
   "usingComponents": {
     "basicSponsors": "/components/basicSponsors/basicSponsors",
     "garbageTypes": "/components/garbageTypes/garbageTypes",

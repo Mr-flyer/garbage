@@ -1,4 +1,7 @@
 {
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "主页",
+  "component": true,
   "usingComponents": {
     "garbageTypes": "/components/garbageTypes/garbageTypes",
     "basicSponsors": "/components/basicSponsors/basicSponsors",

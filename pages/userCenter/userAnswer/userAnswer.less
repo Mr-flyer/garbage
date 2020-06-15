@@ -1,0 +1,115 @@
+.header {
+  margin: 40rpx auto;
+  width: 670rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .userAnswer_tree {
+    margin: auto;
+    width: 624rpx;
+    height: 138rpx;
+  }
+  .userAnswer_header {
+    margin-top: -68rpx;
+    background-color: rgba(67, 193, 120, 1);
+    border-radius: 10rpx;
+    min-height: 190rpx;
+    background-position: -20rpx -10rpx;
+    background-repeat: no-repeat;
+    // display: flex;
+  }
+  .avatar {
+    position: absolute;
+    top: -28rpx; left: 50%;
+    z-index: 1;
+    transform: translate(-50%, 0);
+    width: 124rpx;
+    height: 122rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #fff;
+    image {
+      width: 100%;
+      height: 100%;
+      background-color: antiquewhite;
+    }
+  }
+}
+
+.userAnswer_header {
+  --grid-item-content-background-color: transparent;
+  .userAnswer_grid {
+    position: relative;
+    height: 100%;
+    &::after { // 分割线
+      content: '';
+      position: absolute;
+      top: 50%;left: 0;
+      transform: translateY(-50%);
+      width: 2px;
+      height: 90rpx;
+      background-color: rgba(122, 255, 191, 1);
+    }
+  }
+  .userAnswerHd_big {
+    color: rgba(204, 255, 225, 1);
+    font-size: 38rpx;
+    line-height: 90rpx;
+  }
+  .userAnswerHd_txt {
+    color: rgba(20, 76, 87, 1);
+    font-size: 24rpx;
+  }
+  .bigNum {
+    color: #fff;
+    font-size: 60rpx;
+    font-weight: bold;
+  }
+}
+
+.collapse_wrap {
+  --collapse-item-content-padding: 0;
+  .collapse_group {
+    margin-bottom: 20rpx;
+  }
+  .collapse_hd {
+    padding: 0;
+    background-color: transparent;
+  }
+  .collapse_hd_title {
+    color: rgba(20, 76, 87, 1);
+    font-size: 36rpx;
+    font-weight: bold;
+    line-height: 1;
+    padding-left: 10rpx;
+  }
+  .collapse_hd_label {
+    color: rgba(116, 137, 141, 1);
+    font-size: 24rpx;
+    margin-left: -48rpx;
+  }
+  .collapse_icon {
+    width: 37rpx;
+    height: 36rpx;
+  }
+}
+
+.garbageType_group {
+  .garbageType_pic {
+    width: 120rpx;
+    height: 120rpx;
+    background-color: antiquewhite;
+  }
+}
+
+.empty_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100/1206*100vh;
+  .gotoAnswer_btn {
+    width: 450rpx;
+    margin-top: 64/1206*100vh;
+  }
+}
