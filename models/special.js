@@ -2,7 +2,7 @@ import HTTP from '../utils/wx-request';
 import { getStorage } from '../utils/storageSyncTool';
 
 class SpecialModel extends HTTP {
-  // 所有分类
+  // 所有分类 ===============
   getGarbageCategorys() {
     return this.request({
       subUrl: `api/v1/garbage/categorys`,
@@ -15,7 +15,7 @@ class SpecialModel extends HTTP {
       data
     })
   }
-  // 热门关键词
+  // 热门关键词  ===============
   getGarbageKeyword() {
     return this.request({
       subUrl: `api/v1/garbage/hot_keyword`,
@@ -44,7 +44,7 @@ class SpecialModel extends HTTP {
   addUserCollect(garbageId) {
     return this.request({
       subUrl: `api/v1/garbage/collect/${garbageId}`,
-      method: 'PSOT'
+      method: 'POST'
     })
   }
   // 用户自定义词汇

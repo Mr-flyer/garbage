@@ -4,6 +4,7 @@ import {
   getAccessToken, getStorage, setStorage,
   clearToken, saveTokens
 } from './storageSyncTool';
+import Toast from '../miniprogram_npm/@vant/weapp/toast/toast';
 // 无需展示错误提示的状态码
 const hideErrCodeArr = [10000]
 // roken 失效错误码
@@ -43,7 +44,9 @@ class wxRequest {
       })
     })
     .catch(err => {
-      if(!hideErrCodeArr.includes(err.errCode)) wx.showToast({ title: getErrorMessage(err).description, icon: 'none', duration: 2000 })
+      Toast.clear();
+      if(!hideErrCodeArr.includes(err.errCode)) Toast({message: getErrorMessage(err).description})
+      // wx.showToast({ title: getErrorMessage(err).description, icon: 'none', duration: 2000 })
       return Promise.reject(err)
     })
   }

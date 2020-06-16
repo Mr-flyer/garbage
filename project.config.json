@@ -6,7 +6,7 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
-		"enhance": false,
+		"enhance": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
@@ -64,14 +64,13 @@
 		"miniprogram": {
 			"current": -1,
 			"list": [
-        
 				{
 					"id": 0,
 					"name": "---搜索---tabbar页",
 					"pathName": "pages/appHome/index/index",
 					"query": "",
 					"scene": null
-        },
+				},
 				{
 					"id": -1,
 					"name": "1.1 搜索详情",
@@ -79,15 +78,13 @@
 					"query": "",
 					"scene": null
 				},
-
 				{
 					"id": 1,
 					"name": "---我的---tabbar页",
 					"pathName": "pages/appUser/index/index",
 					"query": "",
 					"scene": null
-        },
-        
+				},
 				{
 					"id": -1,
 					"name": "2.1 我的答题",
@@ -115,8 +112,7 @@
 					"pathName": "pages/userCenter/userLexicon/userLexicon",
 					"query": "",
 					"scene": null
-        },
-        
+				},
 				{
 					"id": 2,
 					"name": "---垃圾分类---",
