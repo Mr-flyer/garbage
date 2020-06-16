@@ -1,0 +1,201 @@
+@import '../../../static/less/_base.less';
+.answer-main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .answer-bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .answer-content {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        .answer-bg-bottom {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+        .answer-portrait {
+            width: 100%;
+            display: flex;
+            box-sizing: border-box;
+            position: absolute;
+            top: 30rpx;
+            left: 0;
+            padding: 0 32rpx;
+            align-items: center;
+            .portrait {
+                width: 94rpx;
+                height: 94rpx;
+                border-radius: 50%;
+                border: 1px solid rgba(32,97,110,.15);
+                box-sizing: border-box;
+            }
+            .user-info {
+                .user-name {
+                    font-size: 34rpx;
+                    color: #144C57;
+                    line-height: 34rpx;
+                    margin-left: 16rpx;
+                }
+                .user-icons {
+                    padding: 0 32rpx;
+                    background: rgba(32,97,110,.15);
+                    height: 30rpx;
+                    position: relative;
+                    margin-left: 35rpx;
+                    margin-top: 12rpx;
+                    .heart-icon {
+                        width: 38rpx;
+                        height: 34rpx;
+                        position: absolute;
+                        top: -2rpx;
+                        left: -19rpx;
+                    }
+                    .add-icon {
+                        width: 34rpx;
+                        height: 34rpx;
+                        position: absolute;
+                        top: -2rpx;
+                        right: -17rpx;
+                    }
+                }
+            }
+        }
+        .answer-icon {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 36rpx;
+        }
+        .answer-btn-des {
+            width: 100%;
+            position: absolute;
+            bottom: 230rpx;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            .answer-btn {
+                width: 320rpx;
+                height: 80rpx;
+                background:rgba(253,188,83,1);
+                box-shadow: 1px -2rpx 0px 0px rgba(255,227,179,1), -4rpx 14rpx 22rpx rgba(62,156,101,0.59), 2rpx -12rpx 18rpx 0px rgba(255,235,175,1) inset, 4rpx -8rpx 42rpx 0px rgba(255,173,54,0.6) inset, 0px -22rpx 42rpx 0px rgba(255,173,54,0.6) inset;
+                border-radius:40px;
+                color: #fff;
+                font-size: 38rpx;
+                font-weight: bold;
+                line-height: 80rpx;
+                text-align: center;
+                box-sizing: border-box;
+            }
+            .answer-des {
+                width: 100%;
+                font-size: 36rpx;
+                font-weight: bold;
+                color: #fff;
+                text-align: center;
+                margin-top: 24rpx;
+                line-height: 36rpx;
+                .des-num {
+                    color: #3CAB6A;
+                    margin-right: 32rpx;
+                }
+            }
+        }
+        .fun-icons {
+            width: 100%;
+            position: absolute;
+            bottom: 54rpx;
+            left: 0;
+            padding: 0 114rpx;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            .fun-item {
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                font-size: 22rpx;
+                align-items: center;
+                .fun-icon {
+                    width: 78rpx;
+                    height: 78rpx;
+                    margin-bottom: 6rpx;
+                }
+                .fun-text {
+                    line-height: 22rpx;
+                }
+            }
+        }
+    }
+    .rule-view {
+        width: 100%;
+        height: 100%;
+        padding: 50rpx;
+        box-sizing: border-box;
+        display: flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .rule-main {
+            width: 100%;
+            box-sizing: border-box;
+            max-height: 100%;
+            .rule-close {
+                color: #fff;
+                font-size: 50rpx;
+                padding: 20rpx;
+                display: flex;
+                justify-content: flex-end;
+                height: 50rpx;
+                line-height: 50rpx;
+            }
+            .rule-content {
+                width: 100%;
+                background-color: #fff;
+                border-radius: 14rpx;
+                padding: 80rpx 40rpx 60rpx 40rpx;
+                box-sizing: border-box;
+                position: relative;
+                color: @answerColor;
+                height: calc(100% - 90rpx);
+                .rule-title {
+                    width:208rpx;
+                    height:60rpx;
+                    background:rgba(247,193,26,1);
+                    border:4rpx solid rgba(68,149,102,1);
+                    box-shadow:6rpx 1px 8rpx 0px rgba(255,155,12,1) inset, 4rpx -8rpx 8rpx 0px rgba(255,126,0,1) inset;
+                    border-radius:30rpx;
+                    box-sizing: border-box;
+                    color: #fff;
+                    font-size: 32rpx;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    top: -30rpx;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+                .rule-fonts {
+                    width: 100%;
+                    height: 100%;
+                    overflow-y: auto;
+                    .rule-p {
+                        line-height: 42rpx;
+                        margin-bottom: 24rpx;
+                    }
+                }
+            }
+        }
+    }
+}

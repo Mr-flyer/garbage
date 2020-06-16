@@ -9,7 +9,14 @@
     "pages/userCenter/userAnswer/userAnswer",
     "pages/userCenter/userDiscuss/userDiscuss",
     "pages/userCenter/userCollect/userCollect",
-    "pages/userCenter/userLexicon/userLexicon"
+    "pages/userCenter/userLexicon/userLexicon",
+    "pages/answer/index/index",
+    "pages/answer/answer/index",
+    "pages/answer/result/index",
+    "pages/answer/poster/index",
+    "pages/answer/ranking/index",
+    "pages/answer/redEnvelopes/index",
+    "pages/answer/knowledge/index"
   ],
   "window": {
     "navigationStyle": "custom",

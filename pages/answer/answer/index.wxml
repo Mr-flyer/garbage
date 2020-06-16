@@ -1,0 +1,45 @@
+<view class="answer-main">
+    <image class="answer-bg" src="../../../static/images/answer/answer_bg.png" />
+    <mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+    <scroll-view class="answer-content" scroll-y style="top: {{statusBarHeight + titleBarHeight}}px; height: calc(100% - {{statusBarHeight + titleBarHeight}}px)">
+        <view class="question-main">
+            <view class="question-border-con">
+                <view class="question-border">
+                    <image class="question-border-bg" src="../../../static/images/answer/border-bg.png" mode="widthFix"/>
+                    <image class="question-title-bg" src="../../../static/images/answer/answer_border.png"/>
+                    <image class="question-portrait" src="../../../static/images/answer/portrait.png" mode="widthFix"/>
+                    <view class="question-num">第一题</view>
+                </view>
+                <view class="question-content">
+                    <image class="question-img" src="../../../static/images/answer/portrait.png" mode="widthFix"/>
+                    <view class="question-text">过期面包</view>
+                </view>
+            </view>
+        </view>
+        <view class="check-main">
+            <view class="check-main-item" wx:for="{{checkList}}" wx:key="this" data-checkIndex="{{index}}" bind:tap="checkClassify">
+                <image wx:if="{{index === checkIndex}}" class="check-classify-active-icon" src="{{item.activeIcon}}" />
+                <image wx:else class="check-classify-icon" src="{{item.icon}}" />
+                <view class="check-text">{{item.name}}</view>
+                <view class="check-border">
+                    <!-- <image wx:if="{{index === checkIndex}}" class="check-icon" src="../../../static/images/answer/check_icon.png" /> -->
+                    <image wx:if="{{index === checkIndex}}" class="err-icon" src="../../../static/images/answer/err_icon.png" />
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <van-overlay show="{{ show }}" bind:click="onClickHide">
+        <view class="explain-main" style="padding: {{statusBarHeight + titleBarHeight + 10}}px 66px {{statusBarHeight + titleBarHeight + 10}}px 66px">
+            <view class="explain-container">
+                <scroll-view scroll-y class="explain-content">
+                    <view class="explain-title">过期面包</view>
+                    <view class="explain-type">湿垃圾</view>
+                    <view class="explain-text">过期面包可以自然降解，所以是湿垃圾</view>
+                </scroll-view>
+            </view>
+        </view>
+    </van-overlay>
+    <view class="loading-main" wx:if="{{ showLoading }}">
+        <image class="loading-icon" src="../../../static/images/answer/loading_icon.gif"/>
+    </view>
+</view>

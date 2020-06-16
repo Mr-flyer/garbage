@@ -15,5 +15,10 @@ Page({
   // 切换页脚 tabber 时
   onChangeTabbar(event) {
     this.setData({ active: event.detail });
+    if(this.data.active === 1) {
+      wx.navigateTo({
+        url: '/pages/answer/index/index'
+      })
+    }
   },
 })

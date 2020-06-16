@@ -92,6 +92,15 @@
 					"query": "",
 					"scene": null
 				},
+
+				{
+					"id": 1,
+					"name": "---我的---tabbar页",
+					"pathName": "pages/appUser/index/index",
+					"query": "",
+					"scene": null
+        },
+        
 				{
 					"id": -1,
 					"name": "2.2 我的评论",
@@ -117,6 +126,55 @@
 					"id": 2,
 					"name": "---垃圾分类---",
 					"pathName": "pages/gaebage/gaebageType/gaebageType",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "答题首页",
+					"pathName": "pages/answer/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "答题页",
+					"pathName": "pages/answer/answer/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "答题结果页",
+					"pathName": "pages/answer/result/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "海报分享",
+					"pathName": "pages/answer/poster/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "排行榜",
+					"pathName": "pages/answer/ranking/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收到的红包",
+					"pathName": "pages/answer/redEnvelopes/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "知识",
+					"pathName": "pages/answer/knowledge/index",
 					"query": "",
 					"scene": null
 				}

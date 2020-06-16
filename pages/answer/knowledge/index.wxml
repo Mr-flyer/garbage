@@ -1,0 +1,14 @@
+<mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+<view class="container">
+    <scroll-view class="main" scroll-y enable-flex>
+        <view class="knowledge-item" wx:for="{{12}}" wx:key="this">
+            <view class="item-title">粉丝福利节来了，每周红包送不停！</view>
+            <view class="item-des">大奖备好了，就差你了~</view>
+            <view class="item-time-browse">
+                <view class="time">03-13 15:16</view>
+                <view class="browse"><van-icon class="browse-icon" name="eye-o" />5899</view>
+            </view>
+            <image class="item-image" src="../../../static/images/answer/answer_border.png" mode="widthFix" />
+        </view>
+    </scroll-view>
+</view>

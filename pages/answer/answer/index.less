@@ -1,0 +1,204 @@
+@import '../../../static/less/_base.less';
+.answer-main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .answer-bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .answer-content {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        box-sizing: border-box;
+        flex: 1;
+        .question-main {
+            width: calc(100% - 100rpx);
+            margin: 0 50rpx 0 50rpx;
+            box-sizing: border-box;
+            position: relative;
+            padding-top: 110rpx;
+            display: table;
+            .question-border-con {
+                width: 100%;
+                box-shadow:0 0 20rpx rgba(70,140,78,0.5);
+                border-radius: 20rpx;
+                box-sizing: border-box;
+                .question-border {
+                    width: 100%;
+                    position: relative;
+                    .question-border-bg {
+                        width: 100%;
+                        height: 132rpx;
+                        position: absolute;
+                        left: 0;
+                        top: -66rpx;
+                    }
+                    .question-title-bg {
+                        width: 100%;
+                        height: 120rpx;
+                    }
+                    .question-portrait {
+                        width: 132rpx;
+                        height: 132rpx;
+                        position: absolute;
+                        left: 50%;
+                        transform: translate(-50%, 0);
+                        z-index: 1;
+                        top: -100rpx;
+                        border-radius: 50%;
+                        border: 1px solid rgba(32,97,110,.15);
+                        box-sizing: border-box;
+                    }
+                    .question-num {
+                        position: absolute;
+                        width: 100%;
+                        text-align: center;
+                        color: #fff;
+                        font-size: 46rpx;
+                        left: 0;
+                        bottom: 36rpx;
+                        line-height: 46rpx;
+                    }
+                }   
+            }
+            .question-content {
+                width: 100%;
+                background-color: #fff;
+                border-bottom-left-radius: 20rpx;
+                border-bottom-right-radius: 20rpx;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                min-height: 520rpx;
+                justify-content: center;
+                padding: 24rpx;
+                box-sizing: border-box;
+                .question-img {
+                    width: 200rpx;
+                }
+                .question-text {
+                    font-size: 36rpx;
+                    color: @answerColor;
+                    font-weight: bold;
+                    line-height: 52rpx;
+                    margin-top: 24rpx;
+                }
+            }
+        }
+        .check-main {
+            width: calc(100% - 100rpx);
+            margin: 140rpx auto 42rpx auto;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            .check-main-item {
+                width: 146rpx;
+                height: 146rpx;
+                background:rgba(204,255,225,1);
+                border-radius:10px;
+                text-align: center;
+                position: relative;
+                .check-classify-icon {
+                    width: 146rpx;
+                    height: 176rpx;
+                    margin-top: -80rpx;
+                }
+                .check-classify-active-icon {
+                    width: 146rpx;
+                    height: 206rpx;
+                    margin-top: -110rpx;
+                }
+                .check-text {
+                    color: @answerColor;
+                    font-size: 22rpx;
+                    font-weight: 500;
+                    line-height: 22rpx;
+                }
+                .check-border {
+                    width: 36rpx;
+                    height: 36rpx;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    border: 1px solid #3CAB6A;
+                    box-sizing: border-box;
+                    position: absolute;
+                    bottom: -18rpx;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    .check-icon {
+                        width: 32rpx;
+                        height: 24rpx;
+                        position: absolute;
+                        top: 0rpx;
+                        right: -4rpx;
+                    }
+                    .err-icon {
+                        width: 18rpx;
+                        height: 18rpx;
+                        position: absolute;
+                        top: 8rpx;
+                        left: 8rpx;
+                    }
+                }
+            }
+        }
+    }
+    .explain-main {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .explain-container {
+            width: 100%;
+            max-height: 100%;
+        }
+        .explain-content {
+            width: 100%;
+            height: 100%;
+        }
+        .explain-title {
+            font-size: 42rpx;
+            font-weight: bold;
+            line-height: 60rpx;
+        }
+        .explain-type {
+            width: 100%;
+            height: 110rpx;
+            border-radius: 14rpx;
+            background-color: @themeColor;
+            font-size: 52rpx;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 90rpx 0 26rpx 0;
+        }
+        .explain-text {
+            font-size: 34rpx;
+            font-weight: 500;
+            line-height: 60rpx;
+        }
+    }
+    .loading-main {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        .loading-icon {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

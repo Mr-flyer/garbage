@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "answer-title": "/components/answerTitle/index"
+  }
+}
