@@ -69,6 +69,21 @@ class SpecialModel extends HTTP {
     url: `https://www.wanandroid.com/${1}/list/${page}/json`,
     isLogin: true,
   })
+
+  /**
+   * author--zhl
+   */
+  // 题库
+  getAnswerList() {
+    return this.request({
+      subUrl:  `api/v1/answer/questions`
+    })
+  }
+
+  /** 
+   * end
+   */
+  
 }
 
 export default new SpecialModel();

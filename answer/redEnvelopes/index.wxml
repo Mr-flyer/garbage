@@ -6,7 +6,7 @@
                 <view class="red-num">32</view>
                 <view class="red-text">收到红包</view>
             </view>
-            <image class="portrait" src="../../../static/images/answer/portrait.png" />
+            <image class="portrait" src="../images/answer/portrait.png" />
             <view class="nick-name">爱吃猫的鱼共收到</view>
             <view class="red-envelopes-price"><text class="price">208.36</text>元</view>
         </view>

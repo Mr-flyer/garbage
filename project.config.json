@@ -64,14 +64,13 @@
 		"miniprogram": {
 			"current": -1,
 			"list": [
-        
 				{
 					"id": 0,
 					"name": "---搜索---tabbar页",
 					"pathName": "pages/appHome/index/index",
 					"query": "",
 					"scene": null
-        },
+				},
 				{
 					"id": -1,
 					"name": "1.1 搜索详情",
@@ -79,15 +78,13 @@
 					"query": "",
 					"scene": null
 				},
-
 				{
 					"id": 1,
 					"name": "---我的---tabbar页",
 					"pathName": "pages/appUser/index/index",
 					"query": "",
 					"scene": null
-        },
-        
+				},
 				{
 					"id": -1,
 					"name": "2.1 我的答题",
@@ -95,15 +92,13 @@
 					"query": "",
 					"scene": null
 				},
-
 				{
 					"id": 1,
 					"name": "---我的---tabbar页",
 					"pathName": "pages/appUser/index/index",
 					"query": "",
 					"scene": null
-        },
-        
+				},
 				{
 					"id": -1,
 					"name": "2.2 我的评论",
@@ -124,8 +119,7 @@
 					"pathName": "pages/userCenter/userLexicon/userLexicon",
 					"query": "",
 					"scene": null
-        },
-        
+				},
 				{
 					"id": 2,
 					"name": "---垃圾分类---",
@@ -135,51 +129,15 @@
 				},
 				{
 					"id": -1,
-					"name": "答题首页",
-					"pathName": "pages/answer/index/index",
+					"name": "3.1--答题",
+					"pathName": "answer/index/index",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "答题页",
-					"pathName": "pages/answer/answer/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "答题结果页",
-					"pathName": "pages/answer/result/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "海报分享",
-					"pathName": "pages/answer/poster/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "排行榜",
-					"pathName": "pages/answer/ranking/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "收到的红包",
-					"pathName": "pages/answer/redEnvelopes/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "知识",
-					"pathName": "pages/answer/knowledge/index",
-					"query": "",
+					"name": "3.2--答题列表",
+					"pathName": "answer/answer/index",
 					"scene": null
 				}
 			]

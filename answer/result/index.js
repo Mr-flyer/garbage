@@ -28,13 +28,13 @@ Page({
     // 查看排行
     rankingListBtn() {
         wx.navigateTo({
-            url: '/pages/answer/ranking/index'
+            url: '/answer/ranking/index'
         })
     },
     // 查看奖励
     redEnvelopesBtn() {
         wx.navigateTo({
-            url: '/pages/answer/redEnvelopes/index'
+            url: '/answer/redEnvelopes/index'
         })
     },
     // 继续挑战
@@ -46,7 +46,7 @@ Page({
     // 生成海报
     createPosterBtn() {
         wx.navigateTo({
-            url: '/pages/answer/poster/index'
+            url: '/answer/poster/index'
         })
     },
     // 开红包

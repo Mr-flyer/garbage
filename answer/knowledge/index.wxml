@@ -8,7 +8,7 @@
                 <view class="time">03-13 15:16</view>
                 <view class="browse"><van-icon class="browse-icon" name="eye-o" />5899</view>
             </view>
-            <image class="item-image" src="../../../static/images/answer/answer_border.png" mode="widthFix" />
+            <image class="item-image" src="../images/answer/answer_border.png" mode="widthFix" />
         </view>
     </scroll-view>
 </view>
