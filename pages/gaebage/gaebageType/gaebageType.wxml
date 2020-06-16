@@ -7,8 +7,8 @@
         <image class="garbageType_pic" src="/static/images/common/garbage_red@2x.png" mode="aspectFit" />
       </van-cell>
       <van-grid custom-class="garbageType_group" clickable>
-        <van-grid-item wx:for="{{5}}" wx:key="this" text="充电电池">
-          <image class="garbageType_pic" slot="icon" mode="aspectFit" />
+        <van-grid-item wx:for="{{garbageTypelist}}" wx:key="index" text="{{item.name}}">
+          <image class="garbageType_pic" src="{{item.icon}}" slot="icon" mode="aspectFit" />
         </van-grid-item>
       </van-grid>
     </view>

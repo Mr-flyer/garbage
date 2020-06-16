@@ -12,12 +12,13 @@ Page({
     },
   },
   onLoad: function() {
-    specialModel.getGarbageCategorys()
-    .then((res) => {
-      // console.log(res)
-    }).catch((err) => {
-      // console.log(err);
-    });
+    // 垃圾列表
+    specialModel.getGarbageList({category: 1})
+    .then(({data}) => {
+      this.setData({
+        garbageTypelist: data
+      })
+    })
     getApp().watch(needUpdate => {
       console.log('----------', needUpdate);
       this.setData({ needUpdate })

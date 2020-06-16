@@ -6,6 +6,8 @@
     "garbageTypes": "/components/garbageTypes/garbageTypes",
     "basicTitle": "/components/basicTitle/basicTitle",
     "basicDiscuss": "/components/basicDiscuss/basicDiscuss",
+    "van-goods-action": "/miniprogram_npm/@vant/weapp/goods-action/index",
+    "van-goods-action-icon": "/miniprogram_npm/@vant/weapp/goods-action-icon/index",
     "van-action-sheet": "/miniprogram_npm/@vant/weapp/action-sheet/index",
     "van-field": "/miniprogram_npm/@vant/weapp/field/index",
     "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
