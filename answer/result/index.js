@@ -10,9 +10,24 @@ Page({
             navigationBarTitleText: '你是什么垃圾', //  导航栏标题文本
         },
         showFollow: false,
-        showRedEnvelopes: true,
+        showRedEnvelopes: false,
+        score: 0,
+        is_pay: false,
         isOpen: false,
-        isPrize: false
+        isParse: false,
+        price: 0
+    },
+    onLoad(options) {
+        if(options.is_success == 'true') {
+            this.setData({
+                showRedEnvelopes: true,
+            })
+        }
+        this.setData({
+            is_pay: options.is_pay,
+            score: options.score,
+            price: options.price
+        })
     },
     handleTap() {},
     onClickHide() {
@@ -51,14 +66,14 @@ Page({
     },
     // 开红包
     openRedEn() {
-        if(!this.data.isOpen) {
+        if(!this.data.isParse) {
             this.setData({
-                isOpen: true
+                isParse: true
             })
         }
         setTimeout(() => {
             this.setData({
-                isPrize: true
+                isOpen: true
             })
         }, 1500);
     }

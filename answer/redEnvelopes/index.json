@@ -1,4 +1,5 @@
 {
     "usingComponents": {
+      "load-more": "/components/loadMore/index"
     }
   }

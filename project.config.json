@@ -138,6 +138,13 @@
 					"id": -1,
 					"name": "3.2--答题列表",
 					"pathName": "answer/answer/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "3.3--红包记录",
+					"pathName": "answer/redEnvelopes/index",
 					"scene": null
 				}
 			]

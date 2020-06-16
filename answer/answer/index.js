@@ -10,52 +10,123 @@ Page({
             navigationBarTextStyle: 'white', // 胶囊主题 white || black
             navigationBarTitleText: '你是什么垃圾', //  导航栏标题文本
         },
+        record_id: '',
+        setInter: null,
+        setTimeer: null,
         answerList: [],
         answerIndex: 0,
-        checkList: [
-            {
-                "icon": '../images/answer/harmful_icon.png',
-                "activeIcon": '../images/answer/harmful_active_icon.png',
-                "name": '有害垃圾'
-            },
-            {
-                "icon": '../images/answer/recover_icon.png',
-                "activeIcon": '../images/answer/recover_active_icon.png',
-                "name": '可回收物'
-            },
-            {
-                "icon": '../images/answer/wet_icon.png',
-                "activeIcon": '../images/answer/wet_active_icon.png',
-                "name": '湿垃圾'
-            },
-            {
-                "icon": '../images/answer/shield_icon.png',
-                "activeIcon": '../images/answer/shield_active_icon.png',
-                "name": '干垃圾'
-            }
-        ],
-        checkIndex: '',
+        count_down: 10,
+        countDown: 10,
+        answer_list: [],
+        checkList: [],
         show: false,             //遮罩层
-        showLoading: true
+        showLoading: true,
+        answerOptionObj: ''
+    },
+    onHide() {
+        clearInterval(this.data.setInter);
+        clearTimeout(this.data.setTimeer);
+    },
+    onUnload() {
+        clearInterval(this.data.setInter);
+        clearTimeout(this.data.setTimeer);
     },
     onLoad() {
         let _that = this;
         this.setData({ statusBarHeight, titleBarHeight });
+        special.getGarbageCategorys().then((res) => {
+            _that.setData({
+                checkList: res.data
+            })
+        })
         special.getAnswerList().then((res) => {
             _that.setData({
                 showLoading: false,
-                answerList: res.data.questions
+                count_down: res.data.count_down,
+                record_id: res.data.record_id,
+                answerList: res.data.questions,
+                countDown: res.data.count_down
             })
+            _that.countDownFun();
         })
+    },
+    countDownFun() {
+        let _that = this;
+        let second = this.data.countDown;
+        this.setData({
+            setInter: setInterval(()=>{
+                // 如果倒计时为0，清除定时器
+                if(_that.data.countDown === 1) {
+                    clearInterval(_that.data.setInter);
+                    if(_that.data.answerList[_that.data.answerIndex]){
+                        _that.setData({
+                            ['answerList[' + _that.data.answerIndex + '].isClick']: -1,
+                            ['answer_list[' + _that.data.answer_list.length + ']']: {"id":_that.data.answerList[_that.data.answerIndex].id,"choose":0},
+                            answerOptionObj: _that.data.answerList[_that.data.answerIndex],
+                            ['answerList[' + _that.data.answerIndex + '].selectStatus']: 2,
+                            show: true
+                        })
+                        _that.isLastQuestion();
+                    }
+                }else{
+                    _that.setData({
+                        countDown: second--
+                    })
+                }
+            },1000)
+        })
+    },
+    /**
+     * @method isLastQuestion--判断是否是最后一题
+     */
+    isLastQuestion() {
+        let _that = this;
+        if(this.data.answerIndex === this.data.answerList.length - 1){
+            special.postAnswer({
+                record_id: this.data.record_id,
+                answer_data: this.data.answer_list
+            }).then((res) => {
+                _that.data.setTimeer = setTimeout(() => {
+                    wx.navigateTo({
+                        url: `/answer/result/index?is_success=${res.data.is_success}&is_pay=${res.data.is_pay}&price=${res.data.price}&score=${res.data.score}`
+                    })
+                }, 2000)
+            })
+        }else {
+            let index = this.data.answerIndex;
+            this.data.setTimeer = setTimeout(() => {
+                this.setData({
+                    answerIndex: index + 1,
+                    show: false,
+                    countDown: this.data.count_down
+                })
+                this.countDownFun();
+            }, 2000);
+        }
     },
     handleTap() {},
     checkClassify(e) {
-        this.setData({
-            checkIndex: e.currentTarget.dataset.checkindex
-        })
-        wx.navigateTo({
-            url: '/answer/result/index'
-        })
+        clearInterval(this.data.setInter);
+        if(!this.data.answerList[this.data.answerIndex].selectStatus) {
+            this.setData({
+                ['answerList[' + this.data.answerIndex + '].isClick']: e.currentTarget.dataset.checkindex,
+                ['answer_list[' + this.data.answer_list.length + ']']: {"id":this.data.answerList[this.data.answerIndex].id,"choose":e.currentTarget.dataset.checkindex},
+            })
+            if(this.data.answerList[this.data.answerIndex].category == e.currentTarget.dataset.checkindex) {
+                // 答题正确
+                this.setData({
+                    ['answerList[' + this.data.answerIndex + '].selectStatus']: 1,
+                })
+            }else {
+                // 答题错误
+                this.setData({
+                    ['answerList[' + this.data.answerIndex + '].selectStatus']: 2,
+                    answerOptionObj: this.data.answerList[this.data.answerIndex],
+                    show: true
+                })
+            }
+            this.isLastQuestion();
+        }
     },
     onClickHide() {
         this.setData({

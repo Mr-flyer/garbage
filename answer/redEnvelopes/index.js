@@ -1,3 +1,5 @@
+import special from '../../models/special.js';
+let loadMoreView, page = 1;
 Page({
     data: {
         canUse: getApp().globalData.canUse,
@@ -5,7 +7,52 @@ Page({
             navigationBarTextStyle: 'white', // 胶囊主题 white || black
             navigationBarBackground: 'linear-gradient(90deg,rgba(82,201,132,1) 0%,rgba(67,193,120,1) 100%)',
             navigationBarTitleText: '收到的红包', //  导航栏标题文本
-        }
+        },
+        refreshing: false, // 监听设为 true 时 ==> 触发refresh事件
+        refreshed: false, // true ==> 收起下拉刷新，可多次设置为true（即便原来已经是true了）
+        redEnvelopesList: [],
+        redEnvelopesCount: 0,
+        redEnvelopesPrice: 0
+    },
+    onLoad() {
+        // 获取列表底侧加载更多组件实例
+        loadMoreView = this.selectComponent("#loadMoreView");
+        this.requestData();
+    },
+    onPullDownRefresh() {
+        page = 1;
+        this.setData({
+            redEnvelopesList: []
+        })
+        this.requestData();
+    },
+    /**
+     * 页面上拉触底事件的组件内处理函数
+     */
+    onReachBottom() {
+        loadMoreView.loadMore()
+    },
+    /**
+     * 页面上拉触底事件的实际处理函数 -- 由组件内部调用
+     */
+    loadMoreListener(e) {
+    },
+    // 加载失败点击从新加载
+    clickLoadMore(e) {
+    },
+    requestData() {
+        let _that = this;
+        let items = this.data.redEnvelopesList;
+        special.getRedEnvelopesList(page, 20).then((res) => {
+            items = items.concat(res.data);
+            _that.setData({
+                redEnvelopesPrice: res.total_price/100,
+                redEnvelopesCount: res.count,
+                redEnvelopesList: items,
+                refreshed: true
+            })
+            loadMoreView.loadMoreComplete({curPage: res.page, pageCount: res.count})
+        })
     },
     rankingItem(e) {
         this.setData({
