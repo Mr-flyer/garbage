@@ -11,7 +11,10 @@ page {
     border: 1px solid #d2d2d2;
     box-shadow: 10rpx 20rpx 100rpx #ebebeb;
   }
-  
+  .navbar {
+    position: absolute;
+    z-index: 999;
+  }
 }
 .comment_wrap {
   --search-background-color: rgba(245, 245, 245, 1);
@@ -172,10 +175,15 @@ page {
 }
 
 .aside {
-  padding: 0 40rpx;
+  // padding: 0 40rpx;
 
   .barrage_wrap {
-    padding: 30rpx 0;
+    position: relative;
+    padding: 0 40rpx;
+    box-sizing: border-box;
+  }
+  .barrage_inner {
+    height: 180rpx;
     border-bottom: 2rpx solid rgba(248, 248, 248, 1);
   }
 
@@ -212,7 +220,7 @@ page {
 }
 
 .guide_wrap {
-  padding-top: 36rpx;
+  padding: 36rpx 40rpx 0;
 }
 
 .guide_inner {
@@ -263,5 +271,28 @@ page {
 
   .addKeyword_submit {
     flex: none;
+  }
+}
+
+
+
+.dmGroup {
+  position: absolute;
+  top: 140rpx;
+  left: 100%;
+  z-index: 10;
+  animation-timing-function: linear;
+  animation-fill-mode: none;
+  transform: translateZ(0);
+  white-space: nowrap;
+  height: 60rpx;
+}
+@keyframes dmAnimation {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: -100%;
   }
 }

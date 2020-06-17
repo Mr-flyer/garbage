@@ -1,24 +1,68 @@
 // pages/gaebageSearch/gaebageDetail/gaebageDetail.js
 import specialModel from '../../../models/special';
 import Toast from '../../../miniprogram_npm/@vant/weapp/toast/toast';
+import toast from '../../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
   data: {
     navBarHeight: getApp().globalData.statusBarHeight + getApp().globalData.titleBarHeight,
-    isEmpty: true,
+    canUse: getApp().globalData.canUse,
+    nvabarData: {
+      "navigationBarTextStyle": "white", // 胶囊主题 white || black
+      "navigationBarTitleText": "垃圾详情", //  导航栏标题文本
+      // navigationBarBackgroundColor: 'aqua', // 导航栏背景色
+      // statusBgColor: '', // 状态栏背景色
+      // showPre: true, // 是否只展示返回键 默认 false
+      // hideCapsule: true, // 是否隐藏胶囊
+    },
     garbageTypeImg: [
       '/static/images/common/garbage_blue@2x.png',
       '/static/images/common/garbage_yellow@2x.png',
       '/static/images/common/garbage_red@2x.png',
       '/static/images/common/garbage_gray@2x.png',
-    ],
-    showAddKeywordPop: false,
-    autosize: { minHeight: 144 },
-    // garbageId: 1
+    ], // 垃圾分类数据
+    showAddKeywordPop: false, // 添加词库弹窗
+    autosize: { minHeight: 144 }, // 
+    garbageId: 10, // 垃圾分类ID
+    // is_collect: true, // 是否已收藏
+    dmData: [{
+        id: 17303,
+        content: "国际巨星党妹",
+        headimgurl: "https://wx.qlogo.cn/mmopen/vi_32/06N0qHLkICIjb58b3MM0Wwsxccw98LKRjx5cGMQhvXpbicdzVHT4dAVpicwBglhjAXQibibsDJodPGJJWRxcl9DCibA/132",
+      },
+      {
+        id: 17307,
+        content: "Lucky",
+        headimgurl: "https://wx.qlogo.cn/mmopen/vi_32/06N0qHLkICIjb58b3MM0Wwsxccw98LKRjx5cGMQhvXpbicdzVHT4dAVpicwBglhjAXQibibsDJodPGJJWRxcl9DCibA/132",
+      },
+      {
+        id: 17309,
+        content: "Me",
+        headimgurl: "https://wx.qlogo.cn/mmopen/vi_32/06N0qHLkICIjb58b3MM0Wwsxccw98LKRjx5cGMQhvXpbicdzVHT4dAVpicwBglhjAXQibibsDJodPGJJWRxcl9DCibA/132",
+      },
+      {
+        id: 17314,
+        content: "犬来八荒",
+        headimgurl: "https://wx.qlogo.cn/mmopen/vi_32/06N0qHLkICIjb58b3MM0Wwsxccw98LKRjx5cGMQhvXpbicdzVHT4dAVpicwBglhjAXQibibsDJodPGJJWRxcl9DCibA/132",
+      }
+    ], // 弹幕数据
+    loading: true,
   },
-  onLoad: function() {
-    this._initData('杂草')
+  onLoad: function(options) {
+    Toast.loading({ message: '加载中...', duration: 0 })
+    console.log('搜索关键字', options.keyword);
+      // this._setDM(this.data.dmData)
+    // this._initData(options.keyword)
+    specialModel.getCommentsList(this.data.garbageId)
+    .then(({data}) => {
+      Toast.clear()
+      this._setDM(data.slice(0, 5))
+      this.setData({
+        commentList: data,
+        loading: false
+      })
+    })
+    .catch(() => this.setData({ loading: false }))
   },
-  
   //#region -- 搜索
   async _initData(searchKayword) {
     Toast.loading({duration: 0})
@@ -27,6 +71,7 @@ Page({
     let { data: commentList } = await specialModel.getCommentsList(garbageInfo.id)
     // console.log(garbageInfo, commentList);
     Toast.clear()
+    this._setDM(data.slice(0, 5))
     this.setData({
       ...garbageInfo, commentList,
       garbageId: garbageInfo.id,
@@ -60,6 +105,7 @@ Page({
     // 更新评论列表
     let { data: commentList } = await specialModel.getCommentsList(garbageId)
     this.setData({ commentList })
+    this._setDM(commentList.slice(0, 5))
   },
   // 本地缓存评论关键字
   commentChange({detail}) { this.data.commentKayword = detail },
@@ -90,6 +136,31 @@ Page({
   // },
   _handRadio({detail}) {
     this.setData({ checkedRadio: detail })
-  }
+  },  
   //#endregion
+  
+  // 初始化弹幕
+  _setDM: function (dmData) {
+    // 处理弹幕参数
+    const dmArr = [];
+    const _b = dmData;
+    for (let i = 0; i < _b.length; i++) {
+      const time = Math.floor(Math.random() * 10);
+      const second = Math.floor(Math.random() * 60);
+      const _time = time < 6 ? 6 + i : time + i;
+      const top = Math.floor(Math.random() * 80) + 2;
+      const _p = {
+        id: _b[i].id,
+        content: _b[i].content,
+        avatar: _b[i].headimgurl  ,
+        top,
+        second,
+        time: _time,
+      };
+      dmArr.push(_p);
+    }
+    this.setData({
+      dmData: dmArr
+    });
+  },
 })

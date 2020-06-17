@@ -81,6 +81,13 @@ class SpecialModel extends HTTP {
       subUrl: `api/v1/garbage/category/${GarbageId}`
     })
   }
+  // 我的答题
+  getUserAnswer() {
+    return this.request({
+      subUrl: `api/v1/answer/`,
+      
+    })
+  }
   /**
    * 测试接口
    * @param {string} viewType article | project

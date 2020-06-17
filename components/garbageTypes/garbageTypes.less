@@ -1,25 +1,29 @@
 .type_group {
   --radio-border-color: rgba(156, 166, 176, 1);
   --radio-checked-icon-color: rgba(67, 193, 120, 1);
-  padding-top: 40rpx;
+  padding-top: 20rpx;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   // .van-radio__icon {
   //   background-color: #fff;
   // }
   .type_item {
     width: 154rpx;
+    margin-top: 20rpx;
     position: relative;
   }
   .garbage_pic {
     position: relative;
     z-index: 1;
     width: 150rpx;
+    height: 181rpx;
     margin: auto;
   }
   .type_txt {
     padding: 0 20rpx 30rpx;
     margin-top: -120rpx;
+    // margin-bottom: 20rpx;
     height: 180rpx; width: 154rpx;
     font-size: 24rpx;
     line-height: 1;
@@ -31,6 +35,13 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    overflow: hidden;
+    view {
+      // display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
   
   .type_radio {
