@@ -6,7 +6,7 @@ import {
 } from './storageSyncTool';
 import Toast from '../miniprogram_npm/@vant/weapp/toast/toast';
 // 无需展示错误提示的状态码
-const hideErrCodeArr = [10000]
+const hideErrCodeArr = [404, 10000]
 // roken 失效错误码
 const updateTokenCodeArr = [403, 10040, 10050, 10000]
 class wxRequest {

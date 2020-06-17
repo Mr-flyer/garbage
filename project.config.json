@@ -92,15 +92,13 @@
 					"query": "",
 					"scene": null
 				},
-
 				{
 					"id": 1,
 					"name": "---我的---tabbar页",
 					"pathName": "pages/appUser/index/index",
 					"query": "",
 					"scene": null
-        },
-        
+				},
 				{
 					"id": -1,
 					"name": "2.2 我的评论",

@@ -19,6 +19,13 @@ Page({
         garbageTypelist: data
       })
     })
+    specialModel.getGarbageCategorysInfo(2)
+    .then(({data}) => {
+      console.log(data);
+      this.setData({
+        ...data
+      })
+    })
     getApp().watch(needUpdate => {
       console.log('----------', needUpdate);
       this.setData({ needUpdate })
