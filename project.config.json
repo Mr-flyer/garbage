@@ -129,51 +129,22 @@
 				},
 				{
 					"id": -1,
-					"name": "答题首页",
-					"pathName": "pages/answer/index/index",
+					"name": "3.1--答题",
+					"pathName": "answer/index/index",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "答题页",
-					"pathName": "pages/answer/answer/index",
+					"name": "3.2--答题列表",
+					"pathName": "answer/answer/index",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "答题结果页",
-					"pathName": "pages/answer/result/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "海报分享",
-					"pathName": "pages/answer/poster/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "排行榜",
-					"pathName": "pages/answer/ranking/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "收到的红包",
-					"pathName": "pages/answer/redEnvelopes/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "知识",
-					"pathName": "pages/answer/knowledge/index",
-					"query": "",
+					"name": "3.3--红包记录",
+					"pathName": "answer/redEnvelopes/index",
 					"scene": null
 				}
 			]

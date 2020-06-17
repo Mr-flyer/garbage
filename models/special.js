@@ -90,6 +90,34 @@ class SpecialModel extends HTTP {
     url: `https://www.wanandroid.com/${1}/list/${page}/json`,
     isLogin: true,
   })
+
+  /**
+   * author--zhl
+   */
+  // 题库
+  getAnswerList() {
+    return this.request({
+      subUrl: `api/v1/answer/questions`
+    })
+  }
+  // 提交答题
+  postAnswer(data) {
+    return this.request({
+      subUrl: `api/v1/answer/`,
+      method: 'POST',
+      data
+    })
+  }
+  // 题库
+  getRedEnvelopesList(page, pageSize) {
+    return this.request({
+      subUrl: `api/v1/answer/pay_record?page=${page}&page_size=${pageSize}`
+    })
+  }
+  /** 
+   * end
+   */
+  
 }
 
 export default new SpecialModel();

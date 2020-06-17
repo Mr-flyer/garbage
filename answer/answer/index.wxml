@@ -1,0 +1,46 @@
+<view class="answer-main">
+    <image class="answer-bg" src="../images/answer/answer_bg.png" />
+    <mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+    <scroll-view class="answer-content" scroll-y style="top: {{statusBarHeight + titleBarHeight}}px; height: calc(100% - {{statusBarHeight + titleBarHeight}}px)">
+        <view class="question-main">
+            <view class="question-border-con" wx:if="{{answerIndex == index}}" wx:for="{{answerList}}" wx:key="this">
+                <view class="question-border">
+                    <image class="question-border-bg" src="../images/answer/border-bg.png" mode="widthFix"/>
+                    <image class="question-title-bg" src="../images/answer/answer_border.png"/>
+                    <image class="question-portrait" src="../images/answer/portrait.png" mode="widthFix"/>
+                    <view class="question-num">第 {{index+1}} 题</view>
+                    <view class="count-down"><text class="second">{{countDown}}</text>s</view>
+                </view>
+                <view class="question-content">
+                    <image class="question-img" src="{{item.icon}}" mode="widthFix"/>
+                    <view class="question-text">{{item.name}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="check-main">
+            <view class="check-main-item {{(item.id === answerList[answerIndex].isClick && answerList[answerIndex].selectStatus === 1) || (item.id === answerList[answerIndex].category && answerList[answerIndex].selectStatus === 2) ?'check-main-item-active' : ''}}" wx:for="{{checkList}}" wx:key="this" data-checkIndex="{{item.id}}" bind:tap="checkClassify">
+                <image wx:if="{{(item.id === answerList[answerIndex].isClick && answerList[answerIndex].selectStatus === 1) || (item.id === answerList[answerIndex].category && answerList[answerIndex].selectStatus === 2)}}" class="check-classify-active-icon" src="{{item.active_icon}}" />
+                <image wx:else class="check-classify-icon" src="{{item.answer_icon}}" />
+                <view class="check-text">{{item.name}}</view>
+                <view class="check-border">
+                    <image wx:if="{{(item.id === answerList[answerIndex].isClick && answerList[answerIndex].selectStatus === 1) || (item.id === answerList[answerIndex].category && answerList[answerIndex].selectStatus === 2)}}" class="check-icon" src="../images/answer/check_icon.png" />
+                    <image wx:if="{{item.id === answerList[answerIndex].isClick && answerList[answerIndex].selectStatus === 2}}" class="err-icon" src="../images/answer/err_icon.png" />
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <van-overlay show="{{ show }}">
+        <view class="explain-main" style="padding: {{statusBarHeight + titleBarHeight + 10}}px 66px {{statusBarHeight + titleBarHeight + 10}}px 66px">
+            <view class="explain-container">
+                <scroll-view scroll-y class="explain-content">
+                    <view class="explain-title">{{answerOptionObj.name}}</view>
+                    <view class="explain-type">{{answerOptionObj.category_name}}</view>
+                    <view class="explain-text">{{answerOptionObj.desc}}</view>
+                </scroll-view>
+            </view>
+        </view>
+    </van-overlay>
+    <view class="loading-main" wx:if="{{ showLoading }}">
+        <image class="loading-icon" src="../images/answer/loading_icon.gif"/>
+    </view>
+</view>

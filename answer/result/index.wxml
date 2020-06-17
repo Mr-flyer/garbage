@@ -2,33 +2,33 @@
     <mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
     <view class="answer-main">
         <view class="answer-title-img">
-            <image class="answer-good" src="../../../static/images/answer/answer_good.png" mode="widthFix"/>
-            <image class="answer-tree" src="../../../static/images/answer/border-bg.png" />
-            <image class="answer-good-text" src="../../../static/images/answer/answer_good_text.png" />
+            <image class="answer-good" src="../images/answer/answer_good.png" mode="widthFix"/>
+            <image class="answer-tree" src="../images/answer/border-bg.png" />
+            <image class="answer-good-text" src="../images/answer/answer_good_text.png" />
         </view>
         <view class="result-content">
             <view class="fraction-main">
-                <image class="portrait" src="../../../static/images/answer/portrait.png"/>
+                <image class="portrait" src="../images/answer/portrait.png"/>
                 <view class="result-text">恭喜你大致之，完成答题！</view>
                 <view class="fraction">
-                    <image class="star_1" src="../../../static/images/answer/ico@star.png" />
-                    <text class="fraction-num">100</text><text>分</text>
-                    <image class="star_2" src="../../../static/images/answer/ico@star.png" />
+                    <image class="star_1" src="../images/answer/ico@star.png" />
+                    <text class="fraction-num">{{score}}</text><text>分</text>
+                    <image class="star_2" src="../images/answer/ico@star.png" />
                 </view>
             </view>
             <view class="divider-line">
-                <image class="line-icon" src="../../../static/images/answer/divider_line.png" mode="widthFix"/>
+                <image class="line-icon" src="../images/answer/divider_line.png" mode="widthFix"/>
                 <view class="line"></view>
                 <text class="divider-text">本局奖励</text>
             </view>
             <view class="cup-gift-btn">
                 <view class="cup-btn" bind:tap="rankingListBtn">
-                    <image class="cup-icon" src="../../../static/images/answer/cup_icon.png" />
+                    <image class="cup-icon" src="../images/answer/cup_icon.png" />
                     <text class="cup-text">查看排行</text>
                     <van-icon class="cup-arrow" name="arrow" />
                 </view>
                 <view class="cup-btn" bind:tap="redEnvelopesBtn">
-                    <image class="cup-icon" src="../../../static/images/answer/gift_icon.png" />
+                    <image class="cup-icon" src="../images/answer/gift_icon.png" />
                     <text class="cup-text" class="">查看奖励</text>
                     <van-icon class="cup-arrow" name="arrow" />
                 </view>
@@ -41,23 +41,25 @@
     </view>
     <van-overlay show="{{ showFollow }}" bind:click="onClickHide">
         <view class="follow-main" catchtap="handleTap">
-            <image class="follow-img" src="../../../static/images/answer/follow.png" mode="widthFix"/>
-            <image bind:tap="onClickHide" class="follow-close" src="../../../static/images/answer/close.png"/>
+            <image class="follow-img" src="../images/answer/follow.png" mode="widthFix"/>
+            <image bind:tap="onClickHide" class="follow-close" src="../images/answer/close.png"/>
         </view>
     </van-overlay>
     <van-overlay show="{{ showRedEnvelopes }}" bind:click="onClickHideRE">
         <view class="red-envelopes-main" catchtap="handleTap">
-            <image class="red-en-bg" src="../../../static/images/answer/red_envelopes_bg.png" mode="widthFix"/>
+            <image class="red-en-bg" src="../images/answer/red_envelopes_bg.png" mode="widthFix"/>
             <view class="red-en-content">
-                <image class="logo" src="../../../static/images/answer/js_logo.png"/>
+                <image class="logo" src="../images/answer/js_logo.png"/>
                 <view class="red-en-fonts">
                     <view class="red-en-title">江苏新闻的红包</view>
-                    <view class="red-en-text">{{isPrize ? '很遗憾，你没有中奖' : '恭喜您获得现金红包'}}</view>
+                    <view class="red-en-text" wx:if="{{!isOpen}}">恭喜您获得现金红包</view>
+                    <view class="red-en-text" wx:if="{{isOpen && is_pay== 'false'}}">很遗憾，你没有中奖</view>
+                    <view class="red-en-text" wx:elif="{{isOpen && is_pay == 'true'}}">{{price/100}}元</view>
                 </view>
-                <image wx:if="{{!isPrize}}" bind:tap="openRedEn" class="{{isOpen ? 'red-en-open-img-active' : 'red-en-open-img'}}" src="../../../static/images/answer/red_envelopes_open.png"/>
-                <image wx:if="{{!isPrize}}" class="red-en-ry" src="../../../static/images/answer/ry_icon.png"/>
+                <image wx:if="{{!isOpen}}" bind:tap="openRedEn" class="{{isParse ? 'red-en-open-img-active' : 'red-en-open-img'}}" src="../images/answer/red_envelopes_open.png"/>
+                <image wx:if="{{!isOpen}}" class="red-en-ry" src="../images/answer/ry_icon.png"/>
             </view>
-            <image bind:tap="onClickHideRE" class="red-en-close" src="../../../static/images/answer/close.png"/>
+            <image bind:tap="onClickHideRE" class="red-en-close" src="../images/answer/close.png"/>
         </view>
     </van-overlay>
 </view>

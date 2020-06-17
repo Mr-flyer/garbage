@@ -10,9 +10,24 @@ Page({
             navigationBarTitleText: '你是什么垃圾', //  导航栏标题文本
         },
         showFollow: false,
-        showRedEnvelopes: true,
+        showRedEnvelopes: false,
+        score: 0,
+        is_pay: false,
         isOpen: false,
-        isPrize: false
+        isParse: false,
+        price: 0
+    },
+    onLoad(options) {
+        if(options.is_success == 'true') {
+            this.setData({
+                showRedEnvelopes: true,
+            })
+        }
+        this.setData({
+            is_pay: options.is_pay,
+            score: options.score,
+            price: options.price
+        })
     },
     handleTap() {},
     onClickHide() {
@@ -28,13 +43,13 @@ Page({
     // 查看排行
     rankingListBtn() {
         wx.navigateTo({
-            url: '/pages/answer/ranking/index'
+            url: '/answer/ranking/index'
         })
     },
     // 查看奖励
     redEnvelopesBtn() {
         wx.navigateTo({
-            url: '/pages/answer/redEnvelopes/index'
+            url: '/answer/redEnvelopes/index'
         })
     },
     // 继续挑战
@@ -46,19 +61,19 @@ Page({
     // 生成海报
     createPosterBtn() {
         wx.navigateTo({
-            url: '/pages/answer/poster/index'
+            url: '/answer/poster/index'
         })
     },
     // 开红包
     openRedEn() {
-        if(!this.data.isOpen) {
+        if(!this.data.isParse) {
             this.setData({
-                isOpen: true
+                isParse: true
             })
         }
         setTimeout(() => {
             this.setData({
-                isPrize: true
+                isOpen: true
             })
         }, 1500);
     }

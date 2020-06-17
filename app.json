@@ -9,14 +9,21 @@
     "pages/userCenter/userAnswer/userAnswer",
     "pages/userCenter/userDiscuss/userDiscuss",
     "pages/userCenter/userCollect/userCollect",
-    "pages/userCenter/userLexicon/userLexicon",
-    "pages/answer/index/index",
-    "pages/answer/answer/index",
-    "pages/answer/result/index",
-    "pages/answer/poster/index",
-    "pages/answer/ranking/index",
-    "pages/answer/redEnvelopes/index",
-    "pages/answer/knowledge/index"
+    "pages/userCenter/userLexicon/userLexicon"
+  ],
+  "subpackages": [
+    {
+      "root": "answer",
+      "pages": [
+        "index/index",
+        "answer/index",
+        "result/index",
+        "poster/index",
+        "ranking/index",
+        "redEnvelopes/index",
+        "knowledge/index"
+      ]
+    }
   ],
   "window": {
     "navigationStyle": "custom",

@@ -23,19 +23,19 @@ Page({
     // 开始挑战
     startChallengeBtn() {
         wx.navigateTo({
-            url: '/pages/answer/answer/index'
+            url: '/answer/answer/index'
         })
     },
     // 知识
     knowledgeBtn() {
         wx.navigateTo({
-            url: '/pages/answer/knowledge/index'
+            url: '/answer/knowledge/index'
         })
     },
     // 排行
     rankingBtn() {
         wx.navigateTo({
-            url: '/pages/answer/ranking/index'
+            url: '/answer/ranking/index'
         })
     },
     // 规则
@@ -47,7 +47,7 @@ Page({
     // 红包
     redEnvelopesBtn() {
         wx.navigateTo({
-            url: '/pages/answer/redEnvelopes/index'
+            url: '/answer/redEnvelopes/index'
         })
     }
 })

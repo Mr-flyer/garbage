@@ -14,11 +14,13 @@ Page({
   },
   // 切换页脚 tabber 时
   onChangeTabbar(event) {
-    this.setData({ active: event.detail });
-    if(this.data.active === 1) {
+    // this.setData({ active: event.detail });
+    if(event.detail === 1) {
       wx.navigateTo({
-        url: '/pages/answer/index/index'
+        url: '/answer/index/index'
       })
+    }else {
+      this.setData({ active: event.detail });
     }
   },
 })
