@@ -48,7 +48,7 @@
     <van-cell custom-class="cell_wrap" title-class="cell_title" icon="iconfont icon-icon_about" center title="关于我们" is-link />
     <van-cell custom-class="cell_wrap" title-class="cell_title" icon="iconfont icon-icon_seting" center title="设置" is-link />
   </van-cell-group>
-  <van-button open-type="getUserInfo" bind:getuserinfo="getuserinfo">授权</van-button>
+  <!-- <van-button open-type="getUserInfo" bind:getuserinfo="getuserinfo">授权</van-button> -->
 
   <basicSponsors />
 

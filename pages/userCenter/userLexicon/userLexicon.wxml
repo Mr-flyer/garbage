@@ -7,7 +7,7 @@
       <van-tab custom-class="tabItem_wrap" wx:for="{{tabsArr}}" wx:key="index" title="{{item.name}}">
         <view class="main" hidden="{{!item.dataLists.length}}">
           <van-cell-group class="lexicon_group">
-            <van-cell wx:for="{{item.dataLists}}" wx:for-index="idx" wx:for-item="val" wx:key="index" custom-class="lexicon_card" use-label-slot>
+            <van-cell wx:for="{{item.dataLists}}" wx:for-index="idx" wx:for-item="val" wx:key="index" custom-class="lexicon_card" url="/pages/gaebage/gaebageDetail/gaebageDetail?garbageId={{1}}" use-label-slot>
               <view slot="title" class="lexicon_title van-ellipsis {{index === 2 && 'red'}}">
                 {{val.name}}
                 <van-tag wx:if="{{index}}" type="{{index === 1 ? 'success' : 'danger'}}" plain round>{{index === 1 ? '审核中' : '未通过'}}</van-tag>

@@ -2,6 +2,7 @@
 import specialModel from '../../../models/special';
 import Toast from '../../../miniprogram_npm/@vant/weapp/toast/toast';
 import toast from '../../../miniprogram_npm/@vant/weapp/toast/toast';
+import special from '../../../models/special';
 Page({
   data: {
     navBarHeight: getApp().globalData.statusBarHeight + getApp().globalData.titleBarHeight,
@@ -22,7 +23,7 @@ Page({
     ], // 垃圾分类数据
     showAddKeywordPop: false, // 添加词库弹窗
     autosize: { minHeight: 144 }, // 
-    garbageId: 10, // 垃圾分类ID
+    // garbageId: 10, // 垃圾分类ID
     // is_collect: true, // 是否已收藏
     dmData: [{
         id: 17303,
@@ -47,24 +48,38 @@ Page({
     ], // 弹幕数据
     loading: true,
   },
-  onLoad: function(options) {
+  onLoad: function({ keyword, garbageId }) {
     Toast.loading({ message: '加载中...', duration: 0 })
-    console.log('搜索关键字', options.keyword);
-      // this._setDM(this.data.dmData)
-    // this._initData(options.keyword)
-    specialModel.getCommentsList(this.data.garbageId)
+    if(garbageId) {
+      console.log('详情id', garbageId);
+      this._initGarbageInfo(garbageId)
+      this.setData({ garbageId, isGargabeInfo: true })
+    }else {
+      console.log('搜索关键字', keyword);
+      this._initSearchData(keyword)
+    }
+  },
+  // 垃圾详情
+  async _initGarbageInfo(garbageId) {
+    let p1 = specialModel.getGarbageDetail(garbageId)
+    .then(({data}) => data).catch(err => err)
+    let p2 = specialModel.getCommentsList(garbageId)
     .then(({data}) => {
-      Toast.clear()
+      // 设置弹幕
       this._setDM(data.slice(0, 5))
+      return { commentList: data }
+    }).catch(err => err)
+    Promise.all([p1, p2]).then(res => {
+      Toast.clear()
+      let newData = res.filter(v => !v.errCode)
       this.setData({
-        commentList: data,
-        loading: false
+        ...newData[0], ...newData[1], loading: false
       })
     })
     .catch(() => this.setData({ loading: false }))
   },
   //#region -- 搜索
-  async _initData(searchKayword) {
+  async _initSearchData(searchKayword) {
     Toast.loading({duration: 0})
     let { data: garbageInfo } = await specialModel.getGarbageSearch(searchKayword)
     if(!garbageInfo.id) return false
@@ -80,7 +95,7 @@ Page({
   // 点击搜索
   handSearch({detail}) {
     let searchKayword = typeof detail === 'string' ? detail : this.data.searchKayword
-    this._initData(searchKayword)
+    this._initSearchData(searchKayword)
   },
   // 存储搜索关键字
   searchChange({detail}) { this.data.searchKayword = detail },
@@ -139,8 +154,14 @@ Page({
   },  
   //#endregion
   
+  // 
+  handGarbageType({detail}) {
+    wx.navigateTo({
+      url: `/pages/gaebage/gaebageType/gaebageType?gaebageTypeId=${detail}`
+    })
+  },
   // 初始化弹幕
-  _setDM: function (dmData) {
+  _setDM(dmData) {
     // 处理弹幕参数
     const dmArr = [];
     const _b = dmData;

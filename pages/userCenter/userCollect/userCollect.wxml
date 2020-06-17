@@ -5,7 +5,7 @@
     <view class="main" hidden="{{loading}}">
       <view class="collect_wrap" hidden="{{!dataLists.length}}">
         <view class="collect_list">
-          <view class="collect_item" wx:for="{{dataLists}}" wx:key="this">
+          <navigator class="collect_item" wx:for="{{dataLists}}" wx:key="this" url="/pages/gaebage/gaebageDetail/gaebageDetail?garbageId={{item.id}}">
             <view class="collect_pic">
               <image src="{{item.icon}}" mode="aspectFill" />
             </view>
@@ -23,7 +23,7 @@
                 <text class="van-ellipsis">{{item.user_info.nickname}}</text>
               </view>
             </view>
-          </view>
+          </navigator>
         </view>
         <!-- 加载更多控件 -->
         <load-more id="loadMoreView" bind:loadMoreListener='loadMoreListener' bind:clickLoadMore='clickLoadMore'></load-more>

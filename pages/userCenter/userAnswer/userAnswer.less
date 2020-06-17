@@ -1,3 +1,6 @@
+.container {
+  overflow-y: auto;
+}
 .header {
   margin: 40rpx auto;
   width: 670rpx;
@@ -14,7 +17,7 @@
     margin-top: -68rpx;
     background-color: rgba(67, 193, 120, 1);
     border-radius: 10rpx;
-    min-height: 190rpx;
+    // min-height: 190rpx;
     background-position: -20rpx -10rpx;
     background-repeat: no-repeat;
     // display: flex;
@@ -41,8 +44,9 @@
   --grid-item-content-background-color: transparent;
   .userAnswer_grid {
     position: relative;
-    height: 100%;
-    &::after { // 分割线
+    // height: 100%;
+    height: 190rpx;
+    &.two::after { // 分割线
       content: '';
       position: absolute;
       top: 50%;left: 0;
@@ -92,6 +96,10 @@
   .collapse_icon {
     width: 37rpx;
     height: 36rpx;
+  }
+  .garbageType_txt {
+    width: 100%;
+    text-align: center;
   }
 }
 
