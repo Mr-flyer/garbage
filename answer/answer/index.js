@@ -10,6 +10,7 @@ Page({
             navigationBarTextStyle: 'white', // 胶囊主题 white || black
             navigationBarTitleText: '你是什么垃圾', //  导航栏标题文本
         },
+        scrollTop: 0,
         record_id: '',
         setInter: null,
         setTimeer: null,
@@ -23,10 +24,10 @@ Page({
         showLoading: true,
         answerOptionObj: ''
     },
-    onHide() {
-        clearInterval(this.data.setInter);
-        clearTimeout(this.data.setTimeer);
-    },
+    // onHide() {
+    //     clearInterval(this.data.setInter);
+    //     clearTimeout(this.data.setTimeer);
+    // },
     onUnload() {
         clearInterval(this.data.setInter);
         clearTimeout(this.data.setTimeer);
@@ -48,6 +49,17 @@ Page({
                 countDown: res.data.count_down
             })
             _that.countDownFun();
+        }).catch((err)=>{
+            if(err.errCode == 10030) {
+                wx.showToast({
+                    title: '答题次数已用光',
+                    icon: 'none',
+                    duration: 2000
+                })
+                wx.navigateBack({
+                    delta: 1
+                })
+            }
         })
     },
     countDownFun() {
@@ -87,7 +99,7 @@ Page({
                 answer_data: this.data.answer_list
             }).then((res) => {
                 _that.data.setTimeer = setTimeout(() => {
-                    wx.navigateTo({
+                    wx.redirectTo({
                         url: `/answer/result/index?is_success=${res.data.is_success}&is_pay=${res.data.is_pay}&price=${res.data.price}&score=${res.data.score}`
                     })
                 }, 2000)
@@ -98,7 +110,8 @@ Page({
                 this.setData({
                     answerIndex: index + 1,
                     show: false,
-                    countDown: this.data.count_down
+                    countDown: this.data.count_down,
+                    scrollTop: 0
                 })
                 this.countDownFun();
             }, 2000);

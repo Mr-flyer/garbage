@@ -3,5 +3,6 @@
     "van-overlay": "/miniprogram_npm/@vant/weapp/overlay/index",
     "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
     "answer-title": "/components/answerTitle/index"
-  }
+  },
+  "navigationBarTextStyle": "white"
 }

@@ -55,15 +55,11 @@ Component({
     // 加载完成, 传入hasMore 
     loadMoreComplete(data) {
       // 注：此处需传入当前页数、总页数，组件才能正常工作
+      // 当前页数小于总页数 且 非首页则展示 
+      let hasMore = data.curPage < data.pageCount && data.pageCount != 1,
+        { loadingText, finishText, listRenderingDelay } = this.properties,
+        text = '', showThis = false, showIcon = false; // 初始状态值
       
-      let { loadingText, finishText, listRenderingDelay } = this.properties,
-        text = '', showThis = false, showIcon = false, hasMore; // 初始状态值
-      if(data.hasOwnProperty('next')) {
-        hasMore = Boolean(data.next)
-      }else {
-        // 当前页数小于总页数 且 非首页则展示 
-        hasMore = data.curPage < data.pageCount && data.pageCount != 1;
-      }
       showThis = hasMore || finishText.length > 0 // 注：此处 finishText.length > 0 代表 末页提示文本为空时隐藏组件
       showIcon = hasMore // loading 状态
       text = hasMore ? loadingText : finishText

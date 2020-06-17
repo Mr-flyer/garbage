@@ -1,0 +1,5 @@
+<mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+<scroll-view class="container know-info" scroll-y wx:if="{{is_url==0}}">
+    <rich-text class="" nodes="{{knowInfo}}"></rich-text>
+</scroll-view>
+<web-view wx:else src="{{url}}" />

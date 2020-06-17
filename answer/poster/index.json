@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "answer-title": "/components/answerTitle/index"
-  }
+  },
+  "navigationBarTextStyle": "white"
 }

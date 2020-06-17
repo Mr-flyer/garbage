@@ -52,12 +52,12 @@
                 <image class="logo" src="../images/answer/js_logo.png"/>
                 <view class="red-en-fonts">
                     <view class="red-en-title">江苏新闻的红包</view>
-                    <view class="red-en-text" wx:if="{{!isOpen}}">恭喜您获得现金红包</view>
-                    <view class="red-en-text" wx:if="{{isOpen && is_pay== 'false'}}">很遗憾，你没有中奖</view>
-                    <view class="red-en-text" wx:elif="{{isOpen && is_pay == 'true'}}">{{price/100}}元</view>
+                    <view class="red-en-text" wx:if="{{!isOpen && is_pay == 'true'}}">恭喜您获得现金红包</view>
+                    <view class="red-en-text" wx:if="{{is_pay=='false'}}">很遗憾，您没有中奖</view>
+                    <view class="red-en-text" wx:elif="{{isOpen && is_pay == 'true'}}"><text class="price">{{price/100}}</text>元</view>
                 </view>
-                <image wx:if="{{!isOpen}}" bind:tap="openRedEn" class="{{isParse ? 'red-en-open-img-active' : 'red-en-open-img'}}" src="../images/answer/red_envelopes_open.png"/>
-                <image wx:if="{{!isOpen}}" class="red-en-ry" src="../images/answer/ry_icon.png"/>
+                <image wx:if="{{!isOpen && is_pay == 'true'}}" bind:tap="openRedEn" class="{{isParse ? 'red-en-open-img-active' : 'red-en-open-img'}}" src="../images/answer/red_envelopes_open.png"/>
+                <image wx:if="{{!isOpen && is_pay == 'true'}}" class="red-en-ry" src="../images/answer/ry_icon.png"/>
             </view>
             <image bind:tap="onClickHideRE" class="red-en-close" src="../images/answer/close.png"/>
         </view>

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "van-overlay": "/miniprogram_npm/@vant/weapp/overlay/index"
-  }
+  },
+  "navigationBarTextStyle": "white"
 }

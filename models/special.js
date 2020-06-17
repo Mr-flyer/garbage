@@ -115,10 +115,22 @@ class SpecialModel extends HTTP {
       data
     })
   }
-  // 题库
+  // 红包记录
   getRedEnvelopesList(page, pageSize) {
     return this.request({
       subUrl: `api/v1/answer/pay_record?page=${page}&page_size=${pageSize}`
+    })
+  }
+  // 知识列表
+  getKnowledgeList(page, pageSize) {
+    return this.request({
+      subUrl: `api/v1/answer/knowledges?page=${page}&page_size=${pageSize}`
+    })
+  }
+  // 知识详情
+  getKnowledgeDetail(id) {
+    return this.request({
+      subUrl: `api/v1/answer/knowledge/${id}`
     })
   }
   /** 

@@ -1,25 +1,29 @@
 <mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
 <view class="container">
-    <scroll-view class="red-envelopes" scroll-y enable-flex>
-        <view class="red-envelopes-content">
-            <view class="red-num-main">
-                <view class="red-num">{{redEnvelopesCount}}</view>
-                <view class="red-text">收到红包</view>
-            </view>
-            <image class="portrait" src="../images/answer/portrait.png" />
-            <view class="nick-name">爱吃猫的鱼共收到</view>
-            <view class="red-envelopes-price"><text class="price">{{redEnvelopesPrice}}</text>元</view>
-        </view>
-        <view class="red-envelopes-list">
-            <view class="red-envelopes-item" wx:for="{{redEnvelopesList}}" wx:key="this">
-                <view class="red-en-info">
-                    <view class="name">江苏新闻</view>
-                    <view class="date">{{item.date}}</view>
+    <pullDownRefresh class="container" refreshing="{{refreshing}}" refreshed="{{refreshed}}" bind:refresh="onPullDownRefresh">
+        <scroll-view class="red-envelopes" scroll-y enable-flex>
+            <view class="red-envelopes-content">
+                <view class="red-num-main">
+                    <view class="red-num">{{redEnvelopesCount}}</view>
+                    <view class="red-text">收到红包</view>
                 </view>
-                <view class="red-en-price">{{item.price/100}}元</view>
+                <image class="portrait" src="../images/answer/portrait.png" />
+                <view class="nick-name">爱吃猫的鱼共收到</view>
+                <view class="red-envelopes-price"><text class="price">{{redEnvelopesPrice}}</text>元</view>
             </view>
-        </view>
-        <!-- 加载更多模块 -->
-        <load-more id="loadMoreView" bindloadMoreListener='loadMoreListener' bindclickLoadMore='clickLoadMore'></load-more>
-    </scroll-view>
+            <view hidden="{{redEnvelopesList.length<=0}}">
+                <view class="red-envelopes-list">
+                    <view class="red-envelopes-item {{index == redEnvelopesList.length-1 ? 'red-envelopes-item-last' : ''}}" wx:for="{{redEnvelopesList}}" wx:key="this">
+                        <view class="red-en-info">
+                            <view class="name">江苏新闻</view>
+                            <view class="date">{{item.date}}</view>
+                        </view>
+                        <view class="red-en-price">{{item.price/100}}元</view>
+                    </view>
+                </view>
+                <!-- 加载更多模块 -->
+                <load-more id="loadMoreView" bindloadMoreListener='loadMoreListener' bindclickLoadMore='clickLoadMore'></load-more>
+            </view>
+        </scroll-view>
+    </pullDownRefresh>
 </view>
