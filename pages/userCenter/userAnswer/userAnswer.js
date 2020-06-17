@@ -1,4 +1,5 @@
 // pages/userCenter/userAnswer/userAnswer.js
+import specialModel from '../../../models/special';
 Page({
   data: {
     canUse: getApp().globalData.canUse,
@@ -11,6 +12,14 @@ Page({
     },
     num01: 120,
     activeNames: ['1'],
+  },
+  onLoad: async function() {
+    let { data: garbageTypes } = await specialModel.getGarbageCategorys()
+    let { data: answerList } = await specialModel.getUserAnswer()
+    garbageTypes.forEach(el => {
+      el.answerList = answerList.filter(v => v.category === el.id)
+    });
+    console.log(garbageTypes);
   },
   onChange(event) {
     this.setData({

@@ -91,7 +91,7 @@ page {
 
 .inner {
   background-color: #fff;
-  // padding: 0 40rpx;
+  padding: 0 40rpx 20rpx;
   // 热门搜索
   .searchHot_title {
     padding-top: 20rpx;
@@ -101,11 +101,18 @@ page {
   }
   .searchHot_list {
     display: flex;
+    flex-wrap: wrap;
     padding-top: 20rpx;
   }
   .searchHot_tag {
+    display: block;
     margin-right: 20rpx;
+    margin-bottom: 20rpx;
     font-size: 26rpx;
+    max-width: 200rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   // 基本分类
   .basic_type {

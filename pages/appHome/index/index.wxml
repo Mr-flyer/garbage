@@ -20,13 +20,13 @@
     <view class="searchHot_wrap">
       <view class="searchHot_title">热门搜索</view>
       <view class="searchHot_list">
-        <van-tag wx:for="{{3}}" wx:key="index" custom-class="searchHot_tag" size="medium" round>面膜</van-tag>
-      </view>
+        <van-tag wx:for="{{keywordList}}" wx:key="index" custom-class="searchHot_tag" size="medium" round data-txt="{{item}}" bind:tap="handHotKeyword">{{item}}</van-tag>
+      </view> 
     </view>
     <!-- 基本分类 -->
     <view class="basic_type">
       <basicTitle title="基本分类" />
-      <garbageTypes bind:myevent="handChangeRadio" />
+      <garbageTypes />
     </view>
     <view class="tips_wrap">
       <van-tag custom-class="tips_tag" type="success" plain round>Tips</van-tag>

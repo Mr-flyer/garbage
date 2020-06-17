@@ -1,4 +1,5 @@
 // components/garbageTypes/garbageTypes.js
+import specialModel from '../../models/special';
 Component({
   behaviors: ['wx://form-field'],
   properties: {
@@ -15,22 +16,22 @@ Component({
     types: [{
         id: 1,
         name: '有害垃圾',
-        imgUrl: './source/garbage_red@2x.png'
+        icon: './source/garbage_red@2x.png'
       },
       {
         id: 2,
         name: '可回收物',
-        imgUrl: './source/garbage_blue@2x.png'
+        icon: './source/garbage_blue@2x.png'
       },
       {
         id: 3,
         name: '湿垃圾',
-        imgUrl: './source/garbage_yellow@2x.png'
+        icon: './source/garbage_yellow@2x.png'
       },
       {
         id: 4,
         name: '干垃圾',
-        imgUrl: './source/garbage_gray@2x.png'
+        icon: './source/garbage_gray@2x.png'
       },
     ]
   },
@@ -40,7 +41,11 @@ Component({
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () { 
-      // console.log(this.data);
+      specialModel.getGarbageCategorys()
+      .then(({data}) => {
+        this.setData({ types: data })
+        // this.setData({ types: data.concat(this.data.types) })
+      })
     },
     moved: function () { },
     detached: function () { },

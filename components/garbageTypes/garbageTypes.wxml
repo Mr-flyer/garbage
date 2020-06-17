@@ -1,8 +1,8 @@
 <!-- components/garbageTypes/garbageTypes.wxml -->
 <van-radio-group class="type_group" value="{{ radioChecked }}" bind:change="onChange">
   <view class="type_item" wx:for="{{types}}" wx:key="index" data-name="{{item.id}}" bind:tap="onClick">
-    <image class="garbage_pic" src="{{item.imgUrl}}" mode="widthFix" />
-    <van-button custom-class="type_txt">{{item.name}}</van-button>
+    <image class="garbage_pic" src="{{item.icon}}" mode="aspectFit" />
+    <van-button custom-class="type_txt"><view>{{item.name}}</view></van-button>
     <van-radio wx:if="{{isShowRadio}}" custom-class="type_radio" name="{{item.id}}"></van-radio>
   </view>
 </van-radio-group>
