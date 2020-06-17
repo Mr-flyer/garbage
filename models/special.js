@@ -94,6 +94,12 @@ class SpecialModel extends HTTP {
   /**
    * author--zhl
    */
+  // 答题首页
+  getAnswerInfo() {
+    return this.request({
+      subUrl: `api/v1/answer/index`
+    })
+  }
   // 题库
   getAnswerList() {
     return this.request({
