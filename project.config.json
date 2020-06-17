@@ -128,10 +128,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 9,
 					"name": "3.1--答题",
 					"pathName": "answer/index/index",
-					"query": "",
+					"query": "openid=abcdef",
 					"scene": null
 				},
 				{
@@ -145,6 +145,21 @@
 					"id": -1,
 					"name": "3.3--红包记录",
 					"pathName": "answer/redEnvelopes/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "3.4--答题结果",
+					"pathName": "answer/result/index",
+					"query": "openid=abcdef",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "3.5--知识列表",
+					"pathName": "answer/knowledge/index",
+					"query": "openid=abcdef",
 					"scene": null
 				}
 			]

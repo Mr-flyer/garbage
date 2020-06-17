@@ -1,5 +1,7 @@
 {
     "usingComponents": {
+      "pullDownRefresh": "/components/pullDownRefresh/pullDownRefresh",
       "load-more": "/components/loadMore/index"
-    }
+    },
+    "navigationBarTextStyle": "white"
   }

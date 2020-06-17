@@ -11,8 +11,10 @@ Page({
         },
         showRule: false
     },
-    onLoad() {
-        this.setData({ statusBarHeight, titleBarHeight })
+    onLoad(query) {
+        this.setData({ statusBarHeight, titleBarHeight });
+        const openid = decodeURIComponent(query.openid);
+        console.log(openid)
     },
     handleTap() {},
     onClickHide() {

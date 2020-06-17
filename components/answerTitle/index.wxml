@@ -1,4 +1,4 @@
 <view class="contribute-title">
   <text >{{name}}</text>
-  <image class="title-icon" src="../../static/images/answer/refuse_bin_small_icon.png" />
+  <image class="title-icon" src="../../answer/images/answer/refuse_bin_small_icon.png" />
 </view>

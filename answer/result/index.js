@@ -54,8 +54,8 @@ Page({
     },
     // 继续挑战
     continueChallengeBtn() {
-        wx.navigateBack({
-            delta: 1
+        wx.redirectTo({
+            url: '/answer/answer/index'
         })
     },
     // 生成海报

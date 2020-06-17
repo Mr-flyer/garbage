@@ -5,8 +5,8 @@ Page({
         canUse: getApp().globalData.canUse,
         nvabarData: {
             navigationBarTextStyle: 'white', // 胶囊主题 white || black
-            navigationBarBackground: 'linear-gradient(90deg,rgba(82,201,132,1) 0%,rgba(67,193,120,1) 100%)',
             navigationBarTitleText: '收到的红包', //  导航栏标题文本
+            navigationBarBackground: 'linear-gradient(90deg,rgba(82,201,132,1) 0%,rgba(67,193,120,1) 100%)',
         },
         refreshing: false, // 监听设为 true 时 ==> 触发refresh事件
         refreshed: false, // true ==> 收起下拉刷新，可多次设置为true（即便原来已经是true了）
@@ -43,6 +43,9 @@ Page({
     requestData() {
         let _that = this;
         let items = this.data.redEnvelopesList;
+        wx.showLoading({
+            title: '加载中',
+        })
         special.getRedEnvelopesList(page, 20).then((res) => {
             items = items.concat(res.data);
             _that.setData({
@@ -51,7 +54,10 @@ Page({
                 redEnvelopesList: items,
                 refreshed: true
             })
-            loadMoreView.loadMoreComplete({curPage: res.page, pageCount: res.count})
+            loadMoreView.loadMoreComplete({curPage: res.page, pageCount: res.count});
+            wx.hideLoading();
+        }).catch((err)=> {
+            wx.hideLoading();
         })
     },
     rankingItem(e) {

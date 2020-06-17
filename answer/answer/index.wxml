@@ -1,7 +1,7 @@
 <view class="answer-main">
     <image class="answer-bg" src="../images/answer/answer_bg.png" />
     <mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
-    <scroll-view class="answer-content" scroll-y style="top: {{statusBarHeight + titleBarHeight}}px; height: calc(100% - {{statusBarHeight + titleBarHeight}}px)">
+    <scroll-view class="answer-content" scroll-y scroll-top="{{scrollTop}}" style="top: {{statusBarHeight + titleBarHeight}}px; height: calc(100% - {{statusBarHeight + titleBarHeight}}px)">
         <view class="question-main">
             <view class="question-border-con" wx:if="{{answerIndex == index}}" wx:for="{{answerList}}" wx:key="this">
                 <view class="question-border">
