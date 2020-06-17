@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@vant/weapp@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.npm.taobao.org/@vant/weapp/download/@vant/weapp-1.3.0.tgz#626ba373618d0a93d943c6d0dbad3fbf5a15b1d5"
-  integrity sha1-Ymujc2GNCpPZQ8bQ260/v1oVsdU=
+"@vant/weapp@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.npm.taobao.org/@vant/weapp/download/@vant/weapp-1.3.2.tgz#b7548447625cce17a0e9d33e4f257cee44dae5c9"
+  integrity sha1-t1SER2Jczheg6dM+TyV87kTa5ck=

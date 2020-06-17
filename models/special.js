@@ -40,11 +40,25 @@ class SpecialModel extends HTTP {
       method: 'POST', data
     })
   }
+  // 我的评论
+  getUserDiscuss(data) {
+    return this.request({
+      subUrl: `api/v1/garbage/comment/`,
+      data
+    })
+  }
   // 添加收藏
   addUserCollect(garbageId) {
     return this.request({
       subUrl: `api/v1/garbage/collect/${garbageId}`,
       method: 'POST'
+    })
+  }
+  // 我的收藏
+  getUserCollect(data) {
+    return this.request({
+      subUrl: `api/v1/garbage/collect/`,
+      data
     })
   }
   // 用户自定义词汇
@@ -55,9 +69,16 @@ class SpecialModel extends HTTP {
     })
   }
   // 我的词汇 0:审核中 1:已发布  2：未通过
-  getLexiconList() {
+  getLexiconList(data) {
     return this.request({
       subUrl: `api/v1/garbage/user_lexicon`,
+      data
+    })
+  }
+  // 垃圾类型信息 -- 分类详情
+  getGarbageCategorysInfo(GarbageId) {
+    return this.request({
+      subUrl: `api/v1/garbage/category/${GarbageId}`
     })
   }
   /**

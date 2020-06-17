@@ -14,9 +14,8 @@ Component({
   data: {
 
   },
-  lifetimes: {
-    attached: function() {
-      // 在组件实例进入页面节点树时执行
+  observers: {
+    discussItem() {
       let curTime = this.data.discussItem.time
       let txt = ''
       if(dayjs(curTime).add(60, 'second') > dayjs()) {
@@ -31,6 +30,12 @@ Component({
         txt = dayjs(curTime).format('YYYY-MM-DD HH:mm')
       }
       this.setData({ timeTxt: txt })
+    }
+  },
+  lifetimes: {
+    attached: function() {
+      // 在组件实例进入页面节点树时执行
+      
     },
     detached: function() {
       // 在组件实例被从页面节点树移除时执行

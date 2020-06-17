@@ -2,18 +2,24 @@
   overflow-y: auto;
   .empty_wrap {
     padding-top: 190/1206*100vh;
-  }
-  
-  .main {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    &[hidden] {
+      display: none;
+    }
   }
   .collect_wrap {
     flex: 1;
     display: flex;
     flex-direction: column;
+    &[hidden] {
+      display: none;
+    }
   }
+}
+
+.main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .collect_list {
   padding: 34rpx 40rpx 0;
@@ -29,6 +35,7 @@
   width: 315rpx;
   background-color: #fff;
   border-radius: 10rpx;
+  overflow: hidden;
   .collect_pic {
     height: 300rpx;
     image {
