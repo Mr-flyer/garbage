@@ -1,16 +1,17 @@
-const {
-    statusBarHeight, // 状态栏高度
-    titleBarHeight  // 标题栏高度
-} = getApp().globalData;
 Page({
     data: {
         canUse: getApp().globalData.canUse,
         nvabarData: {
             navigationBarTextStyle: 'white', // 胶囊主题 white || black
             navigationBarTitleText: '海报分享', //  导航栏标题文本
-        }
+        },
+        posterUrl: ''
     },
-    onLoad() {
-        this.setData({statusBarHeight, titleBarHeight });
+    onLoad(options) {
+        if(options.record_id) {
+            this.setData({
+                posterUrl: `http://101.132.128.12/#/?record_id=${options.record_id}&user_id=1`
+            })
+        }
     }
 })

@@ -149,10 +149,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 12,
 					"name": "3.4--答题结果",
 					"pathName": "answer/result/index",
-					"query": "openid=abcdef",
+					"query": "",
 					"scene": null
 				},
 				{
@@ -160,6 +160,20 @@
 					"name": "3.5--知识列表",
 					"pathName": "answer/knowledge/index",
 					"query": "openid=abcdef",
+					"scene": null
+				},
+				{
+					"id": 14,
+					"name": "3.6--海报",
+					"pathName": "answer/poster/index",
+					"query": "record_id=240",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "3.7--好友排行",
+					"pathName": "answer/ranking/index",
+					"query": "is_success=true",
 					"scene": null
 				}
 			]

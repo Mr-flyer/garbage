@@ -2,6 +2,7 @@
     "usingComponents": {
         "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
         "pullDownRefresh": "/components/pullDownRefresh/pullDownRefresh",
-        "load-more": "/components/loadMore/index"
+        "load-more": "/components/loadMore/index",
+        "empty": "/components/empty/index"
     }
 }

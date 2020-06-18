@@ -77,24 +77,50 @@
         .answer-btn-des {
             width: 100%;
             position: absolute;
-            bottom: 230rpx;
+            bottom: 220rpx;
             left: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            .answer-btn {
-                width: 320rpx;
-                height: 80rpx;
-                background:rgba(253,188,83,1);
-                box-shadow: 1px -2rpx 0px 0px rgba(255,227,179,1), -4rpx 14rpx 22rpx rgba(62,156,101,0.59), 2rpx -12rpx 18rpx 0px rgba(255,235,175,1) inset, 4rpx -8rpx 42rpx 0px rgba(255,173,54,0.6) inset, 0px -22rpx 42rpx 0px rgba(255,173,54,0.6) inset;
-                border-radius:40px;
-                color: #fff;
-                font-size: 38rpx;
-                font-weight: bold;
-                line-height: 80rpx;
-                text-align: center;
-                box-sizing: border-box;
+            .start-container{ 
+                width: 358rpx; 
+                height: 120rpx; 
+                animation: guodong linear 4s infinite; 
+                position: relative;
+                .start-light{ 
+                    width: 320rpx; 
+                    height: 82rpx; 
+                    position: absolute; 
+                    top: 4rpx; 
+                    left: 24rpx; 
+                    border-radius: 100rpx; 
+                    overflow: hidden; 
+                    transform: translate(0);
+                    .light-img { 
+                        width: 92rpx; 
+                        height: 82rpx; 
+                        position: absolute; 
+                        top: 0rpx; 
+                        left: 0rpx; 
+                        animation: lightMove 4s infinite;
+                    }
+                }
+            }
+            @keyframes lightMove {
+                0% { transform: translateX(-100rpx);}
+                40%{ transform: translateX(-100rpx);}
+                80% { transform: translateX(400rpx);}
+                100% { transform: translateX(400rpx);}
+            }
+            
+            @keyframes guodong {
+                0% { transform: scale(1, 1); }
+                6% { transform: scale(0.8, 1.2);}
+                12% { transform: scale(1, 1);}
+                18% { transform: scale(0.8, 1.2);}
+                24% { transform: scale(1, 1); }
+                100% { transform: scale(1, 1); }
             }
             .answer-des {
                 width: 100%;
@@ -102,7 +128,6 @@
                 font-weight: bold;
                 color: #fff;
                 text-align: center;
-                margin-top: 24rpx;
                 line-height: 36rpx;
                 .des-num {
                     color: #3CAB6A;

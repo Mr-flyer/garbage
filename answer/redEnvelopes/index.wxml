@@ -1,7 +1,7 @@
 <mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
 <view class="container">
     <pullDownRefresh class="container" refreshing="{{refreshing}}" refreshed="{{refreshed}}" bind:refresh="onPullDownRefresh">
-        <scroll-view class="red-envelopes" scroll-y enable-flex>
+        <scroll-view class="red-envelopes" scroll-y enable-flex bindscrolltolower="onReachBottom">
             <view class="red-envelopes-content">
                 <view class="red-num-main">
                     <view class="red-num">{{redEnvelopesCount}}</view>

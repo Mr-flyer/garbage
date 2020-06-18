@@ -1,5 +1,7 @@
 {
     "usingComponents": {
         "van-icon": "/miniprogram_npm/@vant/weapp/icon/index"
-    }
+    },
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "小答题"
 }

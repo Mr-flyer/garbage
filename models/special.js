@@ -139,6 +139,24 @@ class SpecialModel extends HTTP {
       subUrl: `api/v1/answer/knowledge/${id}`
     })
   }
+  // 分享海报
+  getPosterInfo(id) {
+    return this.request({
+      subUrl: `api/v1/answer/poster/${id}`
+    })
+  }
+  // 全部排行
+  getRankingList(id) {
+    return this.request({
+      subUrl: `api/v1/answer/rank`
+    })
+  }
+  // 好友排行
+  getFriendRankingList(id) {
+    return this.request({
+      subUrl: `api/v1/answer/friend_rank`
+    })
+  }
   /** 
    * end
    */

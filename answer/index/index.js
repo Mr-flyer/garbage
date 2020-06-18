@@ -15,9 +15,10 @@ Page({
         total_answer: 0,
         answer_count: 0
     },
-    onLoad(query) {
+    onLoad() {
         this.setData({ statusBarHeight, titleBarHeight });
-        const openid = decodeURIComponent(query.openid);
+    },
+    onShow() {
         let _that = this;
         wx.showLoading({
             title: '加载中',
@@ -39,7 +40,7 @@ Page({
     },
     // 开始挑战
     startChallengeBtn() {
-        if(this.data.answer_count <= this.data.total_answer) {
+        if(this.data.answer_count >= this.data.total_answer) {
             wx.showToast({
                 title: '今日答题次数已用完',
                 icon: 'none',
