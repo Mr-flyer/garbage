@@ -2,8 +2,8 @@
     <mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
     <view class="answer-main">
         <view class="answer-title-img">
-            <image wx:if="{{isPass}}" class="answer-good" src="../images/answer/answer_good.png" mode="widthFix"/>
-            <image wx:else class="answer-good" src="../images/answer/answer_fail.png" mode="widthFix"/>
+            <image wx:if="{{isPass}}" class="answer-good" src="../images/answer/answer_good.png"/>
+            <image wx:else class="answer-good" src="../images/answer/answer_fail.png"/>
             <image class="answer-tree" src="../images/answer/border-bg.png" />
             <image wx:if="{{isPass}}" class="answer-good-text" src="../images/answer/answer_good_text.png" />
             <image wx:else class="answer-good-text" src="../images/answer/answer_fail_text.png" />
@@ -19,7 +19,7 @@
                 </view>
             </view>
             <view class="divider-line">
-                <image class="line-icon" src="../images/answer/divider_line.png" mode="widthFix"/>
+                <image class="line-icon" src="../images/answer/divider_line.png"/>
                 <view class="line"></view>
                 <text class="divider-text">本局奖励</text>
             </view>
@@ -38,10 +38,10 @@
         </view>
         <view class="result-btns">
             <view bind:tap="continueChallengeBtn" class="continue-challenge">
-                <image src="../images/answer/continue_challenge_icon.png" mode="widthFix" />
+                <image class="continue-challenge-btn" src="../images/answer/continue_challenge_icon.png" />
             </view>
             <view bind:tap="createPosterBtn" class="continue-challenge create-poster">
-                <image src="../images/answer/create_poster_icon.png" mode="widthFix" />
+                <image class="continue-challenge-btn" src="../images/answer/create_poster_icon.png" />
             </view>
         </view>
     </view>
@@ -53,7 +53,7 @@
     </van-overlay>
     <van-overlay show="{{ showRedEnvelopes }}" bind:click="onClickHideRE">
         <view class="red-envelopes-main" catchtap="handleTap">
-            <image class="red-en-bg" src="../images/answer/red_envelopes_bg.png" mode="widthFix"/>
+            <image class="red-en-bg" src="../images/answer/red_envelopes_bg.png"/>
             <view class="red-en-content">
                 <image class="logo" src="../images/answer/js_logo.png"/>
                 <view class="red-en-fonts">

@@ -12,7 +12,9 @@
                     <view class="count-down"><text class="second">{{countDown}}</text>s</view>
                 </view>
                 <view class="question-content">
-                    <image class="question-img" src="{{item.icon}}" mode="widthFix"/>
+                    <view class="question-img-view">
+                        <image class="question-img" src="{{item.icon}}"/>
+                    </view>
                     <view class="question-text">{{item.name}}</view>
                 </view>
             </view>

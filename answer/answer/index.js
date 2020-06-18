@@ -113,8 +113,8 @@ Page({
             let index = this.data.answerIndex;
             this.data.setTimeer = setTimeout(() => {
                 this.setData({
-                    answerIndex: index + 1,
                     show: false,
+                    answerIndex: index + 1,
                     countDown: this.data.count_down,
                     scrollTop: 0
                 })

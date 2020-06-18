@@ -38,8 +38,8 @@
                 </view>
             </view>
             <view class="item-right">
-                <image wx:if="{{index<=4}}" class="ranking-star" src="../images/answer/star_1.png" mode="widthFix"/>
-                <image wx:else class="ranking-star" src="../images/answer/star_2.png" mode="widthFix"/>
+                <image wx:if="{{index<=4}}" class="ranking-star" src="../images/answer/star_1.png"/>
+                <image wx:else class="ranking-star2" src="../images/answer/star_2.png"/>
                 <text class="star-num">x{{item.score}}</text>
             </view>
         </view>
@@ -62,8 +62,8 @@
                 </view>
             </view>
             <view class="item-right">
-                <image wx:if="{{index<=4}}" class="ranking-star" src="../images/answer/star_1.png" mode="widthFix"/>
-                <image wx:else class="ranking-star" src="../images/answer/star_2.png" mode="widthFix"/>
+                <image wx:if="{{index<=4}}" class="ranking-star" src="../images/answer/star_1.png"/>
+                <image wx:else class="ranking-star2" src="../images/answer/star_2.png"/>
                 <text class="star-num">x{{item.score}}</text>
             </view>
         </view>
