@@ -1,0 +1,38 @@
+page {
+  background-color: #fff;
+}
+.keywordPop_wrap {
+  --cell-horizontal-padding: 0;
+  .van-popup {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .van-action-sheet__header {
+    // background-color: red;
+    flex: none;
+  }
+
+  .keywordPop_inner {
+    flex: 1;
+    overflow: hidden;
+    padding: 0 40rpx 20rpx;
+    // padding-bottom: env(safe-area-inset-bottom);
+    display: flex;
+    flex-direction: column;
+  }
+  .keywordPop_cont {
+    flex: 1;
+    overflow-y: auto;
+  }
+  .popTitle {
+    padding-top: 40rpx;
+    font-size: 30rpx;
+    line-height: 1;
+    color: rgba(20, 76, 87, 1);
+  }
+
+  .addKeyword_submit {
+    flex: none;
+  }
+}

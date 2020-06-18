@@ -72,10 +72,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "1.1 搜索详情",
 					"pathName": "pages/gaebage/gaebageDetail/gaebageDetail",
-					"query": "",
+					"query": "keyword=垃圾",
 					"scene": null
 				},
 				{
@@ -121,10 +121,10 @@
 					"scene": null
 				},
 				{
-					"id": 2,
+					"id": 8,
 					"name": "---垃圾分类---",
 					"pathName": "pages/gaebage/gaebageType/gaebageType",
-					"query": "",
+					"query": "gaebageTypeId=1",
 					"scene": null
 				},
 				{

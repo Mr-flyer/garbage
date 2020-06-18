@@ -10,7 +10,7 @@ Page({
       // showPre: true, // 是否只展示返回键 默认 false
       // hideCapsule: true, // 是否隐藏胶囊
     },
-    active: 2,  // 当前选中tab
+    active: 0,  // 当前选中tab
   },
   // 切换页脚 tabber 时
   onChangeTabbar(event) {

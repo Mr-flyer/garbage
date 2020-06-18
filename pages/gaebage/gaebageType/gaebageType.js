@@ -11,24 +11,27 @@ Page({
       // showPre: true, // 是否只展示返回键 默认 false
     },
   },
-  onLoad: function() {
+  onLoad: async function({gaebageTypeId}) {
+    console.log('分类id', gaebageTypeId);
     // 垃圾列表
-    specialModel.getGarbageList({category: 1})
-    .then(({data}) => {
+    let p1 = specialModel.getGarbageList({category: gaebageTypeId})
+      .then(({ data: garbageTypelist }) => ({ garbageTypelist }))
+    // 分类详情
+    let p2 = specialModel.getGarbageCategorysInfo(gaebageTypeId)
+      .then(({data}) => data)
+    // this.setData
+    Promise.all([p1, p2]).then(res => {
+      let newData = res.filter(v => !v.errCode)
       this.setData({
-        garbageTypelist: data
+        ...newData[0], ...newData[1]
       })
     })
-    specialModel.getGarbageCategorysInfo(2)
-    .then(({data}) => {
-      console.log(data);
-      this.setData({
-        ...data
-      })
-    })
+
+
     getApp().watch(needUpdate => {
       console.log('----------', needUpdate);
       this.setData({ needUpdate })
     })
-  }
+  }, 
+  
 })

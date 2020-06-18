@@ -4,11 +4,11 @@
   <view class="cont">
     <view class="header" style="--paddingTop:{{navBarHeight}}">
       <!-- 搜索框 -->
-      <van-search custom-class="search_wrap" field-class="search_field" input-class="search_ipt" value="{{ value }}" shape="round" placeholder="请输入正确名称（包含材质）" placeholder-style="color: rgba(67, 193, 120, 1); font-size: 26rpx" use-action-slot use-left-icon-slot bind:search="handSearch" bind:change="searchChange">
+      <van-search custom-class="search_wrap" wx:if="{{!isGargabeInfo}}" field-class="search_field" input-class="search_ipt" value="{{ value }}" shape="round" placeholder="请输入正确名称（包含材质）" placeholder-style="color: rgba(67, 193, 120, 1); font-size: 26rpx" use-action-slot use-left-icon-slot bind:search="handSearch" bind:change="searchChange">
         <van-button slot="action" custom-class="search_btn" icon="down" round bind:tap="handSearch" />
       </van-search>
       <!-- 收藏 -->
-      <van-cell custom-class="keyword_wrap" title-class="keyword_title van-ellipsis" title="{{name || ' '}}">
+      <van-cell custom-class="keyword_wrap" wx:if="{{garbageId && name}}" title-class="keyword_title van-ellipsis" title="{{name || ' '}}">
         <van-button slot="right-icon" custom-class="collect_btn" icon="star" type="{{is_collect ? '' : 'warning'}}" disabled="{{is_collect}}" size="mini" hairline bind:click="handCollect">
           {{is_collect ? '已收藏' : '收藏'}}
         </van-button>
@@ -31,7 +31,7 @@
     <!-- 已检索到的垃圾信息 -->
     <view wx:if="{{garbageId}}" class="aside">
       <!-- 弹幕区 -->
-      <view class="barrage_wrap">
+      <view class="barrage_wrap" wx:if="{{dmData.length}}">
         <view class="barrage_inner">
           <view class="barrage_item dmGroup" wx:for="{{ dmData }}" wx:key="index" style="top:{{ item.top }}%; animation: dmAnimation {{ item.time }}s linear {{ index*3 }}s infinite;">
             <image class="barrage_pic" src="{{item.avatar}}" mode="aspectFit" />
@@ -53,7 +53,7 @@
     <view wx:else class="basic_type">
       <view>
         <basicTitle title="基本分类" />
-        <garbageTypes />
+        <garbageTypes bind:myevent="handGarbageType"/>
       </view>
       <view class="tips_wrap">
         <van-tag custom-class="tips_tag" type="success" plain round>Tips</van-tag>

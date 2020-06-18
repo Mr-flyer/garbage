@@ -26,10 +26,12 @@ Component({
       wx.navigateTo({
         url: `/pages/gaebage/gaebageDetail/gaebageDetail?keyword=${txt}`
       })
-    }
-  }
-  // handChangeRadio({detail}) {
-  //   // console.log(detail);
-  //   this.setData({ radio: detail })
-  // }
+    },
+    // 前往垃圾分类页
+    handGarbageType({detail}) {
+      wx.navigateTo({
+        url: `/pages/gaebage/gaebageType/gaebageType?gaebageTypeId=${detail}`
+      })
+    },
+  },
 })

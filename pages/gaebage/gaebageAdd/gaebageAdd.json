@@ -1,0 +1,8 @@
+{
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "添加词库",
+  "usingComponents": {
+    "garbageTypes": "/components/garbageTypes/garbageTypes",
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index"
+  }
+}

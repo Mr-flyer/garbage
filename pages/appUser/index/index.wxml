@@ -16,25 +16,25 @@
       </view>
     </view>
     <van-grid class="nav_wrap boxshow_green" clickable center border="{{false}}">
-      <van-grid-item>
+      <van-grid-item url="/pages/userCenter/userAnswer/userAnswer">
         <view slot="icon" class="nav_num">
           {{answerCount}}<van-icon custom-class="nav_dot" slot="icon" dot></van-icon>
         </view>
         <view slot="text" class="nav_txt">答题</view>
       </van-grid-item>
-      <van-grid-item>
+      <van-grid-item url="/pages/userCenter/userCollect/userCollect">
         <view slot="icon" class="nav_num">
           {{discussCount}}<van-icon custom-class="nav_dot" slot="icon" dot></van-icon>
         </view>
         <view slot="text" class="nav_txt">评论</view>
       </van-grid-item>
-      <van-grid-item>
+      <van-grid-item url="/pages/userCenter/userDiscuss/userDiscuss">
         <view slot="icon" class="nav_num">
           {{collectCount}}<van-icon custom-class="nav_dot" slot="icon" dot></van-icon>
         </view>
         <view slot="text" class="nav_txt">收藏</view>
       </van-grid-item>
-      <van-grid-item>
+      <van-grid-item url="/pages/userCenter/userLexicon/userLexicon">
         <view slot="icon" class="nav_num">
           {{lexiconCount}}<van-icon custom-class="nav_dot" slot="icon" dot></van-icon>
         </view>

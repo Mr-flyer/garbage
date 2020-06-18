@@ -7,7 +7,7 @@
         <image class="garbageType_pic" src="{{icon}}" mode="aspectFit" />
       </van-cell>
       <van-grid custom-class="garbageType_group" clickable border="{{false}}">
-        <van-grid-item wx:for="{{garbageTypelist}}" wx:key="index" use-slot>
+        <van-grid-item wx:for="{{garbageTypelist}}" wx:key="index" url="/pages/gaebage/gaebageDetail/gaebageDetail?garbageId={{item.id}}" use-slot>
           <image class="garbageType_pic" src="{{item.icon}}" mode="aspectFit" />
           <view class="garbageType_txt">{{item.name}}</view>
         </van-grid-item>

@@ -85,7 +85,24 @@ class SpecialModel extends HTTP {
   getUserAnswer() {
     return this.request({
       subUrl: `api/v1/answer/`,
-      
+    })
+  }
+  // 垃圾详情 -- 同搜索
+  getGarbageDetail(garbageId) {
+    return this.request({
+      subUrl: `api/v1/garbage/garbage/${garbageId}`
+    })
+  }
+  // 我的数据概要 --- 个人中心
+  getUserOutline() {
+    return this.request({
+      subUrl: `api/v1/garbage/data_column`
+    })
+  }
+  // 我的答题概要
+  getUserAnswerOutline() {
+    return this.request({
+      subUrl: `api/v1/answer/self_rank`
     })
   }
   /**
@@ -94,7 +111,7 @@ class SpecialModel extends HTTP {
    * @param {number} page 第一页为 0
    */
   getList = (viewType, page) => this.request({
-    url: `https://www.wanandroid.com/${1}/list/${page}/json`,
+    url: `https://www.wanandroid.com/${viewType}/list/${page}/json`,
     isLogin: true,
   })
 
