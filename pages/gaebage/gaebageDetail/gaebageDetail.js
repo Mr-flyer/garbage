@@ -1,8 +1,6 @@
 // pages/gaebageSearch/gaebageDetail/gaebageDetail.js
 import specialModel from '../../../models/special';
 import Toast from '../../../miniprogram_npm/@vant/weapp/toast/toast';
-import toast from '../../../miniprogram_npm/@vant/weapp/toast/toast';
-import special from '../../../models/special';
 Page({
   data: {
     navBarHeight: getApp().globalData.statusBarHeight + getApp().globalData.titleBarHeight,
@@ -46,23 +44,26 @@ Page({
         headimgurl: "https://wx.qlogo.cn/mmopen/vi_32/06N0qHLkICIjb58b3MM0Wwsxccw98LKRjx5cGMQhvXpbicdzVHT4dAVpicwBglhjAXQibibsDJodPGJJWRxcl9DCibA/132",
       }
     ], // 弹幕数据
-    loading: true,
+    loading: true, // 为true 代表首次进入，未加载完成不展示页面
   },
   onLoad: function({ keyword, garbageId }) {
     Toast.loading({ message: '加载中...', duration: 0 })
     if(garbageId) {
       console.log('详情id', garbageId);
-      this._initGarbageInfo(garbageId)
-      this.setData({ garbageId, isGargabeInfo: true })
-    }else {
+      this.setData({ garbageId, isGargabeInfo: true });
+      this._initGarbageInfo(garbageId);
+    } // 传入垃圾id 为拉取垃圾详情
+    else {
       console.log('搜索关键字', keyword);
       this._initSearchData(keyword)
-    }
+    } // 传入关键字 则为搜索垃圾
   },
-  // 垃圾详情
+  // 拉取垃圾详情
   async _initGarbageInfo(garbageId) {
+    // 垃圾概要
     let p1 = specialModel.getGarbageDetail(garbageId)
     .then(({data}) => data).catch(err => err)
+    // 评论列表
     let p2 = specialModel.getCommentsList(garbageId)
     .then(({data}) => {
       // 设置弹幕
@@ -76,20 +77,25 @@ Page({
         ...newData[0], ...newData[1], loading: false
       })
     })
-    .catch(() => this.setData({ loading: false }))
+    // .catch(() => this.setData({ loading: false }))
   },
   //#region -- 搜索
   async _initSearchData(searchKayword) {
-    Toast.loading({duration: 0})
+    // Toast.loading({duration: 0})
     let { data: garbageInfo } = await specialModel.getGarbageSearch(searchKayword)
-    if(!garbageInfo.id) return false
+    if(!garbageInfo.id) {
+      Toast.clear()
+      return this.setData({
+        garbageId: null, loading: false
+      })
+    }
     let { data: commentList } = await specialModel.getCommentsList(garbageInfo.id)
     // console.log(garbageInfo, commentList);
     Toast.clear()
-    this._setDM(data.slice(0, 5))
+    this._setDM(commentList.slice(0, 5))
     this.setData({
       ...garbageInfo, commentList,
-      garbageId: garbageInfo.id,
+      garbageId: garbageInfo.id, loading: false
     })
   },
   // 点击搜索
@@ -129,7 +135,12 @@ Page({
   // 添加垃圾词库弹窗 --- 关闭
   closeKeywordPop() { this.setData({ showAddKeywordPop: false }) },
   // 添加垃圾词库弹窗 --- 开启
-  openKeywordPop() { this.setData({ showAddKeywordPop: true }) },
+  // openKeywordPop() { this.setData({ showAddKeywordPop: true }) },
+  openKeywordPop() { 
+    wx.navigateTo({
+      url: '/pages/gaebage/gaebageAdd/gaebageAdd'
+    })  
+  },
   // 添加垃圾词库弹窗 --- 提交
   async formSubmit({detail}) {
     // console.log('表单提交', detail.value);
@@ -154,7 +165,7 @@ Page({
   },  
   //#endregion
   
-  // 
+  // 前往垃圾分类页
   handGarbageType({detail}) {
     wx.navigateTo({
       url: `/pages/gaebage/gaebageType/gaebageType?gaebageTypeId=${detail}`

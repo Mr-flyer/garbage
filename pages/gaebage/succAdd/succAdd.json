@@ -1,4 +1,6 @@
 {
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "添加成功",
   "usingComponents": {
     "staticIcon": "/components/staticIcon/staticIcon",
     "basicSponsors": "/components/basicSponsors/basicSponsors"

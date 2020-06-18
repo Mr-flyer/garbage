@@ -5,7 +5,7 @@
   <view class="main" hidden="{{loading}}">
     <view class="discuss_group" hidden="{{!dataLists.length}}">
     <van-cell-group >
-      <van-cell wx:for="{{dataLists}}" wx:key="this" custom-class="discuss_item" title-class="discuss_iam van-ellipsis" title="{{item.content}}" clickable use-label-slot>
+      <van-cell wx:for="{{dataLists}}" wx:key="this" url="/pages/gaebage/gaebageDetail/gaebageDetail?garbageId={{item.garbage}}" custom-class="discuss_item" title-class="discuss_iam van-ellipsis" title="{{item.content}}" clickable use-label-slot>
         <van-cell slot="label" custom-class="garbageType_warp" title-class="garbageType_name van-ellipsis" label-class="garbageType_label" title="{{item.garbage_name}}" center use-label-slot>
           <view slot="label" class="van-ellipsis">
             <image src="{{item.category_icon}}" class="garbageType_icon" mode="aspectFill" />

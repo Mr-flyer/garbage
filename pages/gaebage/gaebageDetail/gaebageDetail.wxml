@@ -8,7 +8,7 @@
         <van-button slot="action" custom-class="search_btn" icon="down" round bind:tap="handSearch" />
       </van-search>
       <!-- 收藏 -->
-      <van-cell custom-class="keyword_wrap" wx:if="{{name}}" title-class="keyword_title van-ellipsis" title="{{name || ' '}}">
+      <van-cell custom-class="keyword_wrap" wx:if="{{garbageId && name}}" title-class="keyword_title van-ellipsis" title="{{name || ' '}}">
         <van-button slot="right-icon" custom-class="collect_btn" icon="star" type="{{is_collect ? '' : 'warning'}}" disabled="{{is_collect}}" size="mini" hairline bind:click="handCollect">
           {{is_collect ? '已收藏' : '收藏'}}
         </van-button>

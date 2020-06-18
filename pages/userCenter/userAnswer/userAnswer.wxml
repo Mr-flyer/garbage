@@ -23,7 +23,7 @@
       </van-cell>
       <!-- 内容区块 -->
       <van-grid custom-class="garbageType_group" clickable border="{{false}}">
-        <van-grid-item wx:for="{{item.answerList}}" wx:for-item="val" wx:for-index="idx" wx:key="idx" url="/pages/gaebage/gaebageDetail/gaebageDetail?garbageId={{val.id}}" use-slot>
+        <van-grid-item wx:for="{{item.answerList}}" wx:for-item="val" wx:for-index="idx" wx:key="idx" url="/pages/gaebage/gaebageDetail/gaebageDetail?garbageId={{val.garbage}}" use-slot>
           <image class="garbageType_pic" src="{{val.icon}}" mode="aspectFit" /> 
           <view class="van-ellipsis garbageType_txt">{{val.name}}</view>
         </van-grid-item>

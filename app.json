@@ -9,7 +9,9 @@
     "pages/userCenter/userAnswer/userAnswer",
     "pages/userCenter/userDiscuss/userDiscuss",
     "pages/userCenter/userCollect/userCollect",
-    "pages/userCenter/userLexicon/userLexicon"
+    "pages/userCenter/userLexicon/userLexicon",
+    "pages/auth/auth",
+    "pages/gaebage/gaebageAdd/gaebageAdd"
   ],
   "subpackages": [
     {

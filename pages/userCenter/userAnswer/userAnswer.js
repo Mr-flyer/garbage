@@ -19,9 +19,9 @@ Page({
     let { data: answerOutline } = await specialModel.getUserAnswerOutline()
     let { data: garbageTypes } = await specialModel.getGarbageCategorys()
     let { data: answerList } = await specialModel.getUserAnswer()
-    // garbageTypes.forEach(el => {
-    //   el.answerList = answerList.filter(v => v.category === el.id)
-    // });
+    garbageTypes.forEach(el => {
+      el.answerList = answerList.filter(v => v.category === el.id)
+    });
     Toast.clear()
     console.log(answerOutline);
     answerOutline.score = this._coutNum(answerOutline.score)
