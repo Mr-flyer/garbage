@@ -152,7 +152,7 @@
 					"id": 12,
 					"name": "3.4--答题结果",
 					"pathName": "answer/result/index",
-					"query": "is_success=true",
+					"query": "is_success=false",
 					"scene": null
 				},
 				{

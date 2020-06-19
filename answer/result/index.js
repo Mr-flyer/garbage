@@ -12,9 +12,9 @@ Page({
         },
         showFollow: false,
         showRedEnvelopes: false,
-        isPass: true,
         score: 0,
         record_id: '',
+        is_success: false,
         is_pay: false,
         isOpen: false,
         isParse: false,
@@ -27,16 +27,12 @@ Page({
             })
         }
         this.setData({
+            is_success: options.is_success,
             is_pay: options.is_pay,
             score: options.score,
             price: options.price,
             record_id: options.record_id
         })
-        if(!this.data.score || this.data.score < 60) {
-            this.setData({
-                isPass: false
-            })
-        }
     },
     handleTap() {},
     onClickHide() {

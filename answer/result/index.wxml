@@ -2,10 +2,10 @@
     <mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
     <view class="answer-main">
         <view class="answer-title-img">
-            <image wx:if="{{isPass}}" class="answer-good" src="../images/answer/answer_good.png"/>
+            <image wx:if="{{is_success == 'true'}}" class="answer-good" src="../images/answer/answer_good.png"/>
             <image wx:else class="answer-good" src="../images/answer/answer_fail.png"/>
             <image class="answer-tree" src="../images/answer/border-bg.png" />
-            <image wx:if="{{isPass}}" class="answer-good-text" src="../images/answer/answer_good_text.png" />
+            <image wx:if="{{is_success == 'true'}}" class="answer-good-text" src="../images/answer/answer_good_text.png" />
             <image wx:else class="answer-good-text" src="../images/answer/answer_fail_text.png" />
         </view>
         <view class="result-content">
