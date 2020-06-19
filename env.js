@@ -18,12 +18,12 @@ const test = {
 
 // 生产环境
 const prod = {
-  host: 'https://prod.qq.cn',
+  host: 'https://laji.wohewomen.com/',
   ws: 'wss://prod.qq.cn',
   h5: 'https://prod.qq.cn',
   label: 'prod'
 }
 
 module.exports = {
-  ...dev
+  ...prod
 }

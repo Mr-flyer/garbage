@@ -32,7 +32,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.0",
-	"appid": "wx310aa4e9f3cdf191",
+	"appid": "wx9d8965c6e1f8a1d8",
 	"projectname": "%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -75,7 +75,7 @@
 					"id": 1,
 					"name": "1.1 搜索详情",
 					"pathName": "pages/gaebage/gaebageDetail/gaebageDetail",
-					"query": "keyword=垃圾",
+					"query": "keyword=饭菜",
 					"scene": null
 				},
 				{
