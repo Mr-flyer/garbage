@@ -24,7 +24,11 @@ Page({
                 topHeight: rect.height
             })
         }).exec();
-        Toast.loading({message: '加载中...', forbidClick: true, duration: 0})
+        Toast.loading({
+            duration: 0,
+            forbidClick: true,
+            message: '加载中...',
+        });
         Promise.all([
             special.getRankingList().then((res) => {
                 _that.setData({
@@ -39,11 +43,7 @@ Page({
                 })
                 _that.isShowEmpty();
             })
-        ]).then((res) => {
-            Toast.clear();
-        }).catch(() => {
-            Toast.clear();
-        })
+        ])
     },
     rankingItem(e) {
         this.setData({

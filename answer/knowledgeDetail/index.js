@@ -15,9 +15,12 @@ Page({
     onLoad(options) {
         if(options.id) {
             let _that = this;
-            Toast.loading({message: '加载中...', forbidClick: true, duration: 0})
+            Toast.loading({
+                duration: 0,
+                forbidClick: true,
+                message: '加载中...',
+            });
             special.getKnowledgeDetail(options.id).then((res) => {
-              Toast.clear()
                 _that.setData({
                     is_url: res.data.is_url,
                     url: res.data.url
@@ -27,7 +30,6 @@ Page({
                         knowInfo: res.data.content
                     })
                 }
-                Toast.clear();
             })
         }else {
             Toast('无小答题详情');

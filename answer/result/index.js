@@ -60,11 +60,12 @@ Page({
     // 继续挑战
     continueChallengeBtn() {
         let _that = this;
-        wx.showLoading({
-            title: '加载中',
-        })
+        Toast.loading({
+            duration: 0,
+            forbidClick: true,
+            message: '加载中...',
+        });
         special.getAnswerInfo().then((res) => {
-            wx.hideLoading();
             if(res.data.answer_count <= 0) {
                 wx.showToast({
                     title: '今日答题次数已用完',

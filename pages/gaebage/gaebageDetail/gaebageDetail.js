@@ -45,6 +45,8 @@ Page({
       }
     ], // 弹幕数据
     loading: true, // 为true 代表首次进入，未加载完成不展示页面
+    collect_num: 0,
+    comment_num: 0
   },
   onLoad: function({ keyword, garbageId }) {
     Toast.loading({ message: '加载中...', duration: 0 })
@@ -95,8 +97,11 @@ Page({
     this._setDM(commentList.slice(0, 5))
     this.setData({
       ...garbageInfo, commentList,
+      collect_num: garbageInfo.collect_num,
+      comment_num: garbageInfo.comment_num,
       garbageId: garbageInfo.id, loading: false
     })
+    console.log(garbageInfo)
   },
   // 点击搜索
   handSearch({detail}) {
@@ -111,7 +116,8 @@ Page({
   async handCollect() {
     let { garbageId } = this.data
     garbageId && await specialModel.addUserCollect(garbageId)
-    this.setData({ is_collect: true })
+    let collect_num = this.data.collect_num +1;
+    this.setData({ is_collect: true, collect_num: collect_num })
   },
   // 发布评论
   async handComment({detail}) {

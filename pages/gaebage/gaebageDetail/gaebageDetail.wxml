@@ -10,7 +10,7 @@
       <!-- 收藏 -->
       <van-cell custom-class="keyword_wrap" wx:if="{{garbageId && name}}" title-class="keyword_title van-ellipsis" title="{{name || ' '}}">
         <van-button slot="right-icon" custom-class="collect_btn" icon="star" type="{{is_collect ? '' : 'warning'}}" disabled="{{is_collect}}" size="mini" hairline bind:click="handCollect">
-          {{is_collect ? '已收藏' : '收藏'}}
+          {{is_collect ? '已收藏' : '收藏'}} {{collect_num}}
         </van-button>
       </van-cell>
       <!-- 搜索到相关垃圾分类 -->
@@ -63,7 +63,7 @@
   </view>
   <!-- 评论区块 -->
   <view class="discuss_warp" wx:if="{{commentList.length}}">
-    <basicTitle title="全部评价" />
+    <view class="comment_h"><basicTitle title="全部评价" /> <view class="comment_num">共{{comment_num}}条评论</view></view>
     <view class="discuss_group">
       <basicDiscuss wx:for="{{commentList}}" wx:key="index" discussItem="{{item}}" />
     </view>
