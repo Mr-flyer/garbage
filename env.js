@@ -2,7 +2,7 @@
 
 // 开发环境
 const dev = {
-  host: 'http://192.168.101.39:8001/',
+  host: 'http://192.168.101.47:8001/',
   ws: 'wss://dev.qq.cn',
   h5: 'https://dev.qq.cn',
   label: 'dev',
@@ -18,12 +18,12 @@ const test = {
 
 // 生产环境
 const prod = {
-  host: 'https://prod.qq.cn',
+  host: 'https://laji.wohewomen.com/',
   ws: 'wss://prod.qq.cn',
   h5: 'https://prod.qq.cn',
   label: 'prod'
 }
 
 module.exports = {
-  ...dev
+  ...prod
 }
