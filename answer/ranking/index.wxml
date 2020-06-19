@@ -69,3 +69,5 @@
         </view>
     </scroll-view>
 </view>
+<!-- loading -->
+<van-toast id="van-toast" />

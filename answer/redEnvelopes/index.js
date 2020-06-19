@@ -47,10 +47,6 @@ Page({
     requestData() {
         let _that = this;
         let items = this.data.redEnvelopesList;
-        // wx.showLoading({
-        //     mask: true,
-        //     title: '加载中',
-        // })
         special.getRedEnvelopesList(page, 20).then((res) => {
             items = items.concat(res.data);
             _that.setData({
@@ -60,9 +56,7 @@ Page({
                 refreshed: true
             })
             loadMoreView.loadMoreComplete({curPage: res.page, next: res.next});
-            // wx.hideLoading();
         }).catch((err)=> {
-            // wx.hideLoading();
         })
     },
     rankingItem(e) {

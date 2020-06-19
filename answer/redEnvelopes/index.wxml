@@ -27,3 +27,5 @@
         </scroll-view>
     </pullDownRefresh>
 </view>
+<!-- loading -->
+<van-toast id="van-toast" />

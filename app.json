@@ -23,7 +23,8 @@
         "poster/index",
         "ranking/index",
         "redEnvelopes/index",
-        "knowledge/index"
+        "knowledge/index",
+        "knowledgeDetail/index"
       ]
     }
   ],

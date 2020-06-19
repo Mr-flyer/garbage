@@ -175,6 +175,13 @@
 					"pathName": "answer/ranking/index",
 					"query": "is_success=true",
 					"scene": null
+				},
+				{
+					"id": 16,
+					"name": "小答题详情页",
+					"pathName": "answer/knowledgeDetail/index",
+					"query": "id=1",
+					"scene": null
 				}
 			]
 		}
