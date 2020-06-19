@@ -26,6 +26,7 @@ Page({
                         knowInfo: res.data.content
                     })
                 }
+                Toast.clear();
             })
         }else {
             Toast('无小答题详情');
