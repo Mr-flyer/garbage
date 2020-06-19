@@ -8,12 +8,12 @@
                     <image class="question-border-bg" src="../images/answer/border-bg.png" mode="widthFix"/>
                     <image class="question-title-bg" src="../images/answer/answer_border.png"/>
                     <image class="question-portrait" src="../images/answer/portrait.png" mode="widthFix"/>
-                    <view class="question-num">第 {{index+1}} 题</view>
+                    <view class="question-num">第 {{index+1}} / {{answerList.length}} 题</view>
                     <view class="count-down"><text class="second">{{countDown}}</text>s</view>
                 </view>
                 <view class="question-content">
                     <view class="question-img-view">
-                        <image class="question-img" src="{{item.icon}}"/>
+                        <image class="question-img" src="{{item.icon}}" mode="aspectFit"/>
                     </view>
                     <view class="question-text">{{item.name}}</view>
                 </view>

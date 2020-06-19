@@ -24,6 +24,7 @@ Page({
             })
         }).exec();
         wx.showLoading({
+            mask: true,
             title: '加载中',
         })
         Promise.all([

@@ -47,7 +47,7 @@ Page({
         // wx.showLoading({
         //     title: '加载中',
         // })
-        special.getKnowledgeList(page, 3).then((res) => {
+        special.getKnowledgeList(page, 10).then((res) => {
             items = items.concat(res.data);
             _that.setData({
                 knowledgeList: items,

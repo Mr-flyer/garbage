@@ -15,6 +15,7 @@ Page({
         if(options.id) {
             let _that = this;
             wx.showLoading({
+                mask: true,
                 title: '加载中',
             })
             special.getKnowledgeDetail(options.id).then((res) => {

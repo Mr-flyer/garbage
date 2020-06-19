@@ -47,10 +47,11 @@ Page({
     requestData() {
         let _that = this;
         let items = this.data.redEnvelopesList;
-        wx.showLoading({
-            title: '加载中',
-        })
-        special.getRedEnvelopesList(page, 6).then((res) => {
+        // wx.showLoading({
+        //     mask: true,
+        //     title: '加载中',
+        // })
+        special.getRedEnvelopesList(page, 20).then((res) => {
             items = items.concat(res.data);
             _that.setData({
                 redEnvelopesPrice: res.total_price/100,
@@ -59,9 +60,9 @@ Page({
                 refreshed: true
             })
             loadMoreView.loadMoreComplete({curPage: res.page, next: res.next});
-            wx.hideLoading();
+            // wx.hideLoading();
         }).catch((err)=> {
-            wx.hideLoading();
+            // wx.hideLoading();
         })
     },
     rankingItem(e) {

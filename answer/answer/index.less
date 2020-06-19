@@ -96,7 +96,6 @@
                 .question-img {
                     width: 100%;
                     height: 100%;
-                    object-fit: contain;
                 }
                 .question-text {
                     font-size: 36rpx;
@@ -117,7 +116,7 @@
                 width: 146rpx;
                 height: 146rpx;
                 background:rgba(204,255,225,1);
-                border: 2px solid rgba(204,255,225,1);
+                border: 4rpx solid rgba(204,255,225,1);
                 border-radius:10px;
                 text-align: center;
                 position: relative;
@@ -125,18 +124,26 @@
                 .check-classify-icon {
                     width: 146rpx;
                     height: 176rpx;
-                    margin-top: -80rpx;
+                    position: absolute;
+                    left: 0;
+                    bottom: 46rpx;
                 }
                 .check-classify-active-icon {
                     width: 146rpx;
                     height: 206rpx;
-                    margin-top: -110rpx;
+                    position: absolute;
+                    left: 0;
+                    bottom: 48rpx;
                 }
                 .check-text {
                     color: @answerColor;
                     font-size: 22rpx;
                     font-weight: 500;
                     line-height: 22rpx;
+                    position: absolute;
+                    width: 100%;
+                    left: 0;
+                    bottom: 24rpx;
                 }
                 .check-border {
                     width: 36rpx;
@@ -166,7 +173,7 @@
                 }
             }
             .check-main-item-active {
-                border: 2px solid @themeColor;
+                border: 4rpx solid @themeColor;
                 box-sizing: border-box;
             }
         }
