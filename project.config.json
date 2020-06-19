@@ -149,10 +149,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 12,
 					"name": "3.4--答题结果",
 					"pathName": "answer/result/index",
-					"query": "openid=abcdef",
+					"query": "is_success=false",
 					"scene": null
 				},
 				{
@@ -163,17 +163,17 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "授权",
-					"pathName": "pages/auth/auth",
-					"query": "keyword=垃圾",
+					"id": 14,
+					"name": "3.6--海报",
+					"pathName": "answer/poster/index",
+					"query": "record_id=240",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "添加自定义关键字",
-					"pathName": "pages/gaebage/gaebageAdd/gaebageAdd",
-					"query": "",
+					"name": "3.7--好友排行",
+					"pathName": "answer/ranking/index",
+					"query": "is_success=true",
 					"scene": null
 				}
 			]

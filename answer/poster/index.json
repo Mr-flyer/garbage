@@ -2,5 +2,6 @@
   "usingComponents": {
     "answer-title": "/components/answerTitle/index"
   },
-  "navigationBarTextStyle": "white"
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "海报分享"
 }

@@ -17,6 +17,7 @@ Page({
     onLoad() {
         // 获取列表底侧加载更多组件实例
         loadMoreView = this.selectComponent("#loadMoreView");
+        page = 1;
         this.requestData();
     },
     onPullDownRefresh() {
@@ -36,16 +37,20 @@ Page({
      * 页面上拉触底事件的实际处理函数 -- 由组件内部调用
      */
     loadMoreListener(e) {
+        page++;
+        this.requestData();
     },
     // 加载失败点击从新加载
     clickLoadMore(e) {
+        this.requestData();
     },
     requestData() {
         let _that = this;
         let items = this.data.redEnvelopesList;
-        wx.showLoading({
-            title: '加载中',
-        })
+        // wx.showLoading({
+        //     mask: true,
+        //     title: '加载中',
+        // })
         special.getRedEnvelopesList(page, 20).then((res) => {
             items = items.concat(res.data);
             _that.setData({
@@ -54,10 +59,10 @@ Page({
                 redEnvelopesList: items,
                 refreshed: true
             })
-            loadMoreView.loadMoreComplete({curPage: res.page, pageCount: res.count});
-            wx.hideLoading();
+            loadMoreView.loadMoreComplete({curPage: res.page, next: res.next});
+            // wx.hideLoading();
         }).catch((err)=> {
-            wx.hideLoading();
+            // wx.hideLoading();
         })
     },
     rankingItem(e) {

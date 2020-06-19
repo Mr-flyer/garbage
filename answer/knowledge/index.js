@@ -1,4 +1,4 @@
-let loadMoreView, page = 1;
+let loadMoreView, emptyView, page = 1;
 import special from '../../models/special.js';
 Page({
     data: {
@@ -14,6 +14,7 @@ Page({
     },
     onLoad() {
         loadMoreView = this.selectComponent("#loadMoreView");
+        emptyView = this.selectComponent("#emptyView");
         this.requestData();
     },
     onPullDownRefresh() {
@@ -27,8 +28,7 @@ Page({
      * 页面上拉触底事件的组件内处理函数
      */
     onReachBottom() {
-        console.log(1)
-        loadMoreView.loadMore()
+        loadMoreView.loadMore();
     },
     /**
      * 页面上拉触底事件的实际处理函数 -- 由组件内部调用
@@ -44,19 +44,20 @@ Page({
     requestData() {
         let _that = this;
         let items = this.data.knowledgeList;
-        wx.showLoading({
-            title: '加载中',
-        })
-        special.getKnowledgeList(page, 3).then((res) => {
+        // wx.showLoading({
+        //     title: '加载中',
+        // })
+        special.getKnowledgeList(page, 10).then((res) => {
             items = items.concat(res.data);
             _that.setData({
                 knowledgeList: items,
                 refreshed: true
             })
-            loadMoreView.loadMoreComplete({curPage: page, pageCount: res.count});
-            wx.hideLoading();
+            loadMoreView.loadMoreComplete({curPage: page, next: res.next});
+            emptyView.getShowValue(_that.data.knowledgeList);
+            // wx.hideLoading();
         }).catch((err)=> {
-            wx.hideLoading();
+            // wx.hideLoading();
         })
     },
     knowledgeItem(e) {

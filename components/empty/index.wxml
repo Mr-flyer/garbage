@@ -1,0 +1,4 @@
+<view class="empty-main" wx:if="{{emptyShow}}">
+    <image class="empty-icon" src="../../static/images/common/empty_icon.png" />
+    <view class="empty-text">{{emptyText}}</view>
+</view>

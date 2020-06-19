@@ -1,0 +1,1 @@
+.empty-main{width:100%;display:flex;justify-content:center;align-items:center;flex-direction:column}.empty-main .empty-icon{width:100rpx;height:100rpx;margin:120rpx 0 32rpx 0}.empty-main .empty-text{color:#999;font-size:24rpx}

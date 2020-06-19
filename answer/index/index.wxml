@@ -9,15 +9,20 @@
                 <view class="user-name">123</view>
                 <view class="user-icons">
                     <image class="heart-icon" src="../images/answer/heart_icon.png" />
-                    <text>3/3</text>
+                    <text>{{answer_count}}/{{total_answer}}</text>
                     <image class="add-icon" src="../images/answer/add_icon.png" />
                 </view>
             </view>
         </view>
         <image class="answer-icon" src="../images/answer/answer_icon.png" mode="widthFix"/>
         <view class="answer-btn-des">
-            <view class="answer-btn" bind:tap="startChallengeBtn">开始挑战</view>
-            <view class="answer-des"><text class="des-num">154354354件垃圾</text><text>已被成功分类</text></view>
+            <view class="start-container" bind:tap="startChallengeBtn">
+                <image src="../images/answer/start_btn.png" mode="widthFix"> </image>
+                <view class="start-light">
+                    <image class="light-img" src="../images/answer/index@light.png" mode="widthFix"> </image>
+                </view>
+            </view>
+            <view class="answer-des"><text class="des-num">{{category_count}}件垃圾</text><text>已被成功分类</text></view>
         </view>
         <view class="fun-icons">
             <view class="fun-item" bind:tap="knowledgeBtn">

@@ -35,31 +35,36 @@ Page({
     onLoad() {
         let _that = this;
         this.setData({ statusBarHeight, titleBarHeight });
-        special.getGarbageCategorys().then((res) => {
-            _that.setData({
-                checkList: res.data
-            })
-        })
-        special.getAnswerList().then((res) => {
-            _that.setData({
-                showLoading: false,
-                count_down: res.data.count_down,
-                record_id: res.data.record_id,
-                answerList: res.data.questions,
-                countDown: res.data.count_down
-            })
-            _that.countDownFun();
-        }).catch((err)=>{
-            if(err.errCode == 10030) {
-                wx.showToast({
-                    title: '答题次数已用光',
-                    icon: 'none',
-                    duration: 2000
+        Promise.all([
+            special.getGarbageCategorys().then((res) => {
+                _that.setData({
+                    checkList: res.data
                 })
-                wx.navigateBack({
-                    delta: 1
+            }),
+            special.getAnswerList().then((res) => {
+                _that.setData({
+                    count_down: res.data.count_down,
+                    record_id: res.data.record_id,
+                    answerList: res.data.questions,
+                    countDown: res.data.count_down
                 })
-            }
+                _that.countDownFun();
+            }).catch((err)=>{
+                if(err.errCode == 10030) {
+                    wx.showToast({
+                        title: '答题次数已用光',
+                        icon: 'none',
+                        duration: 2000
+                    })
+                    wx.navigateBack({
+                        delta: 1
+                    })
+                }
+            })
+        ]).then(() => {
+            _that.setData({
+                showLoading: false
+            })
         })
     },
     countDownFun() {
@@ -100,7 +105,7 @@ Page({
             }).then((res) => {
                 _that.data.setTimeer = setTimeout(() => {
                     wx.redirectTo({
-                        url: `/answer/result/index?is_success=${res.data.is_success}&is_pay=${res.data.is_pay}&price=${res.data.price}&score=${res.data.score}`
+                        url: `/answer/result/index?record_id=${_that.data.record_id}&is_success=${res.data.is_success}&is_pay=${res.data.is_pay}&price=${res.data.price}&score=${res.data.score}`
                     })
                 }, 2000)
             })
@@ -108,8 +113,8 @@ Page({
             let index = this.data.answerIndex;
             this.data.setTimeer = setTimeout(() => {
                 this.setData({
-                    answerIndex: index + 1,
                     show: false,
+                    answerIndex: index + 1,
                     countDown: this.data.count_down,
                     scrollTop: 0
                 })

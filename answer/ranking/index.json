@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "empty": "/components/empty/index"
   },
   "navigationBarTextStyle": "white"
 }

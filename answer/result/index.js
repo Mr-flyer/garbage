@@ -2,6 +2,7 @@ const {
     statusBarHeight, // 状态栏高度
     titleBarHeight  // 标题栏高度
 } = getApp().globalData;
+import special from '../../models/special.js';
 Page({
     data: {
         canUse: getApp().globalData.canUse,
@@ -12,6 +13,8 @@ Page({
         showFollow: false,
         showRedEnvelopes: false,
         score: 0,
+        record_id: '',
+        is_success: false,
         is_pay: false,
         isOpen: false,
         isParse: false,
@@ -24,9 +27,11 @@ Page({
             })
         }
         this.setData({
+            is_success: options.is_success,
             is_pay: options.is_pay,
             score: options.score,
-            price: options.price
+            price: options.price,
+            record_id: options.record_id
         })
     },
     handleTap() {},
@@ -54,14 +59,29 @@ Page({
     },
     // 继续挑战
     continueChallengeBtn() {
-        wx.redirectTo({
-            url: '/answer/answer/index'
+        let _that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
+        special.getAnswerInfo().then((res) => {
+            wx.hideLoading();
+            if(res.data.answer_count >= res.data.total_answer) {
+                wx.showToast({
+                    title: '今日答题次数已用完',
+                    icon: 'none',
+                    duration: 2000
+                })
+            }else {
+                wx.redirectTo({
+                    url: '/answer/answer/index'
+                })
+            }
         })
     },
     // 生成海报
     createPosterBtn() {
         wx.navigateTo({
-            url: '/answer/poster/index'
+            url: `/answer/poster/index?record_id=${this.data.record_id}`
         })
     },
     // 开红包

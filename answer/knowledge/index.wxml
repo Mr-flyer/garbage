@@ -1,18 +1,17 @@
 <mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
 <pullDownRefresh class="container" refreshing="{{refreshing}}" refreshed="{{refreshed}}" bind:refresh="onPullDownRefresh">
-    <scroll-view class="main" scroll-y enable-flex bindscrolltolower="onReachBottom">
-        <view hidden="{{knowledgeList.length<=0}}">
-            <view class="knowledge-item" data-knowledgeId="{{item.id}}" bind:tap="knowledgeItem" wx:for="{{knowledgeList}}" wx:key="this">
-                <view class="item-title">{{item.title}}</view>
-                <view class="item-des">{{item.desc}}</view>
-                <view class="item-time-browse">
-                    <view class="time">{{item.time}}</view>
-                    <view class="browse"><van-icon class="browse-icon" name="eye-o" />{{item.read_num}}</view>
-                </view>
-                <image class="item-image" src="{{item.img}}" mode="widthFix" />
-            </view> 
-            <!-- 加载更多模块 -->
-            <load-more id="loadMoreView" bindloadMoreListener='loadMoreListener' bindclickLoadMore='clickLoadMore'></load-more>
-        </view>
+    <empty id="emptyView" emptyText="抱歉，没有知识列表~"></empty>
+    <scroll-view hidden="{{knowledgeList.length <= 0}}" class="main" scroll-y enable-flex bindscrolltolower="onReachBottom">
+        <view class="knowledge-item" data-knowledgeId="{{item.id}}" bind:tap="knowledgeItem" wx:for="{{knowledgeList}}" wx:key="this">
+            <view class="item-title">{{item.title}}</view>
+            <view class="item-des">{{item.desc}}</view>
+            <view class="item-time-browse">
+                <view class="time">{{item.time}}</view>
+                <view class="browse"><van-icon class="browse-icon" name="eye-o" />{{item.read_num}}</view>
+            </view>
+            <image class="item-image" src="{{item.img}}" mode="widthFix" lazy-load />
+        </view> 
+        <!-- 加载更多模块 -->
+        <load-more id="loadMoreView" bindloadMoreListener='loadMoreListener' bindclickLoadMore='clickLoadMore'></load-more>
     </scroll-view>
 </pullDownRefresh>
