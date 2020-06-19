@@ -33,5 +33,17 @@ Component({
         url: `/pages/gaebage/gaebageType/gaebageType?gaebageTypeId=${detail}`
       })
     },
+    //
+    gotoSearchDetail({detail}) {
+      let searchKayword = typeof detail === 'string' ? detail : this.data.searchKayword
+      console.log(searchKayword);
+      // return false
+      wx.navigateTo({
+        url: `/pages/gaebage/gaebageDetail/gaebageDetail?keyword=${searchKayword}`
+      })
+    },
+    
+    // 存储搜索关键字
+    searchChange({detail}) { this.data.searchKayword = detail },
   },
 })

@@ -12,6 +12,12 @@ Page({
     },
     active: 0,  // 当前选中tab
   },
+  onLoad: function() {
+    getApp().watch(needUpdate => {
+      console.log('----------', needUpdate);
+      this.setData({ needUpdate })
+    })
+  },
   // 切换页脚 tabber 时
   onChangeTabbar(event) {
     // this.setData({ active: event.detail });

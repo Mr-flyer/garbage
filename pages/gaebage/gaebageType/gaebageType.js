@@ -10,7 +10,7 @@ Page({
       // statusBgColor: '', // 状态栏背景色
       // showPre: true, // 是否只展示返回键 默认 false
     },
-  },
+  }, 
   onLoad: async function({gaebageTypeId}) {
     console.log('分类id', gaebageTypeId);
     // 垃圾列表

@@ -1,3 +1,4 @@
+import { host } from '../../env';
 Page({
     data: {
         canUse: getApp().globalData.canUse,
@@ -10,7 +11,7 @@ Page({
     onLoad(options) {
         if(options.record_id) {
             this.setData({
-                posterUrl: `http://101.132.128.12/#/?record_id=${options.record_id}&user_id=1`
+                posterUrl: `${host}static/share/index.html#/?record_id=${options.record_id}&user_id=1`
             })
         }
     }

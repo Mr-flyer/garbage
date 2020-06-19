@@ -1,1 +1,1 @@
-.title_wrap{color:#144c57;font-size:36rpx;line-height:1;font-weight:bold}.title_wrap text{position:relative;z-index:1}.title_wrap .title_pic{margin-left:-6rpx;width:32rpx;height:15rpx;vertical-align:bottom}
+.title_wrap{color:#144c57;font-size:36rpx;line-height:1;font-weight:bold}.title_wrap .title_txt{position:relative;z-index:1}.title_wrap .title_pic{margin-left:-6rpx;width:32rpx;height:15rpx;vertical-align:bottom}
