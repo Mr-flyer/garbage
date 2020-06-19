@@ -10,7 +10,10 @@
         </view>
         <view class="result-content">
             <view class="fraction-main">
-                <image class="portrait" src="../images/answer/portrait.png"/>
+                <view class="portrait">
+                  <open-data type="userAvatarUrl"></open-data>
+                </view>
+                <!-- <image class="portrait" src="../images/answer/portrait.png"/> -->
                 <view class="result-text">恭喜你大致之，完成答题！</view>
                 <view class="fraction">
                     <image class="star_1" src="../images/answer/ico@star.png" />
@@ -51,7 +54,7 @@
             <image bind:tap="onClickHide" class="follow-close" src="../images/answer/close.png"/>
         </view>
     </van-overlay>
-    <van-overlay show="{{ showRedEnvelopes }}" bind:click="onClickHideRE">
+    <van-overlay show="{{ showRedEnvelopes }}" z-index="10" bind:click="onClickHideRE">
         <view class="red-envelopes-main" catchtap="handleTap">
             <image class="red-en-bg" src="../images/answer/red_envelopes_bg.png"/>
             <view class="red-en-content">

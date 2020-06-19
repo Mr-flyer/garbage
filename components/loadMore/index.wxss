@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-.loadmore text {
+.loadmore .loadmore_txt {
   padding-left: 10rpx;
   font-size: 13px;
   color: #bfbfbf;

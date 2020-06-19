@@ -10,5 +10,10 @@ Page({
       // showPre: true, // 是否只展示返回键 默认 false
       // hideCapsule: true, // 是否隐藏胶囊
     },
+  },
+  gotoGarbage() {
+    wx.navigateTo({
+      url: `/pages/userCenter/userLexicon/userLexicon`
+    })
   }
 })

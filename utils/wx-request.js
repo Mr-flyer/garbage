@@ -56,7 +56,8 @@ class wxRequest {
       let { token: access_token, need_update } = data
       saveTokens(access_token);
       // 是否上传用户信息
-      if(need_update) return this._getNeedUpdata(options)
+      // if(need_update) 
+      return this._getNeedUpdata(options)
       // 从新发送因token失效的请求
       return Promise.resolve(this.request(options))
     })
@@ -64,6 +65,7 @@ class wxRequest {
   // 更新用户信息
   _getNeedUpdata(options) {
     return wx.getSetting().then(({authSetting}) => {
+      console.log("authSetting", authSetting);
       // 用户已授权 静默上传用户信息
       if(authSetting['scope.userInfo']) return wx.getUserInfo()
       // 未授权则开启自定义授权弹窗
@@ -77,9 +79,9 @@ class wxRequest {
     clearToken();
     return new Promise((success, fail) => wx.login({success, fail}))
     .then(({code}) => this.request({
-      // subUrl: `api/v1/user/login`,
-      subUrl: `api/v1/user/test_token`,
-      data: { code }, method: "GET", isLogin: true 
+      subUrl: `api/v1/user/login`,
+      // subUrl: `api/v1/user/test_token`,
+      data: { code }, method: "POST", isLogin: true 
     }))
   }
   // 统一 返回的业务数据 key值

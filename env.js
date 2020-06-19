@@ -10,7 +10,7 @@ const dev = {
 
 // 测试环境
 const test = {
-  host: 'https://test.qq.cn',
+  host: 'http://lajifenlei.wohewomen.com/',
   ws: 'wss://test.qq.cn',
   h5: 'https://test.qq.cn',
   label: 'test'
@@ -18,12 +18,12 @@ const test = {
 
 // 生产环境
 const prod = {
-  host: 'https://laji.wohewomen.com/',
+  host: 'https://lajifenlei.wohewomen.com/',
   ws: 'wss://prod.qq.cn',
   h5: 'https://prod.qq.cn',
   label: 'prod'
 }
 
 module.exports = {
-  ...prod
+  ...test
 }

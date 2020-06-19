@@ -17,6 +17,7 @@ Page({
             let _that = this;
             Toast.loading({message: '加载中...', forbidClick: true, duration: 0})
             special.getKnowledgeDetail(options.id).then((res) => {
+              Toast.clear()
                 _that.setData({
                     is_url: res.data.is_url,
                     url: res.data.url

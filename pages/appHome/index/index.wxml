@@ -11,8 +11,8 @@
       </view>
       <image class="hd_banner" src="/static/images/common/banner_pic@2x.png" mode="widthFix" />
     </view>
-    <van-search custom-class="search_wrap" field-class="search_field" input-class="search_ipt" value="{{ value }}" shape="round" placeholder="请输入正确名称（包含材质）" placeholder-style="color: rgba(131, 210, 140, 1); font-size: 26rpx" use-action-slot use-left-icon-slot>
-      <van-button slot="action" custom-class="search_btn" type="warning" icon="down" round />
+    <van-search custom-class="search_wrap" field-class="search_field" input-class="search_ipt" value="{{ value }}" shape="round" placeholder="请输入正确名称（包含材质）" placeholder-style="color: rgba(131, 210, 140, 1); font-size: 26rpx" use-action-slot use-left-icon-slot bind:search="gotoSearchDetail" bind:change="searchChange">
+      <van-button slot="action" custom-class="search_btn" type="warning" icon="down" round bind:tap="gotoSearchDetail"/>
     </van-search>
   </view>
   <view class="main inner">

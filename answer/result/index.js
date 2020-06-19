@@ -65,7 +65,7 @@ Page({
         })
         special.getAnswerInfo().then((res) => {
             wx.hideLoading();
-            if(res.data.answer_count >= res.data.total_answer) {
+            if(res.data.answer_count <= 0) {
                 wx.showToast({
                     title: '今日答题次数已用完',
                     icon: 'none',

@@ -1,5 +1,5 @@
 <!--components/basicTitle/basicTitle.wxml-->
 <view class="title_wrap">
-  <text >{{title}}</text>
+  <text class="title_txt">{{title}}</text>
   <image class="title_pic" src="./source/title_pic@2x.png" mode="aspectFill" />
 </view>

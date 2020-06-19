@@ -39,7 +39,7 @@ Page({
     },
     // 开始挑战
     startChallengeBtn() {
-        if(this.data.answer_count >= this.data.total_answer) {
+        if(this.data.answer_count <= 0) {
             wx.showToast({
                 title: '今日答题次数已用完',
                 icon: 'none',
