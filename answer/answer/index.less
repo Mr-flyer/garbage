@@ -134,6 +134,15 @@
                     position: absolute;
                     left: 0;
                     bottom: 48rpx;
+                    animation: topBottom linear .8s 1;
+                }
+                @keyframes topBottom {
+                    0% { bottom: 48rpx}
+                    20%{ bottom: 60rpx}
+                    40% { bottom: 48rpx}
+                    60% { bottom: 60rpx}
+                    80% { bottom: 48rpx}
+                    100% { bottom: 48rpx}
                 }
                 .check-text {
                     color: @answerColor;
@@ -174,6 +183,10 @@
             }
             .check-main-item-active {
                 border: 4rpx solid @themeColor;
+                box-sizing: border-box;
+            }
+            .check-main-item-error {
+                border: 4rpx solid #ff7d78;
                 box-sizing: border-box;
             }
         }
