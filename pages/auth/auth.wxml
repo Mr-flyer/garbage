@@ -1,3 +1,2 @@
 <!--pages/auth/auth.wxml-->
-<web-view src="{{host}}api/v1/user/gzh_auth?path=pages/index/index&user_id=1" />
-<!-- <web-view src="https://jstv.wohewomen.com/api/v2/user/oauth_snsapi_base" /> -->
+<web-view src="{{host}}api/v1/user/gzh_auth?path=/pages/index/index&user_id=1" />

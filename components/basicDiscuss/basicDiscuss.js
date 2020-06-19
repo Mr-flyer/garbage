@@ -25,7 +25,7 @@ Component({
       }else if(dayjs(curTime).add(24, 'hour') > dayjs()) {
         txt = `${dayjs().diff(dayjs(curTime), 'hour')}小时前`
       }else if(dayjs(curTime).add(1, 'month') > dayjs()) {
-        txt = `${dayjs().diff(dayjs(curTime), 'hour')}天前`
+        txt = `${Math.floor(dayjs().diff(dayjs(curTime), 'hour') / 24)}天前`
       }else {
         txt = dayjs(curTime).format('YYYY-MM-DD HH:mm')
       }

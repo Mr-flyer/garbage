@@ -4,13 +4,18 @@
   <view class="header userheader boxshow_green" style="--paddingTop:{{navBarHeight}}">
     <view class="user_wrap">
       <view class="avatar_wrap">
-        <image mode="aspectFill" />
+        <open-data type="userAvatarUrl"></open-data>
+        <!-- <image mode="aspectFill" /> -->
       </view>
       <view class="user_info">
-        <view class="user_name">大吱吱</view>
+        <view class="user_name">
+          <open-data type="userNickName" lang="zh_CN"></open-data>
+        </view>
         <view class="user_address">
-          <text>江苏·南京</text>
-          <text>雨花台区</text>
+          <open-data type="userProvince" lang="zh_CN"></open-data>
+          <open-data type="userCity" lang="zh_CN"></open-data>
+          <!-- <text>江苏·南京</text>
+          <text>雨花台区</text> -->
           <van-icon name="location-o" />
         </view>
       </view>
@@ -22,13 +27,13 @@
         </view>
         <view slot="text" class="nav_txt">答题</view>
       </van-grid-item>
-      <van-grid-item url="/pages/userCenter/userCollect/userCollect">
+      <van-grid-item url="/pages/userCenter/userDiscuss/userDiscuss">
         <view slot="icon" class="nav_num">
           {{discussCount}}<van-icon custom-class="nav_dot" slot="icon" dot></van-icon>
         </view>
         <view slot="text" class="nav_txt">评论</view>
       </van-grid-item>
-      <van-grid-item url="/pages/userCenter/userDiscuss/userDiscuss">
+      <van-grid-item url="/pages/userCenter/userCollect/userCollect">
         <view slot="icon" class="nav_num">
           {{collectCount}}<van-icon custom-class="nav_dot" slot="icon" dot></van-icon>
         </view>
@@ -48,7 +53,7 @@
     <van-cell custom-class="cell_wrap" title-class="cell_title" icon="iconfont icon-icon_about" center title="关于我们" is-link />
     <van-cell custom-class="cell_wrap" title-class="cell_title" icon="iconfont icon-icon_seting" center title="设置" is-link />
   </van-cell-group>
-  <van-button open-type="getUserInfo" bind:getuserinfo="getuserinfo">授权</van-button>
+  <!-- <van-button open-type="getUserInfo" bind:getuserinfo="getuserinfo">授权</van-button> -->
 
   <basicSponsors />
 
