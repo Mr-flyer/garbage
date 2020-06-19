@@ -95,7 +95,6 @@ Page({
     let { curTabIndex, tabsArr } = this.data
     if(tabsArr[curTabIndex].loading) {
       this.setData({ [`tabsArr[${curTabIndex}].loading`]: false })
-      Toast.clear();
     }
   }
 })

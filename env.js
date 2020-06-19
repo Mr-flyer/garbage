@@ -25,5 +25,5 @@ const prod = {
 }
 
 module.exports = {
-  ...test
+  ...prod
 }

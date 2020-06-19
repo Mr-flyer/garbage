@@ -34,17 +34,19 @@ class wxRequest {
           // 返回数据异常 以请求的基本错误码为准
           else if(!isStatusOk) data = { statusCode, errMsg }
           // token失效
-          if(!isLogin && updateTokenCodeArr.includes(data.errCode) || updateTokenCodeArr.includes(data.statusCode)) {
+          if(updateTokenCodeArr.includes(data.errCode) || updateTokenCodeArr.includes(data.statusCode)) {
             return resolve(this._login(options))
           }
+          data.subUrl =  subUrl 
+          data.method =  method 
           // isStatusOk -- 网络码正常，data.errCode -- 业务码正常
           isStatusOk && !data.errCode ? resolve(data) : reject(data)
         },
-        fail: err => reject(err)
+        fail: err => reject(err),
+        complete: () => { Toast.clear(); }
       })
     })
     .catch(err => {
-      Toast.clear();
       if(!hideErrCodeArr.includes(err.errCode)) Toast({message: getErrorMessage(err).description})
       // wx.showToast({ title: getErrorMessage(err).description, icon: 'none', duration: 2000 })
       return Promise.reject(err)
@@ -65,7 +67,6 @@ class wxRequest {
   // 更新用户信息
   _getNeedUpdata(options) {
     return wx.getSetting().then(({authSetting}) => {
-      console.log("authSetting", authSetting);
       // 用户已授权 静默上传用户信息
       if(authSetting['scope.userInfo']) return wx.getUserInfo()
       // 未授权则开启自定义授权弹窗
@@ -79,9 +80,9 @@ class wxRequest {
     clearToken();
     return new Promise((success, fail) => wx.login({success, fail}))
     .then(({code}) => this.request({
-      subUrl: `api/v1/user/login`,
+      subUrl: `api/v1/user/login?code=${code}`,
       // subUrl: `api/v1/user/test_token`,
-      data: { code }, method: "POST", isLogin: true 
+      method: "post", isLogin: true 
     }))
   }
   // 统一 返回的业务数据 key值

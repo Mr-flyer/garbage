@@ -43,7 +43,6 @@ App({
   // 上传用户信息
   _getUserInfo({ userInfo }) {
     if (userInfo) {
-      console.log(userInfo);
       const data = { // **** 上传参数根据实际情况而定 ****
         nickname: userInfo.nickName,  // 微信昵称
         sex: userInfo.gender,         // 性别 0 1 2
@@ -59,7 +58,7 @@ App({
       // 上传用户信息
       return globalModel.userUpdate(data)
       .then(res => {
-        console.log(res);
+        console.log("用户信息上传成功！！");
         // this.globalData.needUpdate = false
         // setStorage('isUpdata.need_update', false)
       })
