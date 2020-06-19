@@ -8,7 +8,7 @@ Page({
       // navigationBarBackgroundColor: 'aqua', // 导航栏背景色
       // statusBgColor: '', // 状态栏背景色
       // showPre: true, // 是否只展示返回键 默认 false
-      // hideCapsule: true, // 是否隐藏胶囊
+      hideCapsule: true, // 是否隐藏胶囊
     },
     active: 0,  // 当前选中tab
   },
