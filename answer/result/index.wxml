@@ -14,7 +14,11 @@
                   <open-data type="userAvatarUrl"></open-data>
                 </view>
                 <!-- <image class="portrait" src="../images/answer/portrait.png"/> -->
-                <view class="result-text">恭喜你大致之，完成答题！</view>
+                <view class="result-text">
+                  恭喜你
+                  <open-data type="userNickName"></open-data>
+                  ，完成答题！
+                </view>
                 <view class="fraction">
                     <image class="star_1" src="../images/answer/ico@star.png" />
                     <text class="fraction-num">{{score}}</text><text>分</text>
