@@ -4,9 +4,14 @@
     <view class="answer-content" style="top: {{statusBarHeight + titleBarHeight}}px;">
         <image class="answer-bg-bottom" src="../images/answer/answer_bg_bottom.png" mode="widthFix"/>
         <view class="answer-portrait">
-            <image class="portrait" src="../images/answer/portrait.png" />
+            <!-- <image class="portrait" src="../images/answer/portrait.png" /> -->
+            <view class="portrait">
+              <open-data type="userAvatarUrl"></open-data>
+            </view>
             <view class="user-info">
-                <view class="user-name">123</view>
+                <view class="user-name">
+                  <open-data type="userNickName"></open-data>
+                </view>
                 <view class="user-icons">
                     <image class="heart-icon" src="../images/answer/heart_icon.png" />
                     <text>{{answer_count}}/{{total_answer}}</text>

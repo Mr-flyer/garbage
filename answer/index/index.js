@@ -23,12 +23,12 @@ Page({
         let _that = this;
         Toast.loading({message: '加载中...', forbidClick: true, duration: 0})
         special.getAnswerInfo().then((res) => {
+          Toast.clear();
             _that.setData({
                 category_count: res.data.category_count,
                 total_answer: res.data.total_answer,
                 answer_count: res.data.answer_count,
             })
-            Toast.clear();
         })
     },
     handleTap() {},

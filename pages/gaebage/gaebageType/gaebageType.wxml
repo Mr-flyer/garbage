@@ -25,9 +25,9 @@
     </view>
     <basicSponsors />
   </view>
-  <view class="footer">
+  <!-- <view class="footer">
     <van-button type="warning" round block>保存图片到手机</van-button>
-  </view>
+  </view> -->
 
-  <van-dialog show="{{needUpdate}}" id="van-dialog" title="提示" message="请授权沪法云获取您的用户信息用于答题、团战、排行榜，取消将导致部分功能无法正常使用！" showCancelButton confirm-button-open-type="getUserInfo" bind:getuserinfo="handGetUserInfo" />
+  <van-dialog show="{{needUpdate}}" id="van-dialog" title="提示" message="请授权垃圾分类问答获取您的用户信息用于答题、团战、排行榜，取消将导致部分功能无法正常使用！" showCancelButton confirm-button-open-type="getUserInfo" bind:getuserinfo="handGetUserInfo" />
 </view>

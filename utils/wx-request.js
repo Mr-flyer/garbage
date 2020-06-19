@@ -65,7 +65,7 @@ class wxRequest {
   // 更新用户信息
   _getNeedUpdata(options) {
     return wx.getSetting().then(({authSetting}) => {
-      // console.log("authSetting", authSetting);
+      console.log("authSetting", authSetting);
       // 用户已授权 静默上传用户信息
       if(authSetting['scope.userInfo']) return wx.getUserInfo()
       // 未授权则开启自定义授权弹窗

@@ -29,4 +29,7 @@ Page({
       this.setData({ active: event.detail });
     }
   },
+  handGetUserInfo({detail}) {
+    getApp()._getUserInfo(detail)
+  }
 })
