@@ -3,6 +3,7 @@ const {
     titleBarHeight  // 标题栏高度
 } = getApp().globalData;
 import special from '../../models/special.js';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
     data: {
         canUse: getApp().globalData.canUse,
@@ -20,17 +21,14 @@ Page({
     },
     onShow() {
         let _that = this;
-        wx.showLoading({
-            mask: true,
-            title: '加载中',
-        })
+        Toast.loading({message: '加载中...', forbidClick: true, duration: 0})
         special.getAnswerInfo().then((res) => {
             _that.setData({
                 category_count: res.data.category_count,
                 total_answer: res.data.total_answer,
                 answer_count: res.data.answer_count,
             })
-            wx.hideLoading();
+            Toast.clear();
         })
     },
     handleTap() {},

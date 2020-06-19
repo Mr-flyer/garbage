@@ -1,4 +1,5 @@
 import special from '../../models/special.js';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 let emptyView;
 Page({
     data: {
@@ -23,10 +24,7 @@ Page({
                 topHeight: rect.height
             })
         }).exec();
-        wx.showLoading({
-            mask: true,
-            title: '加载中',
-        })
+        Toast.loading({message: '加载中...', forbidClick: true, duration: 0})
         Promise.all([
             special.getRankingList().then((res) => {
                 _that.setData({
@@ -42,9 +40,9 @@ Page({
                 _that.isShowEmpty();
             })
         ]).then((res) => {
-            wx.hideLoading();
+            Toast.clear();
         }).catch(() => {
-            wx.hideLoading();
+            Toast.clear();
         })
     },
     rankingItem(e) {

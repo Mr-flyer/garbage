@@ -1,4 +1,5 @@
 import special from '../../models/special.js';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
     data: {
         canUse: getApp().globalData.canUse,
@@ -14,10 +15,7 @@ Page({
     onLoad(options) {
         if(options.id) {
             let _that = this;
-            wx.showLoading({
-                mask: true,
-                title: '加载中',
-            })
+            Toast.loading({message: '加载中...', forbidClick: true, duration: 0})
             special.getKnowledgeDetail(options.id).then((res) => {
                 _that.setData({
                     is_url: res.data.is_url,
@@ -28,8 +26,9 @@ Page({
                         knowInfo: res.data.content
                     })
                 }
-                wx.hideLoading();
             })
+        }else {
+            Toast('无小答题详情');
         }
     }
 })

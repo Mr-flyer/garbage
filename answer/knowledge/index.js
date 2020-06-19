@@ -1,5 +1,6 @@
 let loadMoreView, emptyView, page = 1;
 import special from '../../models/special.js';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
     data: {
         canUse: getApp().globalData.canUse,
@@ -44,9 +45,6 @@ Page({
     requestData() {
         let _that = this;
         let items = this.data.knowledgeList;
-        // wx.showLoading({
-        //     title: '加载中',
-        // })
         special.getKnowledgeList(page, 10).then((res) => {
             items = items.concat(res.data);
             _that.setData({
@@ -55,9 +53,6 @@ Page({
             })
             loadMoreView.loadMoreComplete({curPage: page, next: res.next});
             emptyView.getShowValue(_that.data.knowledgeList);
-            // wx.hideLoading();
-        }).catch((err)=> {
-            // wx.hideLoading();
         })
     },
     knowledgeItem(e) {

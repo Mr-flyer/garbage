@@ -3,3 +3,5 @@
     <rich-text class="" nodes="{{knowInfo}}"></rich-text>
 </scroll-view>
 <web-view wx:else src="{{url}}" />
+<!-- loading -->
+<van-toast id="van-toast" />

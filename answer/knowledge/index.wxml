@@ -15,3 +15,5 @@
         <load-more id="loadMoreView" bindloadMoreListener='loadMoreListener' bindclickLoadMore='clickLoadMore'></load-more>
     </scroll-view>
 </pullDownRefresh>
+<!-- loading -->
+<van-toast id="van-toast" />
