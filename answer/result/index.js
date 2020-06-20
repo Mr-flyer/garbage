@@ -3,6 +3,7 @@ const {
     titleBarHeight  // 标题栏高度
 } = getApp().globalData;
 import special from '../../models/special.js';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
     data: {
         canUse: getApp().globalData.canUse,

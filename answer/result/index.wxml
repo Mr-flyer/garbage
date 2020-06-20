@@ -72,3 +72,5 @@
         </view>
     </van-overlay>
 </view>
+<!-- loading -->
+<van-toast id="van-toast" />

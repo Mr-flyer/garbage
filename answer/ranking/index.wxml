@@ -30,7 +30,8 @@
                     <view wx:else>{{index+1}}</view>
                 </view>
                 <view class="ranking-user-info">
-                    <image class="portrait" src="{{item.headimgurl}}"/>
+                    <image wx:if="{{item.headimgurl}}" class="portrait" src="{{item.headimgurl}}"/>
+                    <image wx:else class="portrait" src="../images/answer/default_head.png"/>
                     <view class="ranking-user">
                         <view class="ranking-nickname">{{item.nickname}}</view>
                         <view class="ranking-level">等级{{item.lv}}·{{item.level_name}}</view>
@@ -54,7 +55,8 @@
                     <view wx:else>{{index+1}}</view>
                 </view>
                 <view class="ranking-user-info">
-                    <image class="portrait" src="{{item.headimgurl}}"/>
+                    <image wx:if="{{item.headimgurl}}" class="portrait" src="{{item.headimgurl}}"/>
+                    <image wx:else class="portrait" src="../images/answer/default_head.png"/>
                     <view class="ranking-user">
                         <view class="ranking-nickname">{{item.nickname}}</view>
                         <view class="ranking-level">等级{{item.lv}}·{{item.level_name}}</view>

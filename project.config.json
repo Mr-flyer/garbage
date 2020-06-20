@@ -166,7 +166,7 @@
 					"id": 14,
 					"name": "3.6--海报",
 					"pathName": "answer/poster/index",
-					"query": "record_id=3219",
+					"query": "record_id=473&user_id=5",
 					"scene": null
 				},
 				{

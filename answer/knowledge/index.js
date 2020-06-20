@@ -7,7 +7,8 @@ Page({
         nvabarData: {
             navigationBarTextStyle: 'black', // 胶囊主题 white || black
             navigationBarTitleText: '小答题', //  导航栏标题文本
-            navigationBarBackgroundColor: 'white'
+            navigationBarBackgroundColor: 'white',
+            navigationBarBackground: "white"
         },
         refreshing: false, // 监听设为 true 时 ==> 触发refresh事件
         refreshed: false, // true ==> 收起下拉刷新，可多次设置为true（即便原来已经是true了）
