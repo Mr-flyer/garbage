@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -20,12 +20,12 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": false,
 		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"compileHotReLoad": false,
 		"useIsolateContext": true,
 		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
@@ -180,7 +180,7 @@
 					"id": 16,
 					"name": "小答题详情页",
 					"pathName": "answer/knowledgeDetail/index",
-					"query": "id=1",
+					"query": "id=8",
 					"scene": null
 				}
 			]

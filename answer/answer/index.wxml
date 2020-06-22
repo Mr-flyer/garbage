@@ -15,9 +15,7 @@
                     <view class="count-down"><text class="second">{{countDown}}</text>s</view>
                 </view>
                 <view class="question-content">
-                    <view class="question-img-view">
-                        <image class="question-img" src="{{item.icon}}" mode="aspectFit"/>
-                    </view>
+                    <image wx:if="{{item.icon}}" class="question-img" src="{{item.icon}}" mode="aspectFit"/>
                     <view class="question-text">{{item.name}}</view>
                 </view>
             </view>

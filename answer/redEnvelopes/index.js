@@ -22,9 +22,6 @@ Page({
     },
     onPullDownRefresh() {
         page = 1;
-        this.setData({
-            redEnvelopesList: []
-        })
         this.requestData();
     },
     /**
@@ -46,12 +43,19 @@ Page({
     },
     requestData() {
         let _that = this;
-        let items = this.data.redEnvelopesList;
         special.getRedEnvelopesList(page, 20).then((res) => {
-            items = items.concat(res.data);
+            let items;
+            if(page == 1) {
+                _that.setData({
+                    redEnvelopesPrice: res.total_price/100,
+                    redEnvelopesCount: res.count,
+                })
+                items = res.data;
+            }else {
+                items = this.data.redEnvelopesList;
+                items = items.concat(res.data);
+            }
             _that.setData({
-                redEnvelopesPrice: res.total_price/100,
-                redEnvelopesCount: res.count,
                 redEnvelopesList: items,
                 refreshed: true
             })

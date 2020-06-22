@@ -11,7 +11,6 @@ Page({
             navigationBarTextStyle: 'white', // 胶囊主题 white || black
             navigationBarTitleText: '你是什么垃圾', //  导航栏标题文本
         },
-        showFollow: false,
         showRedEnvelopes: false,
         score: 0,
         record_id: '',

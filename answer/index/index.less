@@ -50,10 +50,13 @@
                     background: rgba(32,97,110,.15);
                     height: 30rpx;
                     position: relative;
-                    margin-left: 35rpx;
+                    margin-left: 36rpx;
                     margin-top: 12rpx;
                     box-sizing: border-box;
-                    text-align: center;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-width: 100rpx;
                     .heart-icon {
                         width: 38rpx;
                         height: 34rpx;
@@ -226,6 +229,24 @@
                     }
                 }
             }
+        }
+    }
+    .follow-main {
+        padding: 0 55rpx;
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        .follow-img {
+            width: 100%;
+        }
+        .follow-close {
+            width: 70rpx;
+            height: 70rpx;
+            margin-top: 30rpx;
         }
     }
 }

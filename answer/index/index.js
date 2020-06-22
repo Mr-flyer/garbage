@@ -14,7 +14,9 @@ Page({
         showRule: false,
         category_count: 0,
         total_answer: 0,
-        answer_count: 0
+        answer_count: 0,
+        is_follow: false,
+        showFollow: false
     },
     onLoad() {
         this.setData({ statusBarHeight, titleBarHeight });
@@ -31,6 +33,8 @@ Page({
                 category_count: res.data.category_count,
                 total_answer: res.data.total_answer,
                 answer_count: res.data.answer_count,
+                is_follow: res.data.is_follow,
+                showFollow: res.data.is_follow
             })
         }).catch(() => {
             
@@ -42,6 +46,11 @@ Page({
             showRule: false
         })
     },
+    onClickHideFollow() {
+        this.setData({
+            showFollow: true
+        })
+    },
     // 开始挑战
     startChallengeBtn() {
         if(this.data.answer_count <= 0) {
@@ -50,7 +59,15 @@ Page({
                 icon: 'none',
                 duration: 2000
             })
-        }else {
+        }
+        // else if(!this.data.is_follow) {
+        //     wx.showToast({
+        //         title: '请关注公众号',
+        //         icon: 'none',
+        //         duration: 2000
+        //     })
+        // }
+        else {
             wx.navigateTo({
                 url: '/answer/answer/index'
             })

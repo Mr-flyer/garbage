@@ -14,7 +14,7 @@
                 </view>
                 <view class="user-icons">
                     <image class="heart-icon" src="../images/answer/heart_icon.png" />
-                    <text>{{answer_count}}/{{total_answer}}</text>
+                    <text class="answer-count">{{answer_count}}/{{total_answer}}</text>
                     <image class="add-icon" src="../images/answer/add_icon.png" />
                 </view>
             </view>
@@ -65,6 +65,12 @@
                     </scroll-view>
                 </view>
             </view>
+        </view>
+    </van-overlay>
+    <van-overlay show="{{ showFollow }}" bind:click="onClickHideFollow">
+        <view class="follow-main" catchtap="handleTap">
+            <image class="follow-img" src="../images/answer/follow.png" mode="widthFix"/>
+            <image bind:tap="onClickHideFollow" class="follow-close" src="../images/answer/close.png"/>
         </view>
     </van-overlay>
 </view>

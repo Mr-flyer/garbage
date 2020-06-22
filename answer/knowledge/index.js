@@ -6,24 +6,22 @@ Page({
         canUse: getApp().globalData.canUse,
         nvabarData: {
             navigationBarTextStyle: 'black', // 胶囊主题 white || black
-            navigationBarTitleText: '小答题', //  导航栏标题文本
+            navigationBarTitleText: '垃圾分类小知识', //  导航栏标题文本
             navigationBarBackgroundColor: 'white',
             navigationBarBackground: "white"
         },
         refreshing: false, // 监听设为 true 时 ==> 触发refresh事件
         refreshed: false, // true ==> 收起下拉刷新，可多次设置为true（即便原来已经是true了）
-        knowledgeList: []
+        knowledgeList: [],
     },
     onLoad() {
+        page = 1;
         loadMoreView = this.selectComponent("#loadMoreView");
         emptyView = this.selectComponent("#emptyView");
         this.requestData();
     },
     onPullDownRefresh() {
         page = 1;
-        this.setData({
-            knowledgeList: []
-        })
         this.requestData();
     },
     /**
@@ -45,9 +43,14 @@ Page({
     },
     requestData() {
         let _that = this;
-        let items = this.data.knowledgeList;
         special.getKnowledgeList(page, 10).then((res) => {
-            items = items.concat(res.data);
+            let items;
+            if(page == 1) {
+                items = res.data;
+            }else {
+                items = this.data.knowledgeList;
+                items = items.concat(res.data);
+            }
             _that.setData({
                 knowledgeList: items,
                 refreshed: true

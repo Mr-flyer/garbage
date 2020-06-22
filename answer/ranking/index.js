@@ -13,7 +13,9 @@ Page({
         topHeight: 0,
         next_level: '',
         allRankingList: [],
-        firendsRankingList: []
+        allSelfRanking: '',
+        firendsRankingList: [],
+        firendSelfRanking: ''
     },
     onLoad() {
         let _that = this;
@@ -33,13 +35,15 @@ Page({
             special.getRankingList().then((res) => {
                 _that.setData({
                     next_level: res.data.next_level,
-                    allRankingList: res.data.rank
+                    allRankingList: res.data.rank,
+                    allSelfRanking: res.data.self_info
                 })
                 _that.isShowEmpty();
             }), 
             special.getFriendRankingList().then((res) => {
                 _that.setData({
-                    firendsRankingList: res.data.rank
+                    firendsRankingList: res.data.rank,
+                    firendSelfRanking: res.data.self_info
                 })
                 _that.isShowEmpty();
             })
