@@ -1,7 +1,7 @@
 <!--components/basicDiscuss/basicDiscuss.wxml-->
 <view class="discuss">
   <van-cell custom-class="discuss_user" title-class="discussUser_title" label-class="discussUser_label" value-class="discussUser_status" title="{{discussItem.nickname}}" label="{{discussItem.addr}}" value="{{timeTxt}}" border="{{false}}">
-    <image slot="icon" src="{{discussItem.headimgurl}}" class="discussUser_pic" mode="aspectFit" />
+    <image slot="icon" src="{{discussItem.headimgurl || sex}}" class="discussUser_pic" mode="aspectFill" binderror="_imageErr"/>
   </van-cell>
   <view class="discuss_info">
     {{discussItem.content}}

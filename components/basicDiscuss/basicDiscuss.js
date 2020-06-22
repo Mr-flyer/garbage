@@ -34,14 +34,23 @@ Component({
   },
   lifetimes: {
     attached: function() {
-      // 在组件实例进入页面节点树时执行
-      
+      let { headimgurl, sex } = this.data.discussItem
+      // 0 未知、 1 男、 2 女
+      this.data.sex = `/static/images/common/avatar_${sex != 2 ?'boy' : 'girl'}@2x.png`
+      this.setData({
+        "discussItem.headimgurl": headimgurl || this.data.sex
+      })
     },
     detached: function() {
       // 在组件实例被从页面节点树移除时执行
     },
   },
   methods: {
-    
+    // 图片加载失败时 --- 头像
+    _imageErr() {
+      this.setData({
+        "discussItem.headimgurl": this.data.sex
+      })
+    }
   }
 })

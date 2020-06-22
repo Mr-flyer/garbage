@@ -16,7 +16,7 @@
       <!-- 搜索到相关垃圾分类 -->
       <van-cell wx:if="{{garbageId}}" custom-class="garbagetype_card" title-class="garbagetype_title van-ellipsis" label-class="garbagetype_label van-ellipsis" title="{{category.name}}" label="{{category.desc}}" center border="{{false}}">
         <image slot="icon" class="garbagetype_icon" src="{{garbageTypeImg[category.id]}}" mode="aspectFit" />
-        <image class="garbagetype_pic" src="{{category.icon}}" class="garbagetype_pic" mode="aspectFit" />
+        <image class="garbagetype_pic" src="{{icon}}" class="garbagetype_pic" mode="aspectFill" />
       </van-cell>
       <!-- 未搜索到分类 -->
       <block wx:else>
@@ -34,7 +34,7 @@
       <view class="barrage_wrap" wx:if="{{dmData.length}}">
         <view class="barrage_inner">
           <view class="barrage_item dmGroup" wx:for="{{ dmData }}" wx:key="index" style="top:{{ item.top }}%; animation: dmAnimation {{ item.time }}s linear {{ index*3 }}s infinite;">
-            <image class="barrage_pic" src="{{item.avatar}}" mode="aspectFit" />
+            <image class="barrage_pic" src="{{item.avatar}}" mode="aspectFill" />
             <view class="barrage_txt van-ellipsis">{{item.content}}</view>
           </view>
         </view>
@@ -73,8 +73,9 @@
 </view>
 <!-- 评论输入框 -->
 <van-goods-action wx:if="{{garbageId}}" custom-class="cu-bar bg-white shadow comment_wrap">
-  <van-goods-action-icon icon="chat-o" bind:tap="handComment" />
-  <van-search class="comment_inner" input-class="comment_ipt" value="{{ value }}" placeholder="说点什么吧..." shape="round" value="{{commentKayword}}" input-align="center" use-left-icon-slot bind:search="handComment" bind:change="commentChange" />
+  <!-- <van-goods-action-icon icon="chat-o" bind:tap="handComment" /> -->
+
+  <van-field class="comment_inner" input-class="comment_ipt" placeholder="说点什么吧..." value="{{commentKayword}}" input-align="center" confirm-type="发布" bind:confirm="handComment" bind:change="commentChange" />
 </van-goods-action>
 <!-- 添加词库弹窗 -->
 <van-action-sheet class="keywordPop_wrap" show="{{ showAddKeywordPop }}" title="添加词库" bind:close="closeKeywordPop">

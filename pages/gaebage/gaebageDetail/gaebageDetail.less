@@ -24,6 +24,11 @@ page {
   .comment_inner {
     flex: 1;
   }
+  .comment_ipt {
+    background-color: rgba(245, 245, 245, 1);
+    border-radius: 30rpx;
+    height: 60rpx;
+  }
 }
 .header {
   background-color: rgba(67, 193, 120, 1);
@@ -104,9 +109,13 @@ page {
   }
 
   .collect_btn {
+    display: flex;
     width: auto;
     padding: 0 30rpx;
     border-radius: 10rpx 0px 10rpx 0px;
+    .van-button__text {
+      padding-top: 4rpx;
+    }
   }
 
   .garbagetype_card {
@@ -204,6 +213,7 @@ page {
     font-size: 24rpx;
 
     .barrage_pic {
+      flex: none;
       width: 36rpx;
       height: 36rpx;
       border-radius: 50%;

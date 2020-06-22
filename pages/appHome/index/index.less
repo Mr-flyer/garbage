@@ -10,14 +10,17 @@
 }
 
 .header {
-  background-color: rgba(67, 193, 120, 1);
-  padding-top: calc(var(--paddingTop)*2rpx);
-  padding-bottom: 40rpx;
-  background-image: radial-gradient(farthest-side at 0% 0%, #c0fcc6 0%, transparent 80%);
-  box-shadow: -6px 2px 7px 0px rgba(213, 238, 216, 1);
-  border-radius:0px 0px 60rpx 60rpx;
+  background-color: #fff;
   position: relative;
   z-index: 1;
+  .hd_cont {
+    background-color: rgba(67, 193, 120, 1);
+    padding-top: calc(var(--paddingTop)*2rpx);
+    padding-bottom: 40rpx;
+    background-image: radial-gradient(farthest-side at 0% 0%, #c0fcc6 0%, transparent 80%);
+    box-shadow: -6px 2px 7px 0px rgba(213, 238, 216, 1);
+    border-radius:0px 0px 60rpx 60rpx;
+  }
   .hd_banner {
     width: 414rpx;
     position: absolute;
@@ -119,4 +122,7 @@
   .basic_type {
     padding-top: 40rpx;
   }
+}
+.tips_tag {
+  margin-right: 10rpx;
 }

@@ -17,7 +17,7 @@
     </van-grid>
   </view>
   <van-collapse class="main collapse_wrap" wx:if="{{garbageTypes.length}}" value="{{ activeNames }}" bind:change="onChange">
-    <van-collapse-item custom-class="collapse_group" wx:for="{{garbageTypes}}" wx:key="index" name="{{index+1}}">
+    <van-collapse-item custom-class="collapse_group" wx:for="{{garbageTypes}}" wx:key="index" name="{{index+1}}" disabled="{{!item.answerList.length}}">
       <!-- 标题区块 -->
       <van-cell slot="title" custom-class="collapse_hd" title-class="collapse_hd_title" label-class="collapse_hd_label van-multi-ellipsis--l2" title="{{item.name}}" label="{{item.desc}}" border="{{false}}">
         <image slot="icon" class="collapse_icon" src="{{item.icon}}" mode="aspectFill"/>
