@@ -28,7 +28,7 @@
                     <image class="ranking-icon" wx:if="{{firendSelfRanking.self_rank===1}}" src="../images/answer/cup_1.png" />
                     <image class="ranking-icon" wx:elif="{{firendSelfRanking.self_rank===2}}" src="../images/answer/cup_2.png" />
                     <image class="ranking-icon" wx:elif="{{firendSelfRanking.self_rank===3}}" src="../images/answer/cup_3.png" />
-                    <view class="ranking-index" wx:else>{{firendSelfRanking.self_rank}}</view>
+                    <view class="ranking-score" wx:else>{{firendSelfRanking.self_rank}}</view>
                 </view>
                 <view class="ranking-user-info">
                     <view wx:if="{{firendSelfRanking.headimgurl}}" class="portrait_primary">
@@ -55,7 +55,7 @@
                     <image class="ranking-icon" wx:if="{{index===0}}" src="../images/answer/cup_1.png" />
                     <image class="ranking-icon" wx:elif="{{index===1}}" src="../images/answer/cup_2.png" />
                     <image class="ranking-icon" wx:elif="{{index===2}}" src="../images/answer/cup_3.png" />
-                    <view wx:else>{{index+1}}</view>
+                    <view class="ranking-score" wx:else>{{index+1}}</view>
                 </view>
                 <view class="ranking-user-info">
                     <view wx:if="{{item.headimgurl}}" class="portrait_primary">
@@ -85,7 +85,7 @@
                     <image class="ranking-icon" wx:if="{{allSelfRanking.self_rank===1}}" src="../images/answer/cup_1.png" />
                     <image class="ranking-icon" wx:elif="{{allSelfRanking.self_rank===2}}" src="../images/answer/cup_2.png" />
                     <image class="ranking-icon" wx:elif="{{allSelfRanking.self_rank===3}}" src="../images/answer/cup_3.png" />
-                    <view class="ranking-index" wx:else>{{allSelfRanking.self_rank}}</view>
+                    <view class="ranking-score" wx:else>{{allSelfRanking.self_rank}}</view>
                 </view>
                 <view class="ranking-user-info">
                     <view wx:if="{{allSelfRanking.headimgurl}}" class="portrait_primary">
@@ -112,7 +112,7 @@
                     <image class="ranking-icon" wx:if="{{index===0}}" src="../images/answer/cup_1.png" />
                     <image class="ranking-icon" wx:elif="{{index===1}}" src="../images/answer/cup_2.png" />
                     <image class="ranking-icon" wx:elif="{{index===2}}" src="../images/answer/cup_3.png" />
-                    <view wx:else>{{index+1}}</view>
+                    <view class="ranking-score" wx:else>{{index+1}}</view>
                 </view>
                 <view class="ranking-user-info">
                     <view wx:if="{{item.headimgurl}}" class="portrait_primary">
