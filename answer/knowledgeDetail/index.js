@@ -2,15 +2,11 @@ import special from '../../models/special.js';
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
     data: {
-        canUse: getApp().globalData.canUse,
-        nvabarData: {
-            navigationBarTextStyle: 'black', // 胶囊主题 white || black
-            navigationBarTitleText: '小答题', //  导航栏标题文本
-            navigationBarBackgroundColor: 'white'
-        },
         is_url: 0,
         knowInfo: '',
         url: ''
+    },
+    onUnload() {
     },
     onLoad(options) {
         if(options.id) {
@@ -23,13 +19,9 @@ Page({
             special.getKnowledgeDetail(options.id).then((res) => {
                 _that.setData({
                     is_url: res.data.is_url,
-                    url: res.data.url
+                    url: decodeURIComponent(res.data.url),
+                    knowInfo: res.data.content
                 })
-                if(res.data.is_url == 0) {
-                    _that.setData({
-                        knowInfo: res.data.content
-                    })
-                }
             })
         }else {
             Toast('无小答题详情');

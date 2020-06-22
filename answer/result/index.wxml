@@ -52,12 +52,6 @@
             </view>
         </view>
     </view>
-    <van-overlay show="{{ showFollow }}" bind:click="onClickHide">
-        <view class="follow-main" catchtap="handleTap">
-            <image class="follow-img" src="../images/answer/follow.png" mode="widthFix"/>
-            <image bind:tap="onClickHide" class="follow-close" src="../images/answer/close.png"/>
-        </view>
-    </van-overlay>
     <van-overlay show="{{ showRedEnvelopes }}" z-index="10" bind:click="onClickHideRE">
         <view class="red-envelopes-main" catchtap="handleTap">
             <image class="red-en-bg" src="../images/answer/red_envelopes_bg.png"/>
@@ -76,3 +70,5 @@
         </view>
     </van-overlay>
 </view>
+<!-- loading -->
+<van-toast id="van-toast" />

@@ -56,12 +56,12 @@ Page({
                         icon: 'none',
                         duration: 2000
                     })
-                    wx.navigateBack({
-                        delta: 1
+                    wx.reLaunch({
+                        url: '/pages/index/index'
                     })
                 }
             })
-        ]).then(() => {
+        ]).then((res) => {
             _that.setData({
                 showLoading: false
             })
@@ -108,6 +108,14 @@ Page({
                         url: `/answer/result/index?record_id=${_that.data.record_id}&is_success=${res.data.is_success}&is_pay=${res.data.is_pay}&price=${res.data.price}&score=${res.data.score}`
                     })
                 }, 2000)
+            }).catch((err) => {
+                if(err.errCode == 10030) {
+                    wx.showToast({
+                        title: '答题次数已用光',
+                        icon: 'none',
+                        duration: 2000
+                    })
+                }
             })
         }else {
             let index = this.data.answerIndex;

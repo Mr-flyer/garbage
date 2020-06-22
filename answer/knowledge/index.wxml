@@ -9,7 +9,7 @@
                 <view class="time">{{item.time}}</view>
                 <view class="browse"><van-icon class="browse-icon" name="eye-o" />{{item.read_num}}</view>
             </view>
-            <image class="item-image" src="{{item.img}}" mode="widthFix" lazy-load />
+            <image class="item-image" src="{{item.img}}" mode="aspectFit" lazy-load />
         </view> 
         <!-- 加载更多模块 -->
         <load-more id="loadMoreView" bindloadMoreListener='loadMoreListener' bindclickLoadMore='clickLoadMore'></load-more>

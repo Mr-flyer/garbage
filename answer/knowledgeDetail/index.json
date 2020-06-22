@@ -1,7 +1,5 @@
 {
-    "usingComponents": {
-        "van-icon": "/miniprogram_npm/@vant/weapp/icon/index"
-    },
+    "navigationStyle": "default",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "小答题"
+    "navigationBarTitleText": "垃圾分类小知识"
 }
