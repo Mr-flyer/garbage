@@ -14,7 +14,10 @@ Component({
     attached: function () {
       specialModel.getGarbageKeyword()
       .then(({data}) => {
-        this.setData({ keywordList: data })
+        this.setData({ 
+          keywordList: data.keywords,
+          tips: data.tips
+        })
       })
     },
     moved: function () { },

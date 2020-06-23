@@ -13,7 +13,7 @@ Page({
     },
     active: 0,  // 当前选中tab
   },
-  onLoad: function() {
+  onLoad: function(optons) {
     getApp().watch(needUpdate => {
       console.log('----------', needUpdate);
       this.setData({ needUpdate })

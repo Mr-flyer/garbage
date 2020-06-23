@@ -97,11 +97,10 @@ Page({
     this._setDM(commentList.slice(0, 5))
     this.setData({
       ...garbageInfo, commentList,
-      collect_num: garbageInfo.collect_num,
+      collect_num: this._coutNum(garbageInfo.collect_num),
       comment_num: garbageInfo.comment_num,
       garbageId: garbageInfo.id, loading: false
     })
-    console.log(garbageInfo)
   },
   // 点击搜索
   handSearch({detail}) {
@@ -117,7 +116,7 @@ Page({
     let { garbageId } = this.data
     garbageId && await specialModel.addUserCollect(garbageId)
     let collect_num = this.data.collect_num +1;
-    this.setData({ is_collect: true, collect_num: collect_num })
+    this.setData({ is_collect: true, collect_num: this._coutNum(collect_num) })
   },
   // 发布评论
   async handComment({detail}) {
@@ -200,5 +199,14 @@ Page({
     this.setData({
       dmData: dmArr
     });
+  },
+  _coutNum(e) {
+    if (e > 1000 && e < 10000) {
+      e = (e / 1000).toFixed(1) + 'k'
+    }
+    if (e > 10000) {
+      e = (e / 10000).toFixed(1) + 'W'
+    }
+    return e
   },
 })

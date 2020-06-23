@@ -1,19 +1,21 @@
 <!-- pages/appHome/index/index.wxml -->
 <view class="container">
   <view class="header" style="--paddingTop:{{navBarHeight}}">
-    <view class="hd_inner">
-      <view class="hd_info">
-        <view class="hd_title">
-          <text>拯救垃圾分类</text>
-          <text>困难症</text>
+    <view class="hd_cont">
+      <view class="hd_inner">
+        <view class="hd_info">
+          <view class="hd_title">
+            <text>拯救垃圾分类</text>
+            <text>困难症</text>
+          </view>
+          <view class="hd_desc">一键查询免烦恼，从我做起爱环保</view>
         </view>
-        <view class="hd_desc">一键查询免烦恼，从我做起爱环保</view>
+        <image class="hd_banner" src="/static/images/common/banner_pic@2x.png" mode="widthFix" />
       </view>
-      <image class="hd_banner" src="/static/images/common/banner_pic@2x.png" mode="widthFix" />
+      <van-search custom-class="search_wrap" field-class="search_field" input-class="search_ipt" value="{{ value }}" shape="round" placeholder="请输入正确名称（包含材质）" placeholder-style="color: rgba(131, 210, 140, 1); font-size: 26rpx" use-action-slot use-left-icon-slot bind:search="gotoSearchDetail" bind:change="searchChange">
+        <van-button slot="action" custom-class="search_btn" type="warning" icon="down" round bind:tap="gotoSearchDetail"/>
+      </van-search>
     </view>
-    <van-search custom-class="search_wrap" field-class="search_field" input-class="search_ipt" value="{{ value }}" shape="round" placeholder="请输入正确名称（包含材质）" placeholder-style="color: rgba(131, 210, 140, 1); font-size: 26rpx" use-action-slot use-left-icon-slot bind:search="gotoSearchDetail" bind:change="searchChange">
-      <van-button slot="action" custom-class="search_btn" type="warning" icon="down" round bind:tap="gotoSearchDetail"/>
-    </van-search>
   </view>
   <view class="main inner">
     <!-- 热门搜索 -->
@@ -21,7 +23,7 @@
       <view class="searchHot_title">热门搜索</view>
       <view class="searchHot_list">
         <van-tag wx:for="{{keywordList}}" wx:key="index" custom-class="searchHot_tag" size="medium" round data-txt="{{item}}" bind:tap="handHotKeyword">{{item}}</van-tag>
-      </view> 
+      </view>
     </view>
     <!-- 基本分类 -->
     <view class="basic_type">
@@ -30,7 +32,7 @@
     </view>
     <view class="tips_wrap">
       <van-tag custom-class="tips_tag" type="success" plain round>Tips</van-tag>
-      <text >湿垃圾（又名厨余垃圾、易腐垃圾）、干垃圾（又名其他垃圾）</text>
+      <text >{{tips}}</text>
     </view>
   </view>
   <basicSponsors />

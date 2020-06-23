@@ -20,12 +20,12 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": false,
 		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"compileHotReLoad": false,
 		"useIsolateContext": true,
 		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
@@ -75,7 +75,7 @@
 					"id": 1,
 					"name": "1.1 搜索详情",
 					"pathName": "pages/gaebage/gaebageDetail/gaebageDetail",
-					"query": "keyword=饭菜",
+					"query": "keyword=油漆桶",
 					"scene": null
 				},
 				{

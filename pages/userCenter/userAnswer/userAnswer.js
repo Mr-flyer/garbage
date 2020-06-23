@@ -23,7 +23,7 @@ Page({
       el.answerList = answerList.filter(v => v.category === el.id)
     });
     Toast.clear()
-    console.log(answerOutline);
+    console.log(garbageTypes);
     answerOutline.score = this._coutNum(answerOutline.score)
     this.setData({
       garbageTypes, loading: false,
