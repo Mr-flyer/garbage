@@ -24,7 +24,13 @@ Page({
                 })
             })
         }else {
-            Toast('无小答题详情');
+            Toast('无小知识详情');
+        }
+    },
+    onShareAppMessage() {
+        return {
+            title: '垃圾分类小知识',
+            desc: '垃圾分类小知识'
         }
     }
 })

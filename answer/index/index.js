@@ -40,6 +40,13 @@ Page({
             
         })
     },
+    onShareAppMessage() {
+        return {
+            title: '你是什么垃圾',
+            desc: '一起来答题',
+            path: '/pages/index/index'
+        }
+    },
     handleTap() {},
     onClickHide() {
         this.setData({

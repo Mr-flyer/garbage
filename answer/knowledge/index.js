@@ -20,6 +20,12 @@ Page({
         emptyView = this.selectComponent("#emptyView");
         this.requestData();
     },
+    onShareAppMessage() {
+        return {
+            title: '垃圾分类小知识',
+            desc: '垃圾分类小知识'
+        }
+    },
     onPullDownRefresh() {
         page = 1;
         this.requestData();

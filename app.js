@@ -59,8 +59,10 @@ App({
       return globalModel.userUpdate(data)
       .then(res => {
         console.log("用户信息上传成功！！");
-        // this.globalData.needUpdate = false
-        // setStorage('isUpdata.need_update', false)
+        this.globalData.needUpdate = false;
+        let isUpdata = getStorage('isUpdata');
+        isUpdata.need_update = false;
+        setStorage('isUpdata', isUpdata);
       })
     } // 同意授权上传用户信息
     else {

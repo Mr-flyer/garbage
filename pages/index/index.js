@@ -1,4 +1,5 @@
 //index.js
+import { setStorage, getStorage, saveTokens } from '../../utils/storageSyncTool';
 Page({
   data: {
     canUse: getApp().globalData.canUse,
@@ -20,11 +21,14 @@ Page({
   },
   // 切换页脚 tabber 时
   onChangeTabbar(event) {
-    // this.setData({ active: event.detail });
     if(event.detail === 1) {
-      wx.navigateTo({
-        url: '/answer/index/index'
-      })
+      if(getStorage('isUpdata').need_update) {
+        getApp().globalData.needUpdate = true;
+      }else {
+        wx.navigateTo({
+          url: '/answer/index/index'
+        })
+      }
     }else {
       this.setData({ active: event.detail });
     }
