@@ -32,7 +32,7 @@
     </view>
     <view class="tips_wrap">
       <van-tag custom-class="tips_tag" type="success" plain round>Tips</van-tag>
-      <text >湿垃圾（又名厨余垃圾、易腐垃圾）、干垃圾（又名其他垃圾）</text>
+      <text >{{tips}}</text>
     </view>
   </view>
   <basicSponsors />
