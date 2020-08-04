@@ -13,12 +13,6 @@ Page({
       // showPre: true, // 是否只展示返回键 默认 false
       // hideCapsule: true, // 是否隐藏胶囊
     },
-    garbageTypeImg: [
-      '/static/images/common/garbage_blue@2x.png',
-      '/static/images/common/garbage_yellow@2x.png',
-      '/static/images/common/garbage_red@2x.png',
-      '/static/images/common/garbage_gray@2x.png',
-    ], // 垃圾分类数据
     showAddKeywordPop: false, // 添加词库弹窗
     autosize: { minHeight: 144 }, // 
     // garbageId: 10, // 垃圾分类ID
@@ -46,9 +40,12 @@ Page({
     ], // 弹幕数据
     loading: true, // 为true 代表首次进入，未加载完成不展示页面
     collect_num: 0,
-    comment_num: 0
+    comment_num: 0,
+    keyword: '',
+    garbageId: ''
   },
   onLoad: function({ keyword, garbageId }) {
+    this.setData({ keyword })
     Toast.loading({ message: '加载中...', duration: 0 })
     if(garbageId) {
       this.setData({ garbageId, isGargabeInfo: true });
@@ -57,6 +54,21 @@ Page({
     else {
       this._initSearchData(keyword)
     } // 传入关键字 则为搜索垃圾
+  },
+  onShareAppMessage() {
+    if(this.data.garbageId) {
+      return {
+        title: '来测测你是什么垃圾',
+        desc: '来测测你是什么垃圾',
+        path: `/pages/gaebage/gaebageDetail/gaebageDetail?garbageId=${this.data.garbageId}`
+      }
+    }else {
+      return {
+        title: '来测测你是什么垃圾',
+        desc: '来测测你是什么垃圾',
+        path: `/pages/gaebage/gaebageDetail/gaebageDetail?keyword=${this.data.keyword}`
+      }
+    }
   },
   // 拉取垃圾详情
   async _initGarbageInfo(garbageId) {
@@ -71,10 +83,15 @@ Page({
       return { commentList: data }
     }).catch(err => err)
     Promise.all([p1, p2]).then(res => {
-      Toast.clear()
+      Toast.clear();
       let newData = res.filter(v => !v.errCode)
       this.setData({
         ...newData[0], ...newData[1], loading: false
+      })
+      let keyName = "category.guidance";
+      let temp = this.data.category.guidance
+      this.setData({
+        [keyName]: temp.replace(/(<img[\s\S]+?)/ig, '<img style="width:100%;margin:0 auto;"')
       })
     })
     // .catch(() => this.setData({ loading: false }))
@@ -83,6 +100,9 @@ Page({
   async _initSearchData(searchKayword) {
     // Toast.loading({duration: 0})
     let { data: garbageInfo } = await specialModel.getGarbageSearch(searchKayword)
+    this.setData({
+      keyword: searchKayword
+    })
     if(!garbageInfo.id) {
       Toast.clear()
       return this.setData({
@@ -149,7 +169,7 @@ Page({
   // openKeywordPop() { this.setData({ showAddKeywordPop: true }) },
   openKeywordPop() { 
     wx.navigateTo({
-      url: '/pages/gaebage/gaebageAdd/gaebageAdd'
+      url: `/pages/gaebage/gaebageAdd/gaebageAdd?keyword=${this.data.keyword}`
     })  
   },
   // 添加垃圾词库弹窗 --- 提交
