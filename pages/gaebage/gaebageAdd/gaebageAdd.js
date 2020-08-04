@@ -15,6 +15,13 @@ Page({
       minHeight: 144
     }, // 
   },
+  onLoad(options) {
+    if(options.keyword) {
+      this.setData({
+        lexicon_name: options.keyword,
+      })
+    }
+  },
   //#region -- 添加垃圾词库弹窗
   // 添加垃圾词库弹窗 --- 提交
   async formSubmit({

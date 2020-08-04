@@ -8,18 +8,19 @@
         <van-button slot="action" custom-class="search_btn" icon="down" round bind:tap="handSearch" />
       </van-search>
       <!-- 收藏 -->
-      <van-cell custom-class="keyword_wrap" wx:if="{{garbageId && name}}" title-class="keyword_title van-ellipsis" title="{{name || ' '}}">
+      <van-cell custom-class="keyword_wrap" wx:if="{{garbageId && keyword}}" title-class="keyword_title van-ellipsis" title="{{keyword || ' '}}">
         <van-button slot="right-icon" custom-class="collect_btn" icon="star" type="{{is_collect ? '' : 'warning'}}" disabled="{{is_collect}}" size="mini" hairline bind:click="handCollect">
           {{is_collect ? '已收藏' : '收藏'}} {{collect_num}}
         </van-button>
       </van-cell>
       <!-- 搜索到相关垃圾分类 -->
       <van-cell wx:if="{{garbageId}}" custom-class="garbagetype_card" title-class="garbagetype_title van-ellipsis" label-class="garbagetype_label van-ellipsis" title="{{category.name}}" label="{{category.desc}}" center border="{{false}}">
-        <image slot="icon" class="garbagetype_icon" src="{{garbageTypeImg[category.id]}}" mode="aspectFit" />
+        <image slot="icon" class="garbagetype_icon" src="{{category.icon}}" mode="aspectFit" />
         <image class="garbagetype_pic" src="{{icon}}" class="garbagetype_pic" mode="aspectFill" />
       </van-cell>
       <!-- 未搜索到分类 -->
       <block wx:else>
+        <van-cell custom-class="keyword_wrap" title-class="keyword_title van-ellipsis" title="{{keyword || ''}}"></van-cell>
         <van-cell custom-class="emptySearch_wrap" title-class="emptySearch_title" label-class="emptySearch_label" title="未搜索到分类" label="物品过于独特，可输入正确信息增加词库" border="{{false}}">
           <image class="emptySearch_pic" src="/static/images/common/empty_search@2x.png" mode="aspectFill" />
         </van-cell>
@@ -42,10 +43,7 @@
       <view class="guide_wrap">
         <basicTitle title="投放指导" />
         <view class="guide_inner">
-          <view>{{category.guidance}}</view>
-          <!-- <view>餐厨垃圾应沥干水分后在投放。</view>
-          <view>大块骨头和椰子壳、榴莲壳等不易生化降解，不宜作为餐厨垃圾，可作为干垃圾投放。</view>
-          <view>纯液体（如牛奶等）</view> -->
+          <rich-text nodes="{{category.guidance}}"></rich-text>
         </view>
       </view>
     </view>
@@ -55,10 +53,10 @@
         <basicTitle title="基本分类" />
         <garbageTypes bind:myevent="handGarbageType"/>
       </view>
-      <view class="tips_wrap">
+      <!-- <view class="tips_wrap">
         <van-tag custom-class="tips_tag" type="success" plain round>Tips</van-tag>
-        <text>湿垃圾（又名厨余垃圾、易腐垃圾）、干垃圾（又名其他垃圾）</text>
-      </view>
+        <text>{{tips}}</text>
+      </view> -->
     </view>
   </view>
   <!-- 评论区块 -->
@@ -74,30 +72,8 @@
 <!-- 评论输入框 -->
 <van-goods-action wx:if="{{garbageId}}" custom-class="cu-bar bg-white shadow comment_wrap">
   <!-- <van-goods-action-icon icon="chat-o" bind:tap="handComment" /> -->
-
   <van-field class="comment_inner" input-class="comment_ipt" placeholder="说点什么吧..." value="{{commentKayword}}" input-align="center" confirm-type="发布" bind:confirm="handComment" bind:change="commentChange" />
 </van-goods-action>
-<!-- 添加词库弹窗 -->
-<van-action-sheet class="keywordPop_wrap" show="{{ showAddKeywordPop }}" title="添加词库" bind:close="closeKeywordPop">
-  <form catchsubmit="formSubmit" catchreset="formReset">
-    <view class="keywordPop_inner">
-      <view class="keywordPop_cont">
-        <view class="popTitle">物品名称</view>
-        <van-cell-group>
-          <van-field name="name" value="{{lexicon_name}}" placeholder="请输入物品名称" />
-          <van-field name="desc" value="{{lexicon_desc}}" type="textarea" autosize="{{autosize}}" placeholder="请详细描述您分类的理由，140字以内" maxlength="140" show-word-limit />
-        </van-cell-group>
-        <view class="popTitle">垃圾类别</view>
-        <van-field name="category" value="{{checkedRadio}}" style="display:none"></van-field>
-        <garbageTypes isShowRadio bind:myevent="_handRadio" radioChecked="{{checkedRadio}}" />
-      </view>
-      <!-- <button form-type="reset">reset</button> -->
-      <van-button form-type="submit" custom-class="addKeyword_submit btn_highlight" type="warning" round block hairline>
-        确认添加
-      </van-button>
-    </view>
-  </form>
-</van-action-sheet>
 <!-- loading -->
 <van-toast id="van-toast" />
 <!-- 评论提示 -->

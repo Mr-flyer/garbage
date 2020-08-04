@@ -33,7 +33,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#eee",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "disableScroll": true
   },
   "usingComponents": {
     "mg-navbar": "/components/navigationBar/index",

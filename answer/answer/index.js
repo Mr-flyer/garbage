@@ -8,7 +8,7 @@ Page({
         canUse: getApp().globalData.canUse,
         nvabarData: {
             navigationBarTextStyle: 'white', // 胶囊主题 white || black
-            navigationBarTitleText: '你是什么垃圾', //  导航栏标题文本
+            navigationBarTitleText: '垃圾分类问答', //  导航栏标题文本
         },
         scrollTop: 0,
         record_id: '',

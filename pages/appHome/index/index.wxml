@@ -30,7 +30,7 @@
       <basicTitle title="基本分类" />
       <garbageTypes bind:myevent="handGarbageType"/>
     </view>
-    <view class="tips_wrap">
+    <view class="tips_wrap" wx:if="{{tips}}">
       <van-tag custom-class="tips_tag" type="success" plain round>Tips</van-tag>
       <text >{{tips}}</text>
     </view>

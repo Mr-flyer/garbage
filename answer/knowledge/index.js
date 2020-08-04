@@ -22,8 +22,9 @@ Page({
     },
     onShareAppMessage() {
         return {
-            title: '垃圾分类小知识',
-            desc: '垃圾分类小知识'
+            title: '来测测你是什么垃圾',
+            desc: '垃圾分类小知识',
+            path: `/answer/knowledge/index`
         }
     },
     onPullDownRefresh() {

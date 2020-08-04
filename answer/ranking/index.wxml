@@ -20,7 +20,36 @@
         </view>
     </view>
     <empty id="emptyView" emptyText="暂时还没人参与哦~"></empty>
-    <scroll-view hidden="{{firendsRankingList.length <= 0 || active == 1}}" scroll-y class="ranking-list" style="height: calc(100% - {{topHeight}}px)">
+    <view class="ranking-ul" style="height: calc(100% - {{topHeight}}px)" hidden="{{firendsRankingList.length <= 0 || active == 1}}">
+        <scroll-view scroll-y class="ranking-list">
+            <view class="ranking-list-item" wx:for="{{firendsRankingList}}" wx:key="this">
+                <view class="item-left">
+                    <view class="ranking-num">
+                        <image class="ranking-icon" wx:if="{{index===0}}" src="../images/answer/cup_1.png" />
+                        <image class="ranking-icon" wx:elif="{{index===1}}" src="../images/answer/cup_2.png" />
+                        <image class="ranking-icon" wx:elif="{{index===2}}" src="../images/answer/cup_3.png" />
+                        <view class="ranking-score" wx:else>{{index+1}}</view>
+                    </view>
+                    <view class="ranking-user-info">
+                        <view wx:if="{{item.headimgurl}}" class="portrait_primary">
+                            <image class="portrait" src="{{item.headimgurl}}"/>
+                        </view>
+                        <view wx:else class="portrait_primary portrait_default">
+                            <image class="portrait" src="../images/answer/default_head.png"/>
+                        </view>
+                        <view class="ranking-user">
+                            <view class="ranking-nickname">{{item.nickname}}</view>
+                            <view class="ranking-level">等级{{item.lv}}·{{item.level_name}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="item-right">
+                    <image wx:if="{{index<=4}}" class="ranking-star" src="../images/answer/star_1.png"/>
+                    <image wx:else class="ranking-star2" src="../images/answer/star_2.png"/>
+                    <text class="star-num">x{{item.score}}</text>
+                </view>
+            </view>
+        </scroll-view>
         <view class="ranking-list-item self-ranking">
             <view class="item-left">
                 <view class="ranking-num">
@@ -49,35 +78,37 @@
                 <text class="star-num">x{{firendSelfRanking.score}}</text>
             </view>
         </view>
-        <view class="ranking-list-item" wx:for="{{firendsRankingList}}" wx:key="this">
-            <view class="item-left">
-                <view class="ranking-num">
-                    <image class="ranking-icon" wx:if="{{index===0}}" src="../images/answer/cup_1.png" />
-                    <image class="ranking-icon" wx:elif="{{index===1}}" src="../images/answer/cup_2.png" />
-                    <image class="ranking-icon" wx:elif="{{index===2}}" src="../images/answer/cup_3.png" />
-                    <view class="ranking-score" wx:else>{{index+1}}</view>
+    </view>
+    <view class="ranking-ul" style="height: calc(100% - {{topHeight}}px)" hidden="{{allRankingList.length <= 0 || active == 0}}">
+        <scroll-view  scroll-y class="ranking-list">
+            <view class="ranking-list-item" wx:for="{{allRankingList}}" wx:key="this">
+                <view class="item-left">
+                    <view class="ranking-num">
+                        <image class="ranking-icon" wx:if="{{index===0}}" src="../images/answer/cup_1.png" />
+                        <image class="ranking-icon" wx:elif="{{index===1}}" src="../images/answer/cup_2.png" />
+                        <image class="ranking-icon" wx:elif="{{index===2}}" src="../images/answer/cup_3.png" />
+                        <view class="ranking-score" wx:else>{{index+1}}</view>
+                    </view>
+                    <view class="ranking-user-info">
+                        <view wx:if="{{item.headimgurl}}" class="portrait_primary">
+                            <image class="portrait" src="{{item.headimgurl}}"/>
+                        </view>
+                        <view wx:else class="portrait_primary portrait_default">
+                            <image class="portrait" src="../images/answer/default_head.png"/>
+                        </view>
+                        <view class="ranking-user">
+                            <view class="ranking-nickname">{{item.nickname}}</view>
+                            <view class="ranking-level">等级{{item.lv}}·{{item.level_name}}</view>
+                        </view>
+                    </view>
                 </view>
-                <view class="ranking-user-info">
-                    <view wx:if="{{item.headimgurl}}" class="portrait_primary">
-                        <image class="portrait" src="{{item.headimgurl}}"/>
-                    </view>
-                    <view wx:else class="portrait_primary portrait_default">
-                        <image class="portrait" src="../images/answer/default_head.png"/>
-                    </view>
-                    <view class="ranking-user">
-                        <view class="ranking-nickname">{{item.nickname}}</view>
-                        <view class="ranking-level">等级{{item.lv}}·{{item.level_name}}</view>
-                    </view>
+                <view class="item-right">
+                    <image wx:if="{{index<=4}}" class="ranking-star" src="../images/answer/star_1.png"/>
+                    <image wx:else class="ranking-star2" src="../images/answer/star_2.png"/>
+                    <text class="star-num">x{{item.score}}</text>
                 </view>
             </view>
-            <view class="item-right">
-                <image wx:if="{{index<=4}}" class="ranking-star" src="../images/answer/star_1.png"/>
-                <image wx:else class="ranking-star2" src="../images/answer/star_2.png"/>
-                <text class="star-num">x{{item.score}}</text>
-            </view>
-        </view>
-    </scroll-view>
-    <scroll-view hidden="{{allRankingList.length <= 0 || active == 0}}" scroll-y class="ranking-list" style="height: calc(100% - {{topHeight}}px)">
+        </scroll-view>
         <view class="ranking-list-item self-ranking">
             <view class="item-left">
                 <view class="ranking-num">
@@ -106,34 +137,7 @@
                 <text class="star-num">x{{allSelfRanking.score}}</text>
             </view>
         </view>
-        <view class="ranking-list-item" wx:for="{{allRankingList}}" wx:key="this">
-            <view class="item-left">
-                <view class="ranking-num">
-                    <image class="ranking-icon" wx:if="{{index===0}}" src="../images/answer/cup_1.png" />
-                    <image class="ranking-icon" wx:elif="{{index===1}}" src="../images/answer/cup_2.png" />
-                    <image class="ranking-icon" wx:elif="{{index===2}}" src="../images/answer/cup_3.png" />
-                    <view class="ranking-score" wx:else>{{index+1}}</view>
-                </view>
-                <view class="ranking-user-info">
-                    <view wx:if="{{item.headimgurl}}" class="portrait_primary">
-                        <image class="portrait" src="{{item.headimgurl}}"/>
-                    </view>
-                    <view wx:else class="portrait_primary portrait_default">
-                        <image class="portrait" src="../images/answer/default_head.png"/>
-                    </view>
-                    <view class="ranking-user">
-                        <view class="ranking-nickname">{{item.nickname}}</view>
-                        <view class="ranking-level">等级{{item.lv}}·{{item.level_name}}</view>
-                    </view>
-                </view>
-            </view>
-            <view class="item-right">
-                <image wx:if="{{index<=4}}" class="ranking-star" src="../images/answer/star_1.png"/>
-                <image wx:else class="ranking-star2" src="../images/answer/star_2.png"/>
-                <text class="star-num">x{{item.score}}</text>
-            </view>
-        </view>
-    </scroll-view>
+    </view>
 </view>
 <!-- loading -->
 <van-toast id="van-toast" />

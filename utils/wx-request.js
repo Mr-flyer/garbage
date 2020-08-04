@@ -51,7 +51,20 @@ class wxRequest {
       })
     })
     .catch(err => {
-      if(!hideErrCodeArr.includes(err.errCode)) Toast({message: getErrorMessage(err).description})
+      if(!hideErrCodeArr.includes(err.errCode)) {
+        if(err.errCode === 10060) {
+          if(err.data[Object.keys(err.data)[0]] && err.data[Object.keys(err.data)[0]][0]){
+            let msg = err.data[Object.keys(err.data)[0]];
+            wx.showToast({
+              title: msg[0],
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        }else {
+          Toast({message: getErrorMessage(err).description})
+        }
+      }
       // wx.showToast({ title: getErrorMessage(err).description, icon: 'none', duration: 2000 })
       return Promise.reject(err)
     })

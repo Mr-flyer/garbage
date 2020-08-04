@@ -4,7 +4,7 @@
   <view class="header">
     <image class="userAnswer_tree" src="/static/images/common/pic_tree@2x.png" mode="aspectFit" />
     <view class="avatar">
-      <open-data type="userAvatarUrl"></open-data>
+      <open-data class="avatar_img" type="userAvatarUrl"></open-data>
       <!-- <image mode="aspectFill" /> -->
     </view>
     <van-grid custom-class="userAnswer_header bg_ripple boxshow_green" style="width:100%" border="{{false}}" column-num="2">

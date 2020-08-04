@@ -9,8 +9,10 @@
           <van-cell-group class="lexicon_group">
             <van-cell wx:for="{{item.dataLists}}" wx:for-index="idx" wx:for-item="val" wx:key="index" custom-class="lexicon_card" url="{{val.garbage && '/pages/gaebage/gaebageDetail/gaebageDetail?garbageId='+val.garbage}}" use-label-slot>
               <view slot="title" class="lexicon_title van-ellipsis {{index === 2 && 'red'}}">
-                {{val.name}}
-                <van-tag wx:if="{{index}}" type="{{index === 1 ? 'success' : 'danger'}}" plain round>{{index === 1 ? '审核中' : '未通过'}}</van-tag>
+                <view class="van-ellipsis">
+                  <text class="lexicon_cer">{{val.name}}</text>
+                </view>
+                <van-tag class="check_status" wx:if="{{index}}" type="{{index === 1 ? 'success' : 'danger'}}" plain round>{{index === 1 ? '审核中' : '未通过'}}</van-tag>
               </view>
               <view slot="label" class="garbage_info">
                 <view class="garbage_type van-ellipsis garbageType{{idx}}">
@@ -21,7 +23,8 @@
                   {{val.cate_desc}}
                 </view>
               </view>
-              <image class="garbage_pic" mode="aspectFill" />
+              <image class="garbage_pic" src="{{val.icon}}" mode="aspectFit" wx:if="{{val.icon}}" />
+              <image class="garbage_pic" src="../../../static/images/common/no_img_icon.png" mode="aspectFit" wx:else/>
             </van-cell>
             <!-- 加载更多控件 -->
             <load-more class="loadMoreView" bind:loadMoreListener='loadMoreListener' bind:clickLoadMore='clickLoadMore'></load-more>

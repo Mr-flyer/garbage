@@ -1,6 +1,6 @@
 {
   "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "你是什么垃圾",
+  "navigationBarTitleText": "垃圾分类问答",
   "usingComponents": {
     "appHome": "/pages/appHome/index/index",
     "appUser": "/pages/appUser/index/index",

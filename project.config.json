@@ -182,6 +182,13 @@
 					"pathName": "answer/knowledgeDetail/index",
 					"query": "id=8",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/gaebage/gaebageDetail/gaebageDetail",
+					"pathName": "pages/gaebage/gaebageDetail/gaebageDetail",
+					"query": "record_id=473&user_id=5",
+					"scene": null
 				}
 			]
 		}

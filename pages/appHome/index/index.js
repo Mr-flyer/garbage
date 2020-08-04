@@ -39,14 +39,22 @@ Component({
     //
     gotoSearchDetail({detail}) {
       let searchKayword = typeof detail === 'string' ? detail : this.data.searchKayword
-      console.log(searchKayword);
-      // return false
-      wx.navigateTo({
-        url: `/pages/gaebage/gaebageDetail/gaebageDetail?keyword=${searchKayword}`
-      })
+      if(searchKayword && searchKayword!=undefined) {
+        wx.navigateTo({
+          url: `/pages/gaebage/gaebageDetail/gaebageDetail?keyword=${searchKayword}`
+        })
+      }else {
+        wx.showToast({
+          title: '请输入搜索名称',
+          icon: 'none',
+          duration: 2000
+        })
+      }
     },
     
     // 存储搜索关键字
-    searchChange({detail}) { this.data.searchKayword = detail },
+    searchChange({detail}) {
+      this.data.searchKayword = detail 
+    },
   },
 })

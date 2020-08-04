@@ -51,12 +51,10 @@ Page({
   onLoad: function({ keyword, garbageId }) {
     Toast.loading({ message: '加载中...', duration: 0 })
     if(garbageId) {
-      console.log('详情id', garbageId);
       this.setData({ garbageId, isGargabeInfo: true });
       this._initGarbageInfo(garbageId);
     } // 传入垃圾id 为拉取垃圾详情
     else {
-      console.log('搜索关键字', keyword);
       this._initSearchData(keyword)
     } // 传入关键字 则为搜索垃圾
   },
@@ -104,8 +102,16 @@ Page({
   },
   // 点击搜索
   handSearch({detail}) {
-    let searchKayword = typeof detail === 'string' ? detail : this.data.searchKayword
-    this._initSearchData(searchKayword)
+    let searchKayword = typeof detail === 'string' ? detail : this.data.searchKayword;
+    if(searchKayword && searchKayword!=undefined) {
+      this._initSearchData(searchKayword)
+    }else {
+      wx.showToast({
+        title: '请输入搜索名称',
+        icon: 'none',
+        duration: 2000
+      })
+    }
   },
   // 存储搜索关键字
   searchChange({detail}) { this.data.searchKayword = detail },

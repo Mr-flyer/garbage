@@ -2,6 +2,8 @@
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "搜索详情",
   "usingComponents": {
+    "pullDownRefresh": "/components/pullDownRefresh/pullDownRefresh",
+    "load-more": "/components/loadMore/index",
     "basicSponsors": "/components/basicSponsors/basicSponsors",
     "garbageTypes": "/components/garbageTypes/garbageTypes",
     "basicTitle": "/components/basicTitle/basicTitle",

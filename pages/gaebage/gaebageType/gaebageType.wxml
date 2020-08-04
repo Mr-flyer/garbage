@@ -13,14 +13,15 @@
         </van-grid-item>
       </van-grid>
     </view>
-    <view class="article" wx:if="{{guidance && tips}}">
+    <view class="article">
       <view wx:if="{{guidance}}">
         <basicTitle title="投放指导" />
-        <view class="section">{{guidance}}</view>
+        <rich-text class="rich-text-guidance" nodes="{{guidance}}"></rich-text>
+        <!-- <view class="section">{{guidance}}</view> -->
       </view>
       <view class="tips_wrap" wx:if="{{tips}}">
         <van-tag plain round type="success">Tips</van-tag>
-        <view >{{tips}}</view>
+        <view class="tips_text">{{tips}}</view>
       </view>
     </view>
     <basicSponsors />

@@ -72,5 +72,18 @@ Component({
       }
       return e
     },
+    // 敬请期待
+    comingSoon() {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '敬请期待',
+        success (res) {
+          if (res.confirm) {
+          } else if (res.cancel) {
+          }
+        }
+      })
+    }
   }
 })

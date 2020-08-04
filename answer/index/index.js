@@ -9,7 +9,7 @@ Page({
         canUse: getApp().globalData.canUse,
         nvabarData: {
             navigationBarTextStyle: 'white', // 胶囊主题 white || black
-            navigationBarTitleText: '你是什么垃圾', //  导航栏标题文本
+            navigationBarTitleText: '垃圾分类问答', //  导航栏标题文本
         },
         showRule: false,
         category_count: 0,
@@ -42,7 +42,7 @@ Page({
     },
     onShareAppMessage() {
         return {
-            title: '你是什么垃圾',
+            title: '来测测你是什么垃圾',
             desc: '一起来答题',
             path: '/pages/index/index'
         }

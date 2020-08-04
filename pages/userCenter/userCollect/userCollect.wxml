@@ -7,7 +7,7 @@
         <view class="collect_list">
           <navigator class="collect_item" wx:for="{{dataLists}}" wx:key="this" url="/pages/gaebage/gaebageDetail/gaebageDetail?garbageId={{item.id}}">
             <view class="collect_pic">
-              <image src="{{item.icon}}" mode="aspectFill" />
+              <image src="{{item.icon}}" mode="aspectFit" />
             </view>
             <view class="collect_info">
               <view class="collect_name">

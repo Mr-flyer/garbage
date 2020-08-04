@@ -28,9 +28,9 @@ class SpecialModel extends HTTP {
     })
   }
   // 评论列表
-  getCommentsList(garbageId) {
+  getCommentsList(garbageId, page, pageSize) {
     return this.request({
-      subUrl: `api/v1/garbage/comments/${garbageId}`
+      subUrl: `api/v1/garbage/comments/${garbageId}&page=${page}&page_size=${pageSize}`
     })
   }
   // 发布评论

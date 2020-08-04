@@ -13,9 +13,9 @@
                   <open-data type="userNickName"></open-data>
                 </view>
                 <view class="user-icons">
-                    <image class="heart-icon" src="../images/answer/heart_icon.png" />
+                    <!-- <image class="heart-icon" src="../images/answer/heart_icon.png" /> -->
                     <text class="answer-count">{{answer_count}}/{{total_answer}}</text>
-                    <image class="add-icon" src="../images/answer/add_icon.png" />
+                    <!-- <image class="add-icon" src="../images/answer/add_icon.png" /> -->
                 </view>
             </view>
         </view>

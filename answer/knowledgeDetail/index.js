@@ -4,12 +4,16 @@ Page({
     data: {
         is_url: 0,
         knowInfo: '',
-        url: ''
+        url: '',
+        knowledgeId: ''
     },
     onUnload() {
     },
     onLoad(options) {
         if(options.id) {
+            this.setData({
+                knowledgeId: options.id
+            })
             let _that = this;
             Toast.loading({
                 duration: 0,
@@ -20,7 +24,7 @@ Page({
                 _that.setData({
                     is_url: res.data.is_url,
                     url: decodeURIComponent(res.data.url),
-                    knowInfo: res.data.content
+                    knowInfo: res.data.content.replace(/(<img[\s\S]+?)/ig, '<img style="width:100%;margin:0 auto;"')
                 })
             })
         }else {
@@ -29,8 +33,9 @@ Page({
     },
     onShareAppMessage() {
         return {
-            title: '垃圾分类小知识',
-            desc: '垃圾分类小知识'
+            title: '来测测你是什么垃圾',
+            desc: '垃圾分类小知识',
+            path: `/answer/knowledgeDetail/index?id=${this.data.knowledgeId}`
         }
     }
 })

@@ -10,9 +10,12 @@ Page({
       // statusBgColor: '', // 状态栏背景色
       // showPre: true, // 是否只展示返回键 默认 false
     },
+    gaebageTypeId: ''
   }, 
   onLoad: async function({gaebageTypeId}) {
-    console.log('分类id', gaebageTypeId);
+    this.setData({
+      gaebageTypeId: gaebageTypeId
+    })
     // 垃圾列表
     let p1 = specialModel.getGarbageList({category: gaebageTypeId})
       .then(({ data: garbageTypelist }) => ({ garbageTypelist }))
@@ -25,13 +28,21 @@ Page({
       this.setData({
         ...newData[0], ...newData[1]
       })
+      let temp = this.data.guidance;
+      this.setData({
+        guidance: temp.replace(/(<img[\s\S]+?)/ig, '<img style="width:100%;margin:0 auto;"')
+      })
     })
-
-
-    getApp().watch(needUpdate => {
-      console.log('----------', needUpdate);
-      this.setData({ needUpdate })
-    })
+    // getApp().watch(needUpdate => {
+    //   console.log('----------', needUpdate);
+    //   this.setData({ needUpdate })
+    // })
   }, 
-  
+  onShareAppMessage() {
+    return {
+        title: '来测测你是什么垃圾',
+        desc: '来测测你是什么垃圾',
+        path: `/pages/gaebage/gaebageType/gaebageType?gaebageTypeId=${this.data.gaebageTypeId}`
+    }
+  }
 })
