@@ -1,100 +1,85 @@
-<!-- pages/gaebageSearch/gaebageDetail/gaebageDetail.wxml -->
 <mg-navbar class="navbar" wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
-<view class="container" wx:if="{{!loading}}">
-  <view class="cont">
-    <view class="header" style="--paddingTop:{{navBarHeight}}">
-      <!-- 搜索框 -->
-      <van-search custom-class="search_wrap" wx:if="{{!isGargabeInfo}}" field-class="search_field" input-class="search_ipt" value="{{ value }}" shape="round" placeholder="请输入正确名称（包含材质）" placeholder-style="color: rgba(67, 193, 120, 1); font-size: 26rpx" use-action-slot use-left-icon-slot bind:search="handSearch" bind:change="searchChange">
-        <van-button slot="action" custom-class="search_btn" icon="down" round bind:tap="handSearch" />
-      </van-search>
-      <!-- 收藏 -->
-      <van-cell custom-class="keyword_wrap" wx:if="{{garbageId && keyword}}" title-class="keyword_title van-ellipsis" title="{{keyword || ' '}}">
-        <van-button slot="right-icon" custom-class="collect_btn" icon="star" type="{{is_collect ? '' : 'warning'}}" disabled="{{is_collect}}" size="mini" hairline bind:click="handCollect">
-          {{is_collect ? '已收藏' : '收藏'}} {{collect_num}}
-        </van-button>
-      </van-cell>
-      <!-- 搜索到相关垃圾分类 -->
-      <van-cell wx:if="{{garbageId}}" custom-class="garbagetype_card" title-class="garbagetype_title van-ellipsis" label-class="garbagetype_label van-ellipsis" title="{{category.name}}" label="{{category.desc}}" center border="{{false}}">
-        <image slot="icon" class="garbagetype_icon" src="{{category.icon}}" mode="aspectFit" />
-        <image class="garbagetype_pic" src="{{icon}}" class="garbagetype_pic" mode="aspectFill" />
-      </van-cell>
-      <!-- 未搜索到分类 -->
-      <block wx:else>
-        <van-cell custom-class="keyword_wrap" title-class="keyword_title van-ellipsis" title="{{keyword || ''}}"></van-cell>
-        <van-cell custom-class="emptySearch_wrap" title-class="emptySearch_title" label-class="emptySearch_label" title="未搜索到分类" label="物品过于独特，可输入正确信息增加词库" border="{{false}}">
-          <image class="emptySearch_pic" src="/static/images/common/empty_search@2x.png" mode="aspectFill" />
-        </van-cell>
-        <van-button custom-class="addKeyword_btn" icon="plus" type="warning" round hairline bind:click="openKeywordPop">
-          添加词库
-        </van-button>
-      </block>
-    </view>
-    <!-- 已检索到的垃圾信息 -->
-    <view wx:if="{{garbageId}}" class="aside">
-      <!-- 弹幕区 -->
-      <view class="barrage_wrap" wx:if="{{dmData.length}}">
-        <view class="barrage_inner">
-          <view class="barrage_item dmGroup" wx:for="{{ dmData }}" wx:key="index" style="top:{{ item.top }}%; animation: dmAnimation {{ item.time }}s linear {{ index*3 }}s infinite;">
-            <image class="barrage_pic" src="{{item.avatar}}" mode="aspectFill" />
-            <view class="barrage_txt van-ellipsis">{{item.content}}</view>
+<pullDownRefresh class="container" refreshing="{{refreshing}}" refreshed="{{refreshed}}" bind:refresh="onPullDownRefresh">
+  <scroll-view class="main" scroll-y enable-flex>
+    <view wx:if="{{!loading}}">
+      <view class="cont">
+        <view class="header" style="--paddingTop:{{navBarHeight}}">
+          <!-- 搜索框 -->
+          <van-search custom-class="search_wrap" wx:if="{{!isGargabeInfo}}" field-class="search_field" input-class="search_ipt" value="{{ value }}" shape="round" placeholder="请输入正确名称（包含材质）" placeholder-style="color: rgba(67, 193, 120, 1); font-size: 26rpx" use-action-slot use-left-icon-slot bind:search="handSearch" bind:change="searchChange">
+            <van-button slot="action" custom-class="search_btn" icon="down" round bind:tap="handSearch" />
+          </van-search>
+          <!-- 收藏 -->
+          <van-cell custom-class="keyword_wrap" wx:if="{{garbageId && keyword}}" title-class="keyword_title van-ellipsis" title="{{keyword || ' '}}">
+            <van-button slot="right-icon" custom-class="collect_btn" icon="star" type="{{is_collect ? '' : 'warning'}}" disabled="{{is_collect}}" size="mini" hairline bind:click="handCollect">
+              {{is_collect ? '已收藏' : '收藏'}} {{collect_num}}
+            </van-button>
+          </van-cell>
+          <!-- 搜索到相关垃圾分类 -->
+          <van-cell wx:if="{{garbageId}}" custom-class="garbagetype_card" title-class="garbagetype_title van-ellipsis" label-class="garbagetype_label van-ellipsis" title="{{category.name}}" label="{{category.desc}}" center border="{{false}}">
+            <image slot="icon" class="garbagetype_icon" src="{{category.icon}}" mode="aspectFit" />
+            <image class="garbagetype_pic" src="{{icon}}" class="garbagetype_pic" mode="aspectFill" />
+          </van-cell>
+          <!-- 未搜索到分类 -->
+          <block wx:else>
+            <van-cell custom-class="keyword_wrap" title-class="keyword_title van-ellipsis" title="{{keyword || ''}}"></van-cell>
+            <van-cell custom-class="emptySearch_wrap" title-class="emptySearch_title" label-class="emptySearch_label" title="未搜索到分类" label="物品过于独特，可输入正确信息增加词库" border="{{false}}">
+              <image class="emptySearch_pic" src="/static/images/common/empty_search@2x.png" mode="aspectFill" />
+            </van-cell>
+            <van-button custom-class="addKeyword_btn" icon="plus" type="warning" round hairline bind:click="openKeywordPop">
+              添加词库
+            </van-button>
+          </block>
+        </view>
+        <!-- 已检索到的垃圾信息 -->
+        <view wx:if="{{garbageId}}" class="aside">
+          <!-- 弹幕区 -->
+          <view class="barrage_wrap" wx:if="{{dmData.length}}">
+            <view class="barrage_inner">
+              <view class="barrage_item dmGroup" wx:for="{{ dmData }}" wx:key="index" style="top:{{ item.top }}%; animation: dmAnimation {{ item.time }}s linear {{ index*3 }}s infinite;">
+                <view class="barrage-item-li van-ellipsis">
+                  <image class="barrage_pic" src="{{item.avatar}}" mode="aspectFill" />
+                  <view class="barrage_txt van-ellipsis">{{item.content}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="guide_wrap">
+            <basicTitle title="投放指导" />
+            <view class="guide_inner">
+              <rich-text nodes="{{category.guidance}}"></rich-text>
+            </view>
           </view>
         </view>
-      </view>
-      <view class="guide_wrap">
-        <basicTitle title="投放指导" />
-        <view class="guide_inner">
-          <rich-text nodes="{{category.guidance}}"></rich-text>
+        <!-- 基础分类 -->
+        <view wx:else class="basic_type">
+          <view>
+            <basicTitle title="基本分类" />
+            <garbageTypes bind:myevent="handGarbageType"/>
+          </view>
+          <!-- <view class="tips_wrap">
+            <van-tag custom-class="tips_tag" type="success" plain round>Tips</van-tag>
+            <text>{{tips}}</text>
+          </view> -->
         </view>
       </view>
-    </view>
-    <!-- 基础分类 -->
-    <view wx:else class="basic_type">
-      <view>
-        <basicTitle title="基本分类" />
-        <garbageTypes bind:myevent="handGarbageType"/>
+      <!-- 评论区块 -->
+      <view class="discuss_warp" wx:if="{{commentList.length}}">
+        <view class="comment_h"><basicTitle title="全部评价" /> <view class="comment_num">共{{comment_num}}条评论</view></view>
+        <view class="discuss_group">
+          <basicDiscuss wx:for="{{commentList}}" wx:key="index" discussItem="{{item}}" />
+        </view>
       </view>
-      <!-- <view class="tips_wrap">
-        <van-tag custom-class="tips_tag" type="success" plain round>Tips</van-tag>
-        <text>{{tips}}</text>
-      </view> -->
+      <!-- 赞助商 -->
+      <basicSponsors />
     </view>
-  </view>
-  <!-- 评论区块 -->
-  <view class="discuss_warp" wx:if="{{commentList.length}}">
-    <view class="comment_h"><basicTitle title="全部评价" /> <view class="comment_num">共{{comment_num}}条评论</view></view>
-    <view class="discuss_group">
-      <basicDiscuss wx:for="{{commentList}}" wx:key="index" discussItem="{{item}}" />
-    </view>
-  </view>
-  <!-- 赞助商 -->
-  <basicSponsors />
-</view>
+  </scroll-view>  
+</pullDownRefresh>
 <!-- 评论输入框 -->
 <van-goods-action wx:if="{{garbageId}}" custom-class="cu-bar bg-white shadow comment_wrap">
   <!-- <van-goods-action-icon icon="chat-o" bind:tap="handComment" /> -->
 
   <van-field class="comment_inner" input-class="comment_ipt" placeholder="说点什么吧..." value="{{commentKayword}}" input-align="center" confirm-type="发布" bind:confirm="handComment" bind:change="commentChange" />
 </van-goods-action>
-<!-- 添加词库弹窗 -->
-<!-- <van-action-sheet class="keywordPop_wrap" show="{{ showAddKeywordPop }}" title="添加词库" bind:close="closeKeywordPop">
-  <form catchsubmit="formSubmit" catchreset="formReset">
-    <view class="keywordPop_inner">
-      <view class="keywordPop_cont">
-        <view class="popTitle">物品名称</view>
-        <van-cell-group>
-          <van-field name="name" value="{{lexicon_name}}" placeholder="请输入物品名称" />
-          <van-field name="desc" value="{{lexicon_desc}}" type="textarea" autosize="{{autosize}}" placeholder="请详细描述您分类的理由，140字以内" maxlength="140" show-word-limit />
-        </van-cell-group>
-        <view class="popTitle">垃圾类别</view>
-        <van-field name="category" value="{{checkedRadio}}" style="display:none"></van-field>
-        <garbageTypes isShowRadio bind:myevent="_handRadio" radioChecked="{{checkedRadio}}" />
-      </view>
-      <van-button form-type="submit" custom-class="addKeyword_submit btn_highlight" type="warning" round block hairline>
-        确认添加
-      </van-button>
-    </view>
-  </form>
-</van-action-sheet> -->
 <!-- loading -->
 <van-toast id="van-toast" />
 <!-- 评论提示 -->

@@ -23,12 +23,12 @@ Page({
     },
     onShow() {
         let _that = this;
-        Toast.loading({
-            duration: 0,
-            forbidClick: true,
-            message: '加载中...',
+        wx.showLoading({
+            mask: true,
+            title: '加载中...',
         });
         special.getAnswerInfo().then((res) => {
+            wx.hideLoading();
             _that.setData({
                 category_count: res.data.category_count,
                 total_answer: res.data.total_answer,
@@ -36,8 +36,9 @@ Page({
                 is_follow: res.data.is_follow,
                 showFollow: res.data.is_follow
             })
-        }).catch(() => {
-            
+        })
+        .catch(()=>{
+            wx.hideLoading();
         })
     },
     onShareAppMessage() {

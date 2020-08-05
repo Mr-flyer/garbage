@@ -1,0 +1,35 @@
+<mg-navbar wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
+<view class="feedback">
+    <van-cell-group>
+        <view class="feedback-label"><i>*</i>填写意见反馈</view>
+        <van-field
+            model:value="{{ title }}"
+            label=""
+            type="text"
+            placeholder="请简要描述意见反馈内容"
+            error-message="{{titleErrMsg}}"
+        />
+        <view class="feedback-label">请补充详细问题与意见</view>
+        <van-field
+            model:value="{{ des }}"
+            label=""
+            type="textarea"
+            placeholder="请输入问题与意见"
+            autosize
+            maxlength="200"
+            show-word-limit="{{true}}"
+        />
+        <view class="feedback-label">手机号</view>
+        <van-field
+            model:value="{{ phone }}"
+            type="tel"
+            maxlength="11"
+            label=""
+            placeholder="请输入手机号"
+            error-message="{{phoneErrMsg}}"
+        />
+        <view class="feedback-sub">
+            <van-button type="primary" block bind:tap="feedbackSub">提交</van-button>
+        </view>
+    </van-cell-group>
+</view>

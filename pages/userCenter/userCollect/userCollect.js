@@ -23,7 +23,11 @@ Page({
     //   el.loadMoreView = this.selectAllComponents(".loadMoreView")[key];
     //   el.page = this.data.initPage; el.dataLists = [];
     // });
-    Toast.loading({ message: '加载中...', duration: 0 })
+    // Toast.loading({ message: '加载中...', duration: 0 })
+    wx.showLoading({
+      mask: true,
+      title: '加载中...'
+    })
     this.data.page = this.data.initPage
     this.loadMoreView = this.selectComponent("#loadMoreView");
     this.loadData();
@@ -51,7 +55,8 @@ Page({
     // specialModel.getList(activeTab.viewType, activeTab.page)
     specialModel.getUserCollect({page})
       .then(({ data: curData, next }) => {
-        this._finally(); Toast.clear();
+        wx.hideLoading();
+        this._finally(); 
         let { dataLists } = this.data
         // let { datas: curData, curPage, pageCount } = data
         // 若为首页则直接替换
@@ -62,6 +67,10 @@ Page({
         })
         this.loadMoreView.loadMoreComplete({ curPage: page, next })
       }).catch(err => {
+        wx.hideLoading();
+        this.setData({
+          refreshed: true
+        })
         this._finally()
         // 加载出错 且非第一页则展示 从新加载当前页按钮
         if (this.data.page != initPage) {

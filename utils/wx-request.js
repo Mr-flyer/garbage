@@ -44,9 +44,9 @@ class wxRequest {
         },
         fail: err => reject(err),
         complete: () => { 
-          setTimeout(() => {
-            Toast.clear();
-          }, 100)
+          // setTimeout(() => {
+          //   Toast.clear();
+          // }, 200)
          }
       })
     })

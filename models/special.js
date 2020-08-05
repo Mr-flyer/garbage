@@ -163,13 +163,13 @@ class SpecialModel extends HTTP {
     })
   }
   // 全部排行
-  getRankingList(id) {
+  getRankingList() {
     return this.request({
       subUrl: `api/v1/answer/rank`
     })
   }
   // 好友排行
-  getFriendRankingList(id) {
+  getFriendRankingList() {
     return this.request({
       subUrl: `api/v1/answer/friend_rank`
     })

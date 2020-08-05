@@ -16,6 +16,10 @@ Page({
     this.setData({
       gaebageTypeId: gaebageTypeId
     })
+    wx.showLoading({
+      mask: true,
+      title: '加载中...'
+    })
     // 垃圾列表
     let p1 = specialModel.getGarbageList({category: gaebageTypeId})
       .then(({ data: garbageTypelist }) => ({ garbageTypelist }))
@@ -24,6 +28,7 @@ Page({
       .then(({data}) => data)
     // this.setData
     Promise.all([p1, p2]).then(res => {
+      wx.hideLoading();
       let newData = res.filter(v => !v.errCode)
       this.setData({
         ...newData[0], ...newData[1]
@@ -32,6 +37,9 @@ Page({
       this.setData({
         guidance: temp.replace(/(<img[\s\S]+?)/ig, '<img style="width:100%;margin:0 auto;"')
       })
+    })
+    .catch(()=> {
+      wx.hideLoading();
     })
     // getApp().watch(needUpdate => {
     //   console.log('----------', needUpdate);

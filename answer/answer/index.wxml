@@ -8,7 +8,7 @@
                     <image class="question-border-bg" src="../images/answer/border-bg.png" mode="widthFix"/>
                     <image class="question-title-bg" src="../images/answer/answer_border.png"/>
                     <view class="question-portrait">
-                      <open-data type="userAvatarUrl"></open-data>
+                        <open-data type="userAvatarUrl"></open-data>
                     </view>
                     <!-- <image class="question-portrait" src="../images/answer/portrait.png" mode="widthFix"/> -->
                     <view class="question-num">第 {{index+1}} / {{answerList.length}} 题</view>

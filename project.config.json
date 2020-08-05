@@ -189,6 +189,12 @@
 					"pathName": "pages/gaebage/gaebageDetail/gaebageDetail",
 					"query": "record_id=473&user_id=5",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "意见反馈",
+					"pathName": "pages/userCenter/feedback/feedback",
+					"scene": null
 				}
 			]
 		}

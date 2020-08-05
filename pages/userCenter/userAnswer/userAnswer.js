@@ -15,15 +15,19 @@ Page({
     loading: true,
   },
   onLoad: async function() {
-    Toast.loading({message: '加载中...', duration: 0})
+    wx.showLoading({
+      mask: true,
+      title: '加载中...'
+    })
+    // Toast.loading({message: '加载中...', duration: 0})
     let { data: answerOutline } = await specialModel.getUserAnswerOutline()
     let { data: garbageTypes } = await specialModel.getGarbageCategorys()
     let { data: answerList } = await specialModel.getUserAnswer()
     garbageTypes.forEach(el => {
       el.answerList = answerList.filter(v => v.category === el.id)
     });
-    Toast.clear()
-    console.log(garbageTypes);
+    wx.hideLoading();
+    // Toast.clear()
     answerOutline.score = this._coutNum(answerOutline.score)
     this.setData({
       garbageTypes, loading: false,

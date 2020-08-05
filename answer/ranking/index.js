@@ -26,10 +26,9 @@ Page({
                 topHeight: rect.height
             })
         }).exec();
-        Toast.loading({
-            duration: 0,
-            forbidClick: true,
-            message: '加载中...',
+        wx.showLoading({
+            mask: true,
+            title: '加载中...',
         });
         Promise.all([
             special.getRankingList().then((res) => {
@@ -48,6 +47,12 @@ Page({
                 _that.isShowEmpty();
             })
         ])
+        .then((res)=>{
+            wx.hideLoading();
+        })
+        .catch(()=>{
+            wx.hideLoading();
+        })
     },
     rankingItem(e) {
         this.setData({

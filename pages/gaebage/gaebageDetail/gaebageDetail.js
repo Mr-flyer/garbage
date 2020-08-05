@@ -7,7 +7,8 @@ Page({
     canUse: getApp().globalData.canUse,
     nvabarData: {
       "navigationBarTextStyle": "white", // 胶囊主题 white || black
-      "navigationBarTitleText": "垃圾详情", //  导航栏标题文本
+      "navigationBarTitleText": "垃圾详情", //  导航栏标题文本,
+      // "navigationBarBackground": 'linear-gradient(90deg,rgba(82,201,132,1) 0%,rgba(67,193,120,1) 100%)',
       // navigationBarBackgroundColor: 'aqua', // 导航栏背景色
       // statusBgColor: '', // 状态栏背景色
       // showPre: true, // 是否只展示返回键 默认 false
@@ -42,7 +43,10 @@ Page({
     collect_num: 0,
     comment_num: 0,
     keyword: '',
-    garbageId: ''
+    garbageId: '',
+    refreshing: false, // 监听设为 true 时 ==> 触发refresh事件
+    refreshed: false, // true ==> 收起下拉刷新，可多次设置为true（即便原来已经是true了）
+    scrollTop: true
   },
   onLoad: function({ keyword, garbageId }) {
     this.setData({ keyword })
@@ -70,6 +74,7 @@ Page({
       }
     }
   },
+  onPullDownRefresh() {},
   // 拉取垃圾详情
   async _initGarbageInfo(garbageId) {
     // 垃圾概要
