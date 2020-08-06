@@ -174,6 +174,14 @@ class SpecialModel extends HTTP {
       subUrl: `api/v1/answer/friend_rank`
     })
   }
+  // 意见反馈
+  postFeedback(data) {
+    return this.request({
+      subUrl: `api/v1/garbage/complaint`,
+      method: 'POST',
+      data
+    })
+  }
   /** 
    * end
    */

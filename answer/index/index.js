@@ -16,7 +16,10 @@ Page({
         total_answer: 0,
         answer_count: 0,
         is_follow: false,
-        showFollow: false
+        showFollow: false,
+        qualification: '',
+        activity_rule: '',
+        activity_time: ''
     },
     onLoad() {
         this.setData({ statusBarHeight, titleBarHeight });
@@ -34,7 +37,10 @@ Page({
                 total_answer: res.data.total_answer,
                 answer_count: res.data.answer_count,
                 is_follow: res.data.is_follow,
-                showFollow: res.data.is_follow
+                showFollow: res.data.is_follow,
+                qualification: res.data.qualification,
+                activity_rule: res.data.activity_rule,
+                activity_time: res.data.activity_time
             })
         })
         .catch(()=>{

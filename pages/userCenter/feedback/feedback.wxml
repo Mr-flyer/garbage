@@ -11,7 +11,7 @@
         />
         <view class="feedback-label">请补充详细问题与意见</view>
         <van-field
-            model:value="{{ des }}"
+            model:value="{{ content }}"
             label=""
             type="textarea"
             placeholder="请输入问题与意见"

@@ -10,14 +10,19 @@ Page({
         },
         title: '',
         titleErrMsg: '',
-        des: '',
+        content: '',
         phone:  '',
-        phoneErrMsg: ''
+        phoneErrMsg: '',
+        setTimeer: ''
     },
     onLoad(options) {
         
     },
+    onUnload() {
+        clearTimeout(this.data.setTimeer);
+    },
     feedbackSub() {
+        let _that = this;
         if(!this.data.title) {
             this.setData({
                 titleErrMsg: '请输入意见反馈'
@@ -38,6 +43,31 @@ Page({
                 phoneErrMsg: ''
             })
         }
+        wx.showLoading({
+            title: '加载中...',
+            mask: true
+        })
+        special.postFeedback({
+            title: this.data.title,
+            content: this.data.content,
+            phone: this.data.phone
+        })
+        .then((res) => {
+            wx.hideLoading();
+            wx.showToast({
+                title: '意见反馈成功',
+                icon: 'none',
+                duration: 2000
+            })
+            _that.data.setTimeer = setTimeout(()=>{
+                wx.navigateBack({
+                    delta: 1
+                })
+            },2000)
+        })
+        .catch(()=>{
+            wx.hideLoading();
+        })
     },
     // 验证手机号
     checkPhone(phone) {
