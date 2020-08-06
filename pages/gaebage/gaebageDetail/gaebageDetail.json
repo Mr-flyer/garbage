@@ -1,4 +1,5 @@
 {
+  "disableScroll": true,
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "搜索详情",
   "usingComponents": {

@@ -1,6 +1,15 @@
 page {
   .container {
-    overflow-y: auto;
+    overflow: hidden;
+  }
+  .main {
+    flex: 1;
+    height: 100%;
+  }
+  .flex_vertical {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
   .comment_wrap {
     position: static;
@@ -33,7 +42,7 @@ page {
 .header {
   background-color: rgba(67, 193, 120, 1);
   padding: calc(var(--paddingTop)*2rpx) 40rpx 40rpx;
-  background-image: radial-gradient(farthest-side at 0% 0%, #c0fcc6 0%, transparent 80%);
+  // background-image: radial-gradient(farthest-side at 0% 0%, #c0fcc6 0%, transparent 80%);
   box-shadow: -6px 2px 7px 0px rgba(213, 238, 216, 1);
   border-radius: 0px 0px 60rpx 60rpx;
   position: relative;

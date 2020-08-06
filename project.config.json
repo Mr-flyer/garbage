@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -75,7 +75,7 @@
 					"id": 1,
 					"name": "1.1 搜索详情",
 					"pathName": "pages/gaebage/gaebageDetail/gaebageDetail",
-					"query": "keyword=油漆桶",
+					"query": "garbageId=5",
 					"scene": null
 				},
 				{

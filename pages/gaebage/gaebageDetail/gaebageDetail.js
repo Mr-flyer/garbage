@@ -1,6 +1,7 @@
 // pages/gaebageSearch/gaebageDetail/gaebageDetail.js
 import specialModel from '../../../models/special';
 import Toast from '../../../miniprogram_npm/@vant/weapp/toast/toast';
+import toast from '../../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
   data: {
     navBarHeight: getApp().globalData.statusBarHeight + getApp().globalData.titleBarHeight,
@@ -8,7 +9,7 @@ Page({
     nvabarData: {
       "navigationBarTextStyle": "white", // 胶囊主题 white || black
       "navigationBarTitleText": "垃圾详情", //  导航栏标题文本
-      // navigationBarBackgroundColor: 'aqua', // 导航栏背景色
+      navigationBarBackground: 'rgba(67, 193, 120, 1)', // 导航栏背景色
       // statusBgColor: '', // 状态栏背景色
       // showPre: true, // 是否只展示返回键 默认 false
       // hideCapsule: true, // 是否隐藏胶囊
@@ -42,18 +43,105 @@ Page({
     collect_num: 0,
     comment_num: 0,
     keyword: '',
-    garbageId: ''
+    garbageId: '',
+    
+    refreshing: false, // 监听设为 true 时 ==> 触发refresh事件
+    refreshed: false, // true ==> 收起下拉刷新，可多次设置为true（即便原来已经是true了）
+    curTabIndex: 0, // 当前选中tab索引
+    initPage: 1, // 初始page
+    pageSize: 20,
+    tabsArr: [ // tab项列表
+      { viewType: 'article', name: 'article', dataLists: [] },
+      // { viewType: 'project', name: 'project', },
+    ],
   },
+  /**
+   * 
+   * @param {*} keyword 搜索关键字 
+   * @param {garbageId} keyword 垃圾ID 
+   */
   onLoad: function({ keyword, garbageId }) {
-    this.setData({ keyword })
     Toast.loading({ message: '加载中...', duration: 0 })
+    this.setData({ keyword })
     if(garbageId) {
+      this.data.tabsArr[0].garbageId = garbageId
       this.setData({ garbageId, isGargabeInfo: true });
       this._initGarbageInfo(garbageId);
     } // 传入垃圾id 为拉取垃圾详情
     else {
+      // this.data.tabsArr[0].keyword = garbageId
       this._initSearchData(keyword)
-    } // 传入关键字 则为搜索垃圾
+    } // 传入关键字 则为搜索垃圾// 获取页脚 loadMore组件 实例对象
+    this.data.tabsArr.forEach((el, key) => {
+      el.loadMoreView = this.selectAllComponents(".loadMoreView")[key];
+      el.garbageId = garbageId;
+      el.page = this.data.initPage; el.dataLists = [];
+    });
+    // this.loadData();
+  },
+  // tab项切换时
+  onChange({detail}) {
+    this.setData({ curTabIndex: detail.name })
+    if(!this.data.tabsArr[detail.name].dataLists.length) {
+      this.loadData(this.data.curTabIndex)
+    }
+  },
+  // 下拉刷新 -- pullDownRefresh组件
+  onPullDownRefresh() {
+    this.data.tabsArr[this.data.curTabIndex].page = this.data.initPage
+    this.loadData(this.data.curTabIndex)
+  },
+
+  // 触底事件 -- scroll-view组件 主动触发 loadmore组件
+  onReachBottom() {
+    let { tabsArr, curTabIndex } = this.data
+    let activeTab = tabsArr[curTabIndex]
+    activeTab.loadMoreView.loadMore() 
+  },
+  /**
+   * 加载数据
+   * @param {number} curTabIndex 当前选中tab索引
+   */
+  loadData(curTabIndex = this.data.curTabIndex, curPage = this.data.initPage) {
+    let { initPage, pageSize } = this.data
+    // 获取当前tab 相关参数
+    let activeTab = this.data.tabsArr[curTabIndex]
+    return new Promise((resolve, reject) => {
+      specialModel.getCommentsList(activeTab.garbageId, activeTab.page)
+        .then(({count, data: curData}) => {
+          const pageCount = Math.ceil(count/pageSize)
+          console.log(`总页数：${pageCount}`, `当前页数据：`, curData);
+          // return false
+          let { dataLists } = activeTab
+          // let { datas: curData, curPage, pageCount } = data
+          // 若为首页则直接替换
+          dataLists = activeTab.page === initPage ? curData : dataLists.concat(curData)
+          this.setData({
+            [`tabsArr[${curTabIndex}].dataLists`]: dataLists, 
+            refreshed: true,
+            comment_num: count
+          })
+          activeTab.loadMoreView.loadMoreComplete({ curPage, pageCount })
+          resolve()
+        }).catch(err => {
+          // 加载出错 且非第一页则展示 从新加载当前页按钮
+          if (activeTab.page != initPage) {
+            activeTab.loadMoreView.loadMoreFail()
+          }
+          reject(err)
+        })
+    })
+  },
+  // 实际上拉触底触发事件 -- loadmore组件加载更多事件
+  loadMoreListener() {
+    console.log('实际触底事件');
+    let { tabsArr, curTabIndex } = this.data
+    tabsArr[curTabIndex].page++;
+    this.loadData(curTabIndex)
+  },
+  // 加载失败 --- 点击从新加载
+  clickLoadMore() {
+    this.loadData(this.data.curTabIndex)
   },
   onShareAppMessage() {
     if(this.data.garbageId) {
@@ -76,17 +164,18 @@ Page({
     let p1 = specialModel.getGarbageDetail(garbageId)
     .then(({data}) => data).catch(err => err)
     // 评论列表
-    let p2 = specialModel.getCommentsList(garbageId)
-    .then(({data}) => {
-      // 设置弹幕
-      this._setDM(data.slice(0, 5))
-      return { commentList: data }
-    }).catch(err => err)
+    let p2 = this.loadData()
+    // let p2 = specialModel.getCommentsList(garbageId)
+    // .then(({data}) => {
+    //   // 设置弹幕
+    //   this._setDM(data.slice(0, 5))
+    //   return { commentList: data }
+    // }).catch(err => err)
     Promise.all([p1, p2]).then(res => {
       Toast.clear();
-      let newData = res.filter(v => !v.errCode)
+      let newData = res.filter(v => v && !v.errCode)
       this.setData({
-        ...newData[0], ...newData[1], loading: false
+        ...newData[0], loading: false
       })
       let keyName = "category.guidance";
       let temp = this.data.category.guidance
@@ -94,30 +183,31 @@ Page({
         [keyName]: temp.replace(/(<img[\s\S]+?)/ig, '<img style="width:100%;margin:0 auto;"')
       })
     })
-    // .catch(() => this.setData({ loading: false }))
   },
   //#region -- 搜索
   async _initSearchData(searchKayword) {
-    // Toast.loading({duration: 0})
     let { data: garbageInfo } = await specialModel.getGarbageSearch(searchKayword)
-    this.setData({
-      keyword: searchKayword
-    })
+    this.setData({ keyword: searchKayword })
+    // console.log('垃圾id', garbageInfo.id);
     if(!garbageInfo.id) {
       Toast.clear()
       return this.setData({
-        garbageId: null, loading: false
+        garbageId: null, loading: false,
+        'absArr[0].dataLists': []
       })
     }
-    let { data: commentList } = await specialModel.getCommentsList(garbageInfo.id)
-    // console.log(garbageInfo, commentList);
-    Toast.clear()
-    this._setDM(commentList.slice(0, 5))
-    this.setData({
-      ...garbageInfo, commentList,
-      collect_num: this._coutNum(garbageInfo.collect_num),
-      comment_num: garbageInfo.comment_num,
-      garbageId: garbageInfo.id, loading: false
+    // let { data: commentList } = await specialModel.getCommentsList(garbageInfo.id)
+    this.data.tabsArr[0].garbageId = garbageInfo.id
+    this.loadData().then(() => {
+      Toast.clear()
+      // this._setDM(commentList.slice(0, 5))
+      this.setData({
+        ...garbageInfo, 
+        // commentList,
+        collect_num: this._coutNum(garbageInfo.collect_num),
+        comment_num: garbageInfo.comment_num,
+        garbageId: garbageInfo.id, loading: false
+      })
     })
   },
   // 点击搜索
@@ -144,6 +234,10 @@ Page({
     let collect_num = this.data.collect_num +1;
     this.setData({ is_collect: true, collect_num: this._coutNum(collect_num) })
   },
+
+  //#region -- 评论
+  // 评论列表
+
   // 发布评论
   async handComment({detail}) {
     let commentKayword = typeof detail === 'string' ? detail : this.data.commentKayword
@@ -161,16 +255,16 @@ Page({
   },
   // 本地缓存评论关键字
   commentChange({detail}) { this.data.commentKayword = detail },
+  //#endregion
   
   //#region -- 添加垃圾词库弹窗
   // 添加垃圾词库弹窗 --- 关闭
   closeKeywordPop() { this.setData({ showAddKeywordPop: false }) },
   // 添加垃圾词库弹窗 --- 开启
-  // openKeywordPop() { this.setData({ showAddKeywordPop: true }) },
   openKeywordPop() { 
     wx.navigateTo({
       url: `/pages/gaebage/gaebageAdd/gaebageAdd?keyword=${this.data.keyword}`
-    })  
+    })
   },
   // 添加垃圾词库弹窗 --- 提交
   async formSubmit({detail}) {

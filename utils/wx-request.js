@@ -7,7 +7,7 @@ import {
 import Toast from '../miniprogram_npm/@vant/weapp/toast/toast';
 // 无需展示错误提示的状态码
 const hideErrCodeArr = [404, 10000]
-// roken 失效错误码
+// coken 失效错误码
 const updateTokenCodeArr = [403, 10040, 10050, 10000]
 class wxRequest {
   // constructor() {}
@@ -43,14 +43,15 @@ class wxRequest {
           isStatusOk && !data.errCode ? resolve(data) : reject(data)
         },
         fail: err => reject(err),
-        complete: () => { 
-          setTimeout(() => {
-            Toast.clear();
-          }, 100)
-         }
+        // complete: () => { 
+        //   setTimeout(() => {
+        //     Toast.clear();
+        //   }, 100)
+        //  }
       })
     })
     .catch(err => {
+      Toast.clear();
       if(!hideErrCodeArr.includes(err.errCode)) {
         if(err.errCode === 10060) {
           if(err.data[Object.keys(err.data)[0]] && err.data[Object.keys(err.data)[0]][0]){
