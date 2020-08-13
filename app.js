@@ -4,6 +4,7 @@ import { setStorage, getStorage, saveTokens } from './utils/storageSyncTool';
 App({
   // 小程序初始化完成
   onLaunch: function (options) {
+    sessionStorage.setItem('user_id', options.user_id);
     !getStorage('isUpdata') && globalModel._getToken().then(({data}) => {
       saveTokens(data.token); setStorage('isUpdata', data)
     })

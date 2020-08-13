@@ -18,7 +18,7 @@ class SpecialModel extends HTTP {
   // 热门关键词  ===============
   getGarbageKeyword() {
     return this.request({
-      subUrl: `api/v1/garbage/hot_keyword`,
+      subUrl: `api/v1/garbage/hot_keyword?user_id=${sessionStorage.getItem('user_id')}`,
     })
   }
   // 搜索
