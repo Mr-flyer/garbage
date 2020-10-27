@@ -27,8 +27,12 @@ Component({
       let i = 0;
       specialModel.getUserOutline()
       .then(({data}) => {
+        wx.hideLoading()
         Object.assign(this.data, data)
         numDH();
+      })
+      .catch(()=>{
+        wx.hideLoading()
       })
 
       function numDH() {
@@ -52,7 +56,6 @@ Component({
           })
         }
       }
-      wx.hideLoading()
     },
     moved: function () {},
     detached: function () {},
@@ -71,6 +74,25 @@ Component({
         e = (e / 10000).toFixed(1) + 'W'
       }
       return e
+    },
+    // 敬请期待
+    otherFun(e) {
+      switch (e.currentTarget.dataset.cap) {
+        case '0':
+          wx.navigateTo({
+            url: `/pages/userCenter/feedback/feedback`
+          })
+          break;
+        case '1': 
+          this.comingSoon();
+          break;
+        case '2': 
+          this.comingSoon();
+          break;
+        case '3': 
+          this.comingSoon();
+          break;
+      }
     },
     // 敬请期待
     comingSoon() {

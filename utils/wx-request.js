@@ -43,11 +43,11 @@ class wxRequest {
           isStatusOk && !data.errCode ? resolve(data) : reject(data)
         },
         fail: err => reject(err),
-        // complete: () => { 
-        //   setTimeout(() => {
-        //     Toast.clear();
-        //   }, 100)
-        //  }
+        complete: () => { 
+          // setTimeout(() => {
+          //   Toast.clear();
+          // }, 200)
+         }
       })
     })
     .catch(err => {

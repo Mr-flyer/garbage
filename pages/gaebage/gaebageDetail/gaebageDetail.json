@@ -1,6 +1,7 @@
 {
   "disableScroll": true,
   "navigationBarTextStyle": "white",
+  "disableScroll": true,
   "navigationBarTitleText": "搜索详情",
   "usingComponents": {
     "pullDownRefresh": "/components/pullDownRefresh/pullDownRefresh",

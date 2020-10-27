@@ -9,13 +9,13 @@ Page({
     nvabarData: {
       "navigationBarTextStyle": "white", // 胶囊主题 white || black
       "navigationBarTitleText": "垃圾详情", //  导航栏标题文本
-      navigationBarBackground: 'rgba(67, 193, 120, 1)', // 导航栏背景色
+      // navigationBarBackground: 'rgba(67, 193, 120, 1)', // 导航栏背景色
       // statusBgColor: '', // 状态栏背景色
       // showPre: true, // 是否只展示返回键 默认 false
       // hideCapsule: true, // 是否隐藏胶囊
     },
     showAddKeywordPop: false, // 添加词库弹窗
-    autosize: { minHeight: 144 }, // 
+    autosize: { minHeight: 144 },
     // garbageId: 10, // 垃圾分类ID
     // is_collect: true, // 是否已收藏
     dmData: [{
@@ -44,19 +44,18 @@ Page({
     comment_num: 0,
     keyword: '',
     garbageId: '',
-    
+
     refreshing: false, // 监听设为 true 时 ==> 触发refresh事件
     refreshed: false, // true ==> 收起下拉刷新，可多次设置为true（即便原来已经是true了）
     curTabIndex: 0, // 当前选中tab索引
     initPage: 1, // 初始page
-    pageSize: 20,
+    pageSize: 20, 
     tabsArr: [ // tab项列表
       { viewType: 'article', name: 'article', dataLists: [] },
       // { viewType: 'project', name: 'project', },
     ],
   },
   /**
-   * 
    * @param {*} keyword 搜索关键字 
    * @param {garbageId} keyword 垃圾ID 
    */
@@ -110,12 +109,14 @@ Page({
       specialModel.getCommentsList(activeTab.garbageId, activeTab.page)
         .then(({count, data: curData}) => {
           const pageCount = Math.ceil(count/pageSize)
-          console.log(`总页数：${pageCount}`, `当前页数据：`, curData);
+          this._setDM(curData.slice(0, 5))
+          // console.log(`总页数：${pageCount}`, `当前页数据：`, curData);
           // return false
           let { dataLists } = activeTab
           // let { datas: curData, curPage, pageCount } = data
           // 若为首页则直接替换
           dataLists = activeTab.page === initPage ? curData : dataLists.concat(curData)
+          console.log('数据更新！！');
           this.setData({
             [`tabsArr[${curTabIndex}].dataLists`]: dataLists, 
             refreshed: true,
@@ -204,7 +205,8 @@ Page({
       this.setData({
         ...garbageInfo, 
         // commentList,
-        collect_num: this._coutNum(garbageInfo.collect_num),
+        collect_num: garbageInfo.collect_num,
+        collectNumTxt: this._coutNum(garbageInfo.collect_num),
         comment_num: garbageInfo.comment_num,
         garbageId: garbageInfo.id, loading: false
       })
@@ -229,15 +231,20 @@ Page({
 
   // 点击收藏
   async handCollect() {
-    let { garbageId } = this.data
-    garbageId && await specialModel.addUserCollect(garbageId)
-    let collect_num = this.data.collect_num +1;
-    this.setData({ is_collect: true, collect_num: this._coutNum(collect_num) })
+    let { garbageId, is_collect, collect_num } = this.data
+    if(!garbageId) return false
+    if(is_collect) { // 取消收藏
+      await specialModel.delUserCollect(garbageId)
+      --collect_num
+    }else { // 添加收藏
+      await specialModel.addUserCollect(garbageId)
+      ++collect_num
+    }
+    // let collect_num = this.data.collect_num +1;
+    this.setData({ is_collect: !is_collect, collectNumTxt: this._coutNum(collect_num), collect_num })
   },
 
   //#region -- 评论
-  // 评论列表
-
   // 发布评论
   async handComment({detail}) {
     let commentKayword = typeof detail === 'string' ? detail : this.data.commentKayword
@@ -321,12 +328,39 @@ Page({
     });
   },
   _coutNum(e) {
-    if (e > 1000 && e < 10000) {
-      e = (e / 1000).toFixed(1) + 'k'
-    }
-    if (e > 10000) {
-      e = (e / 10000).toFixed(1) + 'W'
-    }
-    return e
+    let unitArr = [
+      {
+        ceiling: 10,
+        basicValue: 1000,
+        unit: 'k',
+        txt: '千'
+      },
+      {
+        ceiling: 100,
+        basicValue: 10000,
+        unit: 'w',
+        txt: '万'
+      },
+      {
+        ceiling: 10,
+        basicValue: 1000000,
+        unit: 'm',
+        txt: '百万'
+      },
+      {
+        ceiling: 100,
+        basicValue: 10000000,
+        unit: '千万',
+        txt: '千万'
+      },
+      {
+        ceiling: 1000,
+        basicValue: 1000000000,
+        unit: 'b',
+        txt: '10亿'
+      },
+    ]
+    let target = unitArr.find(v => e/v.basicValue < v.ceiling)
+    return (e/target.basicValue).toFixed(0) + target.txt
   },
 })

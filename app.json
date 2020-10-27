@@ -10,6 +10,7 @@
     "pages/userCenter/userDiscuss/userDiscuss",
     "pages/userCenter/userCollect/userCollect",
     "pages/userCenter/userLexicon/userLexicon",
+    "pages/userCenter/feedback/feedback",
     "pages/auth/auth",
     "pages/gaebage/gaebageAdd/gaebageAdd"
   ],

@@ -15,6 +15,10 @@ Page({
         redEnvelopesPrice: 0
     },
     onLoad() {
+        wx.showLoading({
+            mask: true,
+            title: '加载中...'
+        })
         // 获取列表底侧加载更多组件实例
         loadMoreView = this.selectComponent("#loadMoreView");
         page = 1;
@@ -60,7 +64,12 @@ Page({
                 refreshed: true
             })
             loadMoreView.loadMoreComplete({curPage: res.page, next: res.next});
+            wx.hideLoading();
         }).catch((err)=> {
+            _that.setData({
+                refreshed: true
+            })
+            wx.hideLoading();
         })
     },
     rankingItem(e) {

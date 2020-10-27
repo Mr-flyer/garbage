@@ -1,4 +1,3 @@
-<!-- pages/gaebageSearch/gaebageDetail/gaebageDetail.wxml -->
 <mg-navbar class="navbar" wx:if="{{canUse}}" navbar-data="{{nvabarData}}" />
 <pullDownRefresh class="container" refreshing="{{refreshing}}" refreshed="{{refreshed}}" bind:refresh="onPullDownRefresh">
   <scroll-view class="main flex_vertical" scroll-y enable-flex bind:scrolltolower="onReachBottom">
@@ -10,8 +9,8 @@
         </van-search>
         <!-- 收藏 -->
         <van-cell custom-class="keyword_wrap" wx:if="{{garbageId && keyword}}" title-class="keyword_title van-ellipsis" title="{{keyword || ' '}}">
-          <van-button slot="right-icon" custom-class="collect_btn" icon="star" type="{{is_collect ? '' : 'warning'}}" disabled="{{is_collect}}" size="mini" hairline bind:click="handCollect">
-            {{is_collect ? '已收藏' : '收藏'}} {{collect_num}}
+          <van-button slot="right-icon" custom-class="collect_btn" icon="star" type="{{is_collect ? '' : 'warning'}}" disabled="{{is_collect}}" size="mini" hairline bind:tap="handCollect">
+            {{is_collect ? '已收藏' : '收藏'}} {{collectNumTxt}}
           </van-button>
         </van-cell>
         <!-- 搜索到相关垃圾分类 -->
@@ -33,14 +32,16 @@
       <!-- 已检索到的垃圾信息 -->
       <view wx:if="{{garbageId}}" class="aside">
         <!-- 弹幕区 -->
-        <!-- <view class="barrage_wrap" wx:if="{{dmData.length}}">
+        <view class="barrage_wrap" wx:if="{{dmData.length}}">
           <view class="barrage_inner">
             <view class="barrage_item dmGroup" wx:for="{{ dmData }}" wx:key="index" style="top:{{ item.top }}%; animation: dmAnimation {{ item.time }}s linear {{ index*3 }}s infinite;">
-              <image class="barrage_pic" src="{{item.avatar}}" mode="aspectFill" />
-              <view class="barrage_txt van-ellipsis">{{item.content}}</view>
+              <view class="barrage-item-li van-ellipsis">
+                <image class="barrage_pic" src="{{item.avatar}}" mode="aspectFill" />
+                <view class="barrage_txt van-ellipsis">{{item.content}}</view>
+              </view>
             </view>
           </view>
-        </view> -->
+        </view>
         <view class="guide_wrap">
           <basicTitle title="投放指导" />
           <view class="guide_inner">
@@ -80,26 +81,6 @@
   <!-- <van-goods-action-icon icon="chat-o" bind:tap="handComment" /> -->
   <van-field class="comment_inner" input-class="comment_ipt" placeholder="说点什么吧..." value="{{commentKayword}}" input-align="center" confirm-type="发布" bind:confirm="handComment" bind:change="commentChange" />
 </van-goods-action>
-<!-- 添加词库弹窗 -->
-<van-action-sheet class="keywordPop_wrap" show="{{ showAddKeywordPop }}" title="添加词库" bind:close="closeKeywordPop">
-  <form catchsubmit="formSubmit" catchreset="formReset">
-    <view class="keywordPop_inner">
-      <view class="keywordPop_cont">
-        <view class="popTitle">物品名称</view>
-        <van-cell-group>
-          <van-field name="name" value="{{lexicon_name}}" placeholder="请输入物品名称" />
-          <van-field name="desc" value="{{lexicon_desc}}" type="textarea" autosize="{{autosize}}" placeholder="请详细描述您分类的理由，140字以内" maxlength="140" show-word-limit />
-        </van-cell-group>
-        <view class="popTitle">垃圾类别</view>
-        <van-field name="category" value="{{checkedRadio}}" style="display:none"></van-field>
-        <garbageTypes isShowRadio bind:myevent="_handRadio" radioChecked="{{checkedRadio}}" />
-      </view>
-      <van-button form-type="submit" custom-class="addKeyword_submit btn_highlight" type="warning" round block hairline>
-        确认添加
-      </van-button>
-    </view>
-  </form>
-</van-action-sheet>
 <!-- loading -->
 <van-toast id="van-loading" />
 <!-- tips -->

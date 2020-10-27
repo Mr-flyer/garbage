@@ -15,17 +15,20 @@ Page({
                 knowledgeId: options.id
             })
             let _that = this;
-            Toast.loading({
-                duration: 0,
-                forbidClick: true,
-                message: '加载中...',
+            wx.showLoading({
+                mask: true,
+                title: '加载中...',
             });
             special.getKnowledgeDetail(options.id).then((res) => {
+                wx.hideLoading();
                 _that.setData({
                     is_url: res.data.is_url,
                     url: decodeURIComponent(res.data.url),
                     knowInfo: res.data.content.replace(/(<img[\s\S]+?)/ig, '<img style="width:100%;margin:0 auto;"')
                 })
+            })
+            .catch(()=>{
+                wx.hideLoading();
             })
         }else {
             Toast('无小知识详情');
