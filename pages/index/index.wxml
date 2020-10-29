@@ -9,7 +9,5 @@
   <van-tabbar-item icon="iconfont icon-tab_answer" info="奖">答题</van-tabbar-item>
   <van-tabbar-item icon="iconfont icon-tab_user">我的</van-tabbar-item>
 </van-tabbar>
-
 <van-dialog show="{{needUpdate}}" id="van-dialog" title="提示" message="请授权垃圾分类问答获取您的用户信息用于答题、团战、排行榜，取消将导致部分功能无法正常使用！" showCancelButton confirm-button-open-type="getUserInfo" bind:getuserinfo="handGetUserInfo" />
-
 <van-toast id="van-toast" />
