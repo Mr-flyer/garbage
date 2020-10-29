@@ -16,28 +16,35 @@ Page({
         total_answer: 0,
         answer_count: 0,
         is_follow: false,
-        showFollow: false
+        showFollow: false,
+        qualification: '',
+        activity_rule: '',
+        activity_time: ''
     },
     onLoad() {
         this.setData({ statusBarHeight, titleBarHeight });
     },
     onShow() {
         let _that = this;
-        Toast.loading({
-            duration: 0,
-            forbidClick: true,
-            message: '加载中...',
+        wx.showLoading({
+            mask: true,
+            title: '加载中...',
         });
         special.getAnswerInfo().then((res) => {
+            wx.hideLoading();
             _that.setData({
                 category_count: res.data.category_count,
                 total_answer: res.data.total_answer,
                 answer_count: res.data.answer_count,
                 is_follow: res.data.is_follow,
-                showFollow: res.data.is_follow
+                showFollow: res.data.is_follow,
+                qualification: res.data.qualification,
+                activity_rule: res.data.activity_rule,
+                activity_time: res.data.activity_time
             })
-        }).catch(() => {
-            
+        })
+        .catch(()=>{
+            wx.hideLoading();
         })
     },
     onShareAppMessage() {

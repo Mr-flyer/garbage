@@ -24,8 +24,12 @@ Page({
     ],
   },
   onLoad: function () {
-    Toast.loading({ message: '加载中...', duration: 0 })
+    // Toast.loading({ message: '加载中...', duration: 0 })
     // 获取页脚 loadMore组件 实例对象
+    wx.showLoading({
+      mask: true,
+      title: '加载中...'
+    })
     this.data.tabsArr.forEach((el, key) => {
       el.loadMoreView = this.selectAllComponents(".loadMoreView")[key];
       el.page = this.data.initPage; el.dataLists = [];
@@ -37,7 +41,11 @@ Page({
     this.setData({ curTabIndex: detail.name })
     if(this.data.tabsArr[detail.name].loading) {
       this.loadData(this.data.curTabIndex)
-      Toast.loading({ message: '加载中...', duration: 0 })
+      wx.showLoading({
+        mask: true,
+        title: '加载中...'
+      })
+      // Toast.loading({ message: '加载中...', duration: 0 })
     }
     // if(!this.data.tabsArr[detail.name].dataLists.length) {
     //   this.loadData(this.data.curTabIndex)
@@ -62,6 +70,7 @@ Page({
     let activeTab = this.data.tabsArr[curTabIndex]
     specialModel.getLexiconList({ status: activeTab.status, page: activeTab.page})
       .then(({ data: curData, next }) => {
+        wx.hideLoading();
         this._finally()
         let { dataLists } = activeTab
         // let { datas: curData, curPage, pageCount } = data
@@ -73,6 +82,10 @@ Page({
         })
         activeTab.loadMoreView.loadMoreComplete({ curPage: activeTab.page, next })
       }).catch(err => {
+        wx.hideLoading();
+        this.setData({
+          refreshed: true
+        })
         this._finally()
         // 加载出错 且非第一页则展示 从新加载当前页按钮
         if (activeTab.page != initPage) {

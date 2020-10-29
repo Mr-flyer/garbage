@@ -1,5 +1,14 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-27 14:37:19
+ * @LastEditTime: 2020-10-28 19:50:06
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \code\components\basicSponsors\basicSponsors.wxml
+-->
 <!-- components/basicSponsors/basicSponsors.wxml -->
-<view class="sponsors_wrap"> 
-  <view class="sponsors_item">南京早八点软件科技有限公司发布</view>
+<view class="sponsors_wrap">
   <view class="sponsors_item">本查询系统仅供参考，具体分类要求以归属地专业管理部门为准</view>
+  <view class="sponsors_item">主办方：江苏省广播电视总台融媒体新闻中心</view>
+  <view class="sponsors_item">技术支持：南京早八点软件科技有限公司</view>
 </view>

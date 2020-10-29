@@ -1,19 +1,30 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-27 14:37:30
+ * @LastEditTime: 2020-10-28 19:57:46
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \code\pages\appHome\index\index.wxml
+-->
 <!-- pages/appHome/index/index.wxml -->
 <view class="container">
-  <view class="header" style="--paddingTop:{{navBarHeight}}">
+  <view class="header" style="--paddingTop:{{navBarHeight+40}}">
     <view class="hd_cont">
       <view class="hd_inner">
         <view class="hd_info">
           <view class="hd_title">
-            <text>拯救垃圾分类</text>
-            <text>困难症</text>
+            <text>搜一搜</text>
+            <text>垃圾分类不困难</text>
           </view>
           <view class="hd_desc">一键查询免烦恼，从我做起爱环保</view>
         </view>
         <image class="hd_banner" src="/static/images/common/banner_pic@2x.png" mode="widthFix" />
       </view>
-      <van-search custom-class="search_wrap" field-class="search_field" input-class="search_ipt" value="{{ value }}" shape="round" placeholder="请输入正确名称（包含材质）" placeholder-style="color: rgba(131, 210, 140, 1); font-size: 26rpx" use-action-slot use-left-icon-slot bind:search="gotoSearchDetail" bind:change="searchChange">
-        <van-button slot="action" custom-class="search_btn" type="warning" icon="down" round bind:tap="gotoSearchDetail"/>
+      <van-search custom-class="search_wrap" field-class="search_field" input-class="search_ipt" value="{{ value }}"
+        shape="round" placeholder="请输入正确名称（包含材质）" placeholder-style="color: rgba(131, 210, 140, 1); font-size: 26rpx"
+        use-action-slot use-left-icon-slot bind:search="gotoSearchDetail" bind:change="searchChange">
+        <van-button slot="action" custom-class="search_btn" type="warning" icon="down" round
+          bind:tap="gotoSearchDetail" />
       </van-search>
     </view>
   </view>
@@ -22,17 +33,18 @@
     <view class="searchHot_wrap">
       <view class="searchHot_title">热门搜索</view>
       <view class="searchHot_list">
-        <van-tag wx:for="{{keywordList}}" wx:key="index" custom-class="searchHot_tag" size="medium" round data-txt="{{item}}" bind:tap="handHotKeyword">{{item}}</van-tag>
+        <van-tag wx:for="{{keywordList}}" wx:key="index" custom-class="searchHot_tag" size="medium" round
+          data-txt="{{item}}" bind:tap="handHotKeyword">{{item}}</van-tag>
       </view>
     </view>
     <!-- 基本分类 -->
     <view class="basic_type">
       <basicTitle title="基本分类" />
-      <garbageTypes bind:myevent="handGarbageType"/>
+      <garbageTypes bind:myevent="handGarbageType" />
     </view>
     <view class="tips_wrap" wx:if="{{tips}}">
       <van-tag custom-class="tips_tag" type="success" plain round>Tips</van-tag>
-      <text >{{tips}}</text>
+      <text>{{tips}}</text>
     </view>
   </view>
   <basicSponsors />

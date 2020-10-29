@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-10-27 14:37:30
+ * @LastEditTime: 2020-10-29 15:51:25
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \code\pages\appHome\index\index.js
+ */
 // pages/appHome/index/index.js
 import specialModel from '../../../models/special';
 import Toast from '../../../miniprogram_npm/@vant/weapp/toast/toast';
@@ -38,8 +46,8 @@ Component({
     },
     //
     gotoSearchDetail({detail}) {
-      let searchKayword = typeof detail === 'string' ? detail : this.data.searchKayword
-      if(searchKayword && searchKayword!=undefined) {
+      let searchKayword = typeof detail === 'string' ? detail : this.data.searchKayword.trim()
+      if(searchKayword && searchKayword!=undefined&&searchKayword.length!=0) {
         wx.navigateTo({
           url: `/pages/gaebage/gaebageDetail/gaebageDetail?keyword=${searchKayword}`
         })

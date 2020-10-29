@@ -1,196 +1,204 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"enhance": true,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": false,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": false,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useIsolateContext": true,
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.11.0",
-	"appid": "wx9d8965c6e1f8a1d8",
-	"projectname": "%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": 0,
-					"name": "---搜索---tabbar页",
-					"pathName": "pages/appHome/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "1.1 搜索详情",
-					"pathName": "pages/gaebage/gaebageDetail/gaebageDetail",
-					"query": "garbageId=5",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "---我的---tabbar页",
-					"pathName": "pages/appUser/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "2.1 我的答题",
-					"pathName": "pages/userCenter/userAnswer/userAnswer",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "---我的---tabbar页",
-					"pathName": "pages/appUser/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "2.2 我的评论",
-					"pathName": "pages/userCenter/userDiscuss/userDiscuss",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "2.3 我的收藏",
-					"pathName": "pages/userCenter/userCollect/userCollect",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "2.4 我的词库",
-					"pathName": "pages/userCenter/userLexicon/userLexicon",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 8,
-					"name": "---垃圾分类---",
-					"pathName": "pages/gaebage/gaebageType/gaebageType",
-					"query": "gaebageTypeId=1",
-					"scene": null
-				},
-				{
-					"id": 9,
-					"name": "3.1--答题",
-					"pathName": "answer/index/index",
-					"query": "openid=abcdef",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "3.2--答题列表",
-					"pathName": "answer/answer/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "3.3--红包记录",
-					"pathName": "answer/redEnvelopes/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 12,
-					"name": "3.4--答题结果",
-					"pathName": "answer/result/index",
-					"query": "is_success=true",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "3.5--知识列表",
-					"pathName": "answer/knowledge/index",
-					"query": "openid=abcdef",
-					"scene": null
-				},
-				{
-					"id": 14,
-					"name": "3.6--海报",
-					"pathName": "answer/poster/index",
-					"query": "record_id=473&user_id=5",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "3.7--好友排行",
-					"pathName": "answer/ranking/index",
-					"query": "is_success=true",
-					"scene": null
-				},
-				{
-					"id": 16,
-					"name": "小答题详情页",
-					"pathName": "answer/knowledgeDetail/index",
-					"query": "id=8",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/gaebage/gaebageDetail/gaebageDetail",
-					"pathName": "pages/gaebage/gaebageDetail/gaebageDetail",
-					"query": "record_id=473&user_id=5",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": false,
+    "uploadWithSourceMap": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "preloadBackgroundData": false,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "enableEngineNative": false,
+    "useIsolateContext": true,
+    "useCompilerModule": false,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.11.0",
+  "appid": "wx79a47c747a452626",
+  "projectname": "%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "name": "---搜索---tabbar页",
+          "pathName": "pages/appHome/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "1.1 搜索详情",
+          "pathName": "pages/gaebage/gaebageDetail/gaebageDetail",
+          "query": "keyword=油漆桶",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "---我的---tabbar页",
+          "pathName": "pages/appUser/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "2.1 我的答题",
+          "pathName": "pages/userCenter/userAnswer/userAnswer",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "---我的---tabbar页",
+          "pathName": "pages/appUser/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "2.2 我的评论",
+          "pathName": "pages/userCenter/userDiscuss/userDiscuss",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "2.3 我的收藏",
+          "pathName": "pages/userCenter/userCollect/userCollect",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "2.4 我的词库",
+          "pathName": "pages/userCenter/userLexicon/userLexicon",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 8,
+          "name": "---垃圾分类---",
+          "pathName": "pages/gaebage/gaebageType/gaebageType",
+          "query": "gaebageTypeId=1",
+          "scene": null
+        },
+        {
+          "id": 9,
+          "name": "3.1--答题",
+          "pathName": "answer/index/index",
+          "query": "openid=abcdef",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "3.2--答题列表",
+          "pathName": "answer/answer/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "3.3--红包记录",
+          "pathName": "answer/redEnvelopes/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 12,
+          "name": "3.4--答题结果",
+          "pathName": "answer/result/index",
+          "query": "is_success=true",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "3.5--知识列表",
+          "pathName": "answer/knowledge/index",
+          "query": "openid=abcdef",
+          "scene": null
+        },
+        {
+          "id": 14,
+          "name": "3.6--海报",
+          "pathName": "answer/poster/index",
+          "query": "record_id=473&user_id=5",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "3.7--好友排行",
+          "pathName": "answer/ranking/index",
+          "query": "is_success=true",
+          "scene": null
+        },
+        {
+          "id": 16,
+          "name": "小答题详情页",
+          "pathName": "answer/knowledgeDetail/index",
+          "query": "id=8",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/gaebage/gaebageDetail/gaebageDetail",
+          "pathName": "pages/gaebage/gaebageDetail/gaebageDetail",
+          "query": "record_id=473&user_id=5",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "意见反馈",
+          "pathName": "pages/userCenter/feedback/feedback",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

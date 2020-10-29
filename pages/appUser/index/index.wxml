@@ -1,6 +1,6 @@
 <!-- pages/appUser/index/index.wxml -->
 <!-- <mg-navbar class="nav_bar" wx:if="{{canUse}}" navbar-data="{{nvabarData}}" /> -->
-<view class="container">  
+<view class="container">
   <view class="header userheader boxshow_green" style="--paddingTop:{{navBarHeight}}">
     <view class="user_wrap">
       <view class="avatar_wrap">
@@ -12,9 +12,8 @@
           <open-data type="userNickName" lang="zh_CN"></open-data>
         </view>
         <view class="user_address">
-          <open-data type="userProvince" lang="zh_CN"></open-data
-          ><text class="point_icon">·</text
-          ><open-data type="userCity" lang="zh_CN"></open-data>
+          <open-data type="userProvince" lang="zh_CN"></open-data><text class="point_icon">·</text>
+          <open-data type="userCity" lang="zh_CN"></open-data>
           <van-icon class="address_icon" name="location-o" />
         </view>
       </view>
@@ -47,14 +46,23 @@
     </van-grid>
   </view>
   <van-cell-group style="flex: 1" class="cell_group">
-    <van-cell custom-class="cell_wrap" title-class="cell_title" icon="iconfont icon-icon_feedback" center title="意见反馈" is-link bind:tap="comingSoon" />
-    <van-cell custom-class="cell_wrap" title-class="cell_title" icon="iconfont icon-icon_help" center title="帮助中心" is-link bind:tap="comingSoon" />
-    <van-cell custom-class="cell_wrap" title-class="cell_title" icon="iconfont icon-icon_about" center title="关于我们" is-link bind:tap="comingSoon" />
-    <van-cell custom-class="cell_wrap" title-class="cell_title" icon="iconfont icon-icon_seting" center title="设置" is-link bind:tap="comingSoon" />
+    <van-cell custom-class="cell_wrap" title-class="cell_title" icon="iconfont icon-icon_feedback" center title="意见反馈"
+      data-cap="0">
+      <!-- <van-icon slot="right-icon" name="search" class="custom-icon" /> -->
+      <van-button open-type="feedback" slot="right-icon" type="primary" size="small" round>普通按钮</van-button>
+    </van-cell>
+
+    <!-- <van-cell title="单元格">
+      <van-icon slot="right-icon" name="search" class="custom-icon" />
+    </van-cell> -->
+
+    <!-- <van-cell custom-class="cell_wrap" title-class="cell_title" icon="iconfont icon-icon_help" center title="帮助中心" is-link data-cap="1" bind:tap="otherFun" />
+    <van-cell custom-class="cell_wrap" title-class="cell_title" icon="iconfont icon-icon_about" center title="关于我们" is-link data-cap="2" bind:tap="otherFun" />
+    <van-cell custom-class="cell_wrap" title-class="cell_title" icon="iconfont icon-icon_seting" center title="设置" is-link data-cap="3" bind:tap="otherFun" /> -->
   </van-cell-group>
   <!-- <van-button open-type="getUserInfo" bind:getuserinfo="getuserinfo">授权</van-button> -->
 
   <basicSponsors />
   <van-dialog id="van-dialog" />
-  
+
 </view>

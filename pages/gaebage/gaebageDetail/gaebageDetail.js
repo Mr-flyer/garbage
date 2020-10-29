@@ -15,7 +15,7 @@ Page({
       // hideCapsule: true, // 是否隐藏胶囊
     },
     showAddKeywordPop: false, // 添加词库弹窗
-    autosize: { minHeight: 144 }, // 
+    autosize: { minHeight: 144 },
     // garbageId: 10, // 垃圾分类ID
     // is_collect: true, // 是否已收藏
     dmData: [{
@@ -23,46 +23,30 @@ Page({
         content: "国际巨星党妹",
         headimgurl: "https://wx.qlogo.cn/mmopen/vi_32/06N0qHLkICIjb58b3MM0Wwsxccw98LKRjx5cGMQhvXpbicdzVHT4dAVpicwBglhjAXQibibsDJodPGJJWRxcl9DCibA/132",
       },
-      {
-        id: 17307,
-        content: "Lucky",
-        headimgurl: "https://wx.qlogo.cn/mmopen/vi_32/06N0qHLkICIjb58b3MM0Wwsxccw98LKRjx5cGMQhvXpbicdzVHT4dAVpicwBglhjAXQibibsDJodPGJJWRxcl9DCibA/132",
-      },
-      {
-        id: 17309,
-        content: "Me",
-        headimgurl: "https://wx.qlogo.cn/mmopen/vi_32/06N0qHLkICIjb58b3MM0Wwsxccw98LKRjx5cGMQhvXpbicdzVHT4dAVpicwBglhjAXQibibsDJodPGJJWRxcl9DCibA/132",
-      },
-      {
-        id: 17314,
-        content: "犬来八荒",
-        headimgurl: "https://wx.qlogo.cn/mmopen/vi_32/06N0qHLkICIjb58b3MM0Wwsxccw98LKRjx5cGMQhvXpbicdzVHT4dAVpicwBglhjAXQibibsDJodPGJJWRxcl9DCibA/132",
-      }
     ], // 弹幕数据
     loading: true, // 为true 代表首次进入，未加载完成不展示页面
     collect_num: 0,
     comment_num: 0,
     keyword: '',
     garbageId: '',
-    
+
     refreshing: false, // 监听设为 true 时 ==> 触发refresh事件
     refreshed: false, // true ==> 收起下拉刷新，可多次设置为true（即便原来已经是true了）
     curTabIndex: 0, // 当前选中tab索引
     initPage: 1, // 初始page
-    pageSize: 20,
+    pageSize: 20, 
     tabsArr: [ // tab项列表
       { viewType: 'article', name: 'article', dataLists: [] },
       // { viewType: 'project', name: 'project', },
     ],
   },
   /**
-   * 
    * @param {*} keyword 搜索关键字 
    * @param {garbageId} keyword 垃圾ID 
    */
   onLoad: function({ keyword, garbageId }) {
     Toast.loading({ message: '加载中...', duration: 0 })
-    this.setData({ keyword })
+    this.setData({ keyword ,"nvabarData.navigationBarTitleText":keyword})
     if(garbageId) {
       this.data.tabsArr[0].garbageId = garbageId
       this.setData({ garbageId, isGargabeInfo: true });
@@ -110,12 +94,14 @@ Page({
       specialModel.getCommentsList(activeTab.garbageId, activeTab.page)
         .then(({count, data: curData}) => {
           const pageCount = Math.ceil(count/pageSize)
-          console.log(`总页数：${pageCount}`, `当前页数据：`, curData);
+          this._setDM(curData.slice(0, 5))
+          // console.log(`总页数：${pageCount}`, `当前页数据：`, curData);
           // return false
           let { dataLists } = activeTab
           // let { datas: curData, curPage, pageCount } = data
           // 若为首页则直接替换
           dataLists = activeTab.page === initPage ? curData : dataLists.concat(curData)
+          console.log('数据更新！！');
           this.setData({
             [`tabsArr[${curTabIndex}].dataLists`]: dataLists, 
             refreshed: true,
@@ -193,7 +179,7 @@ Page({
       Toast.clear()
       return this.setData({
         garbageId: null, loading: false,
-        'absArr[0].dataLists': []
+        'tabsArr[0].dataLists': [],
       })
     }
     // let { data: commentList } = await specialModel.getCommentsList(garbageInfo.id)
@@ -204,7 +190,8 @@ Page({
       this.setData({
         ...garbageInfo, 
         // commentList,
-        collect_num: this._coutNum(garbageInfo.collect_num),
+        collect_num: garbageInfo.collect_num,
+        collectNumTxt: this._coutNum(garbageInfo.collect_num),
         comment_num: garbageInfo.comment_num,
         garbageId: garbageInfo.id, loading: false
       })
@@ -229,17 +216,23 @@ Page({
 
   // 点击收藏
   async handCollect() {
-    let { garbageId } = this.data
-    garbageId && await specialModel.addUserCollect(garbageId)
-    let collect_num = this.data.collect_num +1;
-    this.setData({ is_collect: true, collect_num: this._coutNum(collect_num) })
+    let { garbageId, is_collect, collect_num } = this.data
+    if(!garbageId) return false
+    if(is_collect) { // 取消收藏
+      await specialModel.delUserCollect(garbageId)
+      --collect_num
+    }else { // 添加收藏
+      await specialModel.addUserCollect(garbageId)
+      ++collect_num
+    }
+    // let collect_num = this.data.collect_num +1;
+    this.setData({ is_collect: !is_collect, collectNumTxt: this._coutNum(collect_num), collect_num })
   },
 
   //#region -- 评论
-  // 评论列表
-
   // 发布评论
   async handComment({detail}) {
+    console.log(this.data.commentKayword)
     let commentKayword = typeof detail === 'string' ? detail : this.data.commentKayword
     let { garbageId } = this.data
     await specialModel.pushUserComments({content: commentKayword}, garbageId)
@@ -247,14 +240,24 @@ Page({
       position: 'bottom', message: '评论发布成功！',
       selector: '#van-toasttips'
     });
+    let newComment={
+        addr: "",
+        content: "新的",
+        garbage: 82,
+        headimgurl: "https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoQLV5fhwP1PFIs0SDP2SeYI0Dwica25icRicTzceB7cs6qibr19lmic1UOURIeZ1ywaVr8574NIePWmEw/132",
+        id: 132,
+        nickname: "老卢",
+        sex: "1",
+        time: "2020-10-28 10:51"}
     this.setData({ commentKayword: '' })
     // 更新评论列表
     let { data: commentList } = await specialModel.getCommentsList(garbageId)
-    this.setData({ commentList })
+    this.loadData(this.data.curTabIndex)
+    // this.setData({ commentList })
     this._setDM(commentList.slice(0, 5))
   },
   // 本地缓存评论关键字
-  commentChange({detail}) { this.data.commentKayword = detail },
+  commentChange({detail}) {  this.data.commentKayword = detail },
   //#endregion
   
   //#region -- 添加垃圾词库弹窗
@@ -321,12 +324,45 @@ Page({
     });
   },
   _coutNum(e) {
-    if (e > 1000 && e < 10000) {
-      e = (e / 1000).toFixed(1) + 'k'
-    }
-    if (e > 10000) {
-      e = (e / 10000).toFixed(1) + 'W'
-    }
-    return e
+    let unitArr = [
+      {
+        ceiling:1000,
+        basicValue:1,
+        unit:"",
+        txt:""
+      },
+      {
+        ceiling: 10,
+        basicValue: 1000,
+        unit: 'k',
+        txt: '千'
+      },
+      {
+        ceiling: 100,
+        basicValue: 10000,
+        unit: 'w',
+        txt: '万'
+      },
+      {
+        ceiling: 10,
+        basicValue: 1000000,
+        unit: 'm',
+        txt: '百万'
+      },
+      {
+        ceiling: 100,
+        basicValue: 10000000,
+        unit: '千万',
+        txt: '千万'
+      },
+      {
+        ceiling: 1000,
+        basicValue: 1000000000,
+        unit: 'b',
+        txt: '10亿'
+      },
+    ]
+    let target = unitArr.find(v => e/v.basicValue < v.ceiling)
+    return (e/target.basicValue).toFixed(0) + target.txt
   },
 })

@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-10-27 14:37:19
+ * @LastEditTime: 2020-10-29 14:24:21
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \code\components\basicDiscuss\basicDiscuss.js
+ */
 // components/basicDiscuss/basicDiscuss.js
 import dayjs from '../../utils/dayjs';
 Component({
@@ -18,7 +26,7 @@ Component({
     discussItem() {
       let curTime = this.data.discussItem.time
       let txt = ''
-      if(dayjs(curTime).add(60, 'second') > dayjs()) {
+      if(dayjs(curTime).add(300, 'second') > dayjs()) {
         txt = '片刻之前'
       }else if(dayjs(curTime).add(60, 'minute') > dayjs()) {
         txt = `${dayjs().diff(dayjs(curTime), 'minute')}分钟前`

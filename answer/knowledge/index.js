@@ -18,6 +18,10 @@ Page({
         page = 1;
         loadMoreView = this.selectComponent("#loadMoreView");
         emptyView = this.selectComponent("#emptyView");
+        wx.showLoading({
+            mask: true,
+            title: '加载中...'
+        })
         this.requestData();
     },
     onShareAppMessage() {
@@ -64,6 +68,13 @@ Page({
             })
             loadMoreView.loadMoreComplete({curPage: page, next: res.next});
             emptyView.getShowValue(_that.data.knowledgeList);
+            wx.hideLoading();
+        })
+        .catch(()=>{
+            wx.hideLoading();
+            _that.setData({
+                refreshed: true
+            })
         })
     },
     knowledgeItem(e) {
